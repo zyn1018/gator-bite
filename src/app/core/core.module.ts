@@ -17,7 +17,7 @@ import {SharedModule} from '../shared/shared.module';
     HeaderComponent,
     FooterComponent,
     CenterComponent,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CoreModule {

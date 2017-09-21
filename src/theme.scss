@@ -4,8 +4,8 @@ Design the theme for the whole web;
 @import '~@angular/material/theming';
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-indigo);
-$my-app-accent: mat-palette($mat-blue);
+$my-app-primary: mat-palette($mat-blue);
+$my-app-accent: mat-palette($mat-orange);
 $my-app-warn: mat-palette($mat-red);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
