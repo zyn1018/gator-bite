@@ -12,6 +12,9 @@ html, body, app-root .site{
 }
 main {
   flex: 1;
+  background: url("assets/backimg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .fill-remaining-space{
   flex: 1 1 auto;

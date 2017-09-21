@@ -1,14 +1,12 @@
 import {NgModule, SkipSelf, Optional} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule} from '../shared/shared.module';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CenterComponent} from './main/center.component';
-
+import {SharedModule} from '../shared/shared.module';
 @NgModule({
   imports: [
-    CommonModule,
-    SharedModule,
+    CommonModule, SharedModule
   ],
   declarations: [
     HeaderComponent,
