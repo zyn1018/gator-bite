@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CenterComponent} from './main/center.component';
-import {MdToolbarModule} from '@angular/material';
+import {SharedModule} from '../shared/shared.module';
 @NgModule({
   imports: [
-    CommonModule, MdToolbarModule,
+    CommonModule, SharedModule
   ],
   declarations: [
     HeaderComponent,
@@ -17,6 +17,7 @@ import {MdToolbarModule} from '@angular/material';
     HeaderComponent,
     FooterComponent,
     CenterComponent,
+    SharedModule
   ]
 })
 export class CoreModule {
