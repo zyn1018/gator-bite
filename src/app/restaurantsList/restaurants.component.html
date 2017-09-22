@@ -1,9 +1,10 @@
-<div>
+<app-research></app-research>
+<div class="global-contain">
   <md-grid-list cols="4" rowHeight="1:2">
     <md-grid-tile *ngFor="let res of restaurants">
-      <md-card>
+      <md-card class="container">
         <md-card-title>{{res.title}}</md-card-title>
-        <img md-card-image [src]="res.picture">
+        <img class="pic" md-card-image [src]="res.picture">
         <md-card-content>
           {{res.content}}
         </md-card-content>

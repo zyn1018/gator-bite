@@ -4,17 +4,16 @@
   margin-right: 28%;
   padding-top: 0.6%;
   padding-bottom: 0.7%;
+  margin-left: 0px ;
 }
 
 .card {
   /*flex: 1;*/
-  width: 30em;
+  width: 30%;
   height: 1.5em;
   float: left;
   padding-top: 0.5%;
-  padding-right: 1.5%;
   padding-left: auto;
-  margin-right: auto;
   margin-left: 27%;
 }
 
@@ -29,6 +28,6 @@
   color: red;
 }
 .inputWidth{
-  width:400px;
+  width: 70%;
 }
 

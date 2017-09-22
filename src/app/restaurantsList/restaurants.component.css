@@ -1,0 +1,16 @@
+div {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 20px;
+}
+
+.pic{
+  height: 200px;
+  width: 200px;
+  margin: auto;
+
+}
+.container {
+  width: 200px;
+  height: 300px;
+}

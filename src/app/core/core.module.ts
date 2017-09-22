@@ -4,13 +4,14 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CenterComponent} from './main/center.component';
 import {SharedModule} from '../shared/shared.module';
-import {RestaurantsComponent} from '../RestaurantsList/restaurants.component';
-import {RestaurantService} from '../RestaurantsList/restaurant.service';
+import {RestaurantsComponent} from '../restaurantsList/restaurants.component';
+import {RestaurantService} from '../restaurantsList/restaurant.service';
 import {AppRoutingModule} from '../app-routing.module';
 import {LoginRoutingModule} from '../login/login-routing.module';
 import {LoginComponent} from '../login/login/login.component';
 import {SignupRoutingModule} from '../signup/signup-routing.module';
 import {SignupComponent} from '../signup/signup/signup.component';
+import {ResearchComponent} from '../research/research.component';
 @NgModule({
   imports: [
     CommonModule, SharedModule, LoginRoutingModule, SignupRoutingModule,
@@ -21,6 +22,7 @@ import {SignupComponent} from '../signup/signup/signup.component';
     CenterComponent,
     RestaurantsComponent,
     LoginComponent,
+    ResearchComponent,
     SignupComponent
   ],
   exports: [
@@ -30,6 +32,7 @@ import {SignupComponent} from '../signup/signup/signup.component';
     SharedModule,
     RestaurantsComponent,
     LoginRoutingModule,
+    ResearchComponent,
     SignupRoutingModule
   ],
   providers: [
