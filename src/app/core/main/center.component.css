@@ -1,9 +1,15 @@
 .card {
   width: 25em;
   height: 2em;
-  margin-top: 30%;
+  margin-top: 25%;
   margin-left: 6em;
 }
 .button {
   margin-left: 20%;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
