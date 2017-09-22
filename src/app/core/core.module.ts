@@ -4,6 +4,8 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CenterComponent} from './main/center.component';
 import {SharedModule} from '../shared/shared.module';
+import {RestaurantsComponent} from './temp/restaurants.component';
+import {RestaurantService} from './temp/restaurant.service';
 @NgModule({
   imports: [
     CommonModule, SharedModule
@@ -11,13 +13,18 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CenterComponent
+    CenterComponent,
+    RestaurantsComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     CenterComponent,
     SharedModule,
+    RestaurantsComponent
+  ],
+  providers: [
+    RestaurantService
   ]
 })
 export class CoreModule {
