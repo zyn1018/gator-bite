@@ -4,18 +4,21 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {CenterComponent} from './main/center.component';
 import {SharedModule} from '../shared/shared.module';
-import {RestaurantsComponent} from './temp/restaurants.component';
-import {RestaurantService} from './temp/restaurant.service';
-import {AppRoutingModule} from '../routing/app-routing.module';
+import {RestaurantsComponent} from '../RestaurantsList/restaurants.component';
+import {RestaurantService} from '../RestaurantsList/restaurant.service';
+import {AppRoutingModule} from '../app-routing.module';
+import {LoginRoutingModule} from '../login/login-routing.module';
+import {LoginComponent} from '../login/login/login.component';
 @NgModule({
   imports: [
-    CommonModule, SharedModule, AppRoutingModule
+    CommonModule, SharedModule, LoginRoutingModule
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     CenterComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    LoginComponent
   ],
   exports: [
     HeaderComponent,
@@ -23,7 +26,7 @@ import {AppRoutingModule} from '../routing/app-routing.module';
     CenterComponent,
     SharedModule,
     RestaurantsComponent,
-    AppRoutingModule
+    LoginRoutingModule
   ],
   providers: [
     RestaurantService
