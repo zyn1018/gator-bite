@@ -1,0 +1,14 @@
+<div>
+  <md-grid-list cols="4" rowHeight="1:2">
+    <md-grid-tile *ngFor="let res of restaurants">
+      <md-card>
+        <md-card-title>{{res.title}}</md-card-title>
+        <img md-card-image [src]="res.picture">
+        <md-card-content>
+          {{res.content}}
+        </md-card-content>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+
