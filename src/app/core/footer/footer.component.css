@@ -1,4 +1,8 @@
 .word {
   display: flex;
-  color: white;
+  color: black;
+}
+
+span {
+  font-size: 12px;
 }
