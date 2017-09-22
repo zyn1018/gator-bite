@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import {MdButtonModule, MdCardModule, MdInputModule, MdToolbarModule, MdGridListModule} from '@angular/material';
+import {MdButtonModule, MdCardModule, MdInputModule, MdToolbarModule, MdGridListModule, MatChipsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {} from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import {} from '@angular/material';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdButtonModule,
-    MdGridListModule
+    MdGridListModule,
+    MatChipsModule
   ],
   exports: [
     MdCardModule,
@@ -18,7 +20,8 @@ import {} from '@angular/material';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdButtonModule,
-    MdGridListModule
+    MdGridListModule,
+    MatChipsModule
   ],
   declarations: []
 })
