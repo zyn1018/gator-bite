@@ -6,9 +6,10 @@ import {CenterComponent} from './main/center.component';
 import {SharedModule} from '../shared/shared.module';
 import {RestaurantsComponent} from './temp/restaurants.component';
 import {RestaurantService} from './temp/restaurant.service';
+import {AppRoutingModule} from '../routing/app-routing.module';
 @NgModule({
   imports: [
-    CommonModule, SharedModule
+    CommonModule, SharedModule, AppRoutingModule
   ],
   declarations: [
     HeaderComponent,
@@ -21,7 +22,8 @@ import {RestaurantService} from './temp/restaurant.service';
     FooterComponent,
     CenterComponent,
     SharedModule,
-    RestaurantsComponent
+    RestaurantsComponent,
+    AppRoutingModule
   ],
   providers: [
     RestaurantService
