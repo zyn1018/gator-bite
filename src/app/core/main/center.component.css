@@ -1,15 +1,23 @@
-.card {
-  width: 25em;
-  height: 2em;
-  margin-top: 25%;
-  margin-left: 6em;
-}
 .button {
-  margin-left: 20%;
+  /*margin-left: 30em;*/
+  float: right;
+  margin-right: 31%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
+
+.card {
+  /*flex: 1;*/
+  width: 15em;
+  height: 1.5em;
+  float: left;
+  padding-top: 0.5%;
+  padding-right: 10%;
+  padding-left: auto;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 30%;
+}
+
+.container {
+  margin-top: 20em;
 }
