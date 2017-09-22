@@ -23,5 +23,12 @@
 }
 
 .full-width-field {
-  width: 100%;
+  width: 1%;
 }
+.material-icons-color {
+  color: red;
+}
+.inputWidth{
+  width:400px;
+}
+
