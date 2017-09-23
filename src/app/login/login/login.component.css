@@ -16,5 +16,6 @@ form {
 
 .text-right {
   margin: 3px;
+  font-size: small;
   text-align: start;
 }
