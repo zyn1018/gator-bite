@@ -18,13 +18,22 @@ form {
   margin: 3px;
   text-align: start;
 }
-.titlePosition{
+
+.titlePosition {
   margin-left: 7em;
-  font-weight:bold;
+  font-weight: bold;
   font-size: large;
   color: #f44336;
 }
-.bottonPosition{
+
+.bottonPosition {
   width: 100%;
   color: white;
+}
+
+div {
+  background: url("../../../assets/backimg.jpg");
+  background-size: 100%;
+  background-position: center;
+  padding: 5.3%;
 }
