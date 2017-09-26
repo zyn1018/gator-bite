@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SignupComponent } from './signup/signup.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SignupComponent} from './signup/signup.component';
 
 @NgModule({
   imports: [
@@ -8,4 +8,5 @@ import { SignupComponent } from './signup/signup.component';
   ],
   declarations: [SignupComponent]
 })
-export class SignupModule { }
+export class SignupModule {
+}
