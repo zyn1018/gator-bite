@@ -9,10 +9,12 @@ import {RestaurantService} from '../restaurantsList/restaurant.service';
 import {AppRoutingModule} from '../app-routing.module';
 import {LoginRoutingModule} from '../login/login-routing.module';
 import {LoginComponent} from '../login/login/login.component';
+import {SignupRoutingModule} from '../signup/signup-routing.module';
+import {SignupComponent} from '../signup/signup/signup.component';
 import {ResearchComponent} from '../research/research.component';
 @NgModule({
   imports: [
-    CommonModule, SharedModule, LoginRoutingModule
+    CommonModule, SharedModule, LoginRoutingModule, SignupRoutingModule,
   ],
   declarations: [
     HeaderComponent,
@@ -20,7 +22,8 @@ import {ResearchComponent} from '../research/research.component';
     CenterComponent,
     RestaurantsComponent,
     LoginComponent,
-    ResearchComponent
+    ResearchComponent,
+    SignupComponent
   ],
   exports: [
     HeaderComponent,
@@ -29,7 +32,8 @@ import {ResearchComponent} from '../research/research.component';
     SharedModule,
     RestaurantsComponent,
     LoginRoutingModule,
-    ResearchComponent
+    ResearchComponent,
+    SignupRoutingModule
   ],
   providers: [
     RestaurantService

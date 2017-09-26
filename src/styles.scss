@@ -10,7 +10,8 @@ html, body, app-root .site{
   display: flex;
   flex-direction: column;
 }
-main {
+
+app-center {
   flex: 1;
   background: url("assets/backimg.jpg");
   background-size: cover;
@@ -22,9 +23,4 @@ main {
 
 .full-width {
   width: 100%;
-}
-.global-contain {
-  margin-left: 10%;
-  margin-right: 10%;
-
 }
