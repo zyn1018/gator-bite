@@ -2,6 +2,8 @@ md-card {
   width: 22em;
   margin: 5px 5px;
   flex: 0 0 20em;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 form {
@@ -29,7 +31,8 @@ form {
 .bottonPosition {
   width: 100%;
   color: white;
-  margin-top: 10%;
+  margin-top: 1.4em;
+
 }
 
 .backGround {

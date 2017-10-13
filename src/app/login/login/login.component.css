@@ -1,9 +1,12 @@
 md-card {
-  width: 22em;
+  width: 25em;
   margin: 5px 5px;
   flex: 0 0 20em;
   margin-top: 5em;
-  margin-bottom: 5em;
+  margin-bottom: 6em;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 5%;
 
 }
 
@@ -30,7 +33,7 @@ div {
 }
 
 .titlePosition {
-  margin-left: 7em;
+  padding-left: 5.5em;
   font-weight: bold;
   font-size: large;
   color: #f44336;
@@ -39,4 +42,5 @@ div {
 .bottonPosition {
   width: 100%;
   color: white;
+  margin-top: 3em;
 }
