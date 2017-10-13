@@ -4,7 +4,7 @@
   margin-right: 28%;
   padding-top: 0.6%;
   padding-bottom: 0.7%;
-  margin-left: 0px ;
+  margin-left: 0px;
 }
 
 .card {
@@ -12,7 +12,7 @@
   width: 30%;
   height: 1.5em;
   float: left;
-  padding-top: 0.5%;
+  padding-top: 2.0%;
   padding-left: auto;
   margin-left: 27%;
 }
@@ -24,10 +24,22 @@
 .full-width-field {
   width: 1%;
 }
+
 .material-icons-color {
   color: red;
 }
-.inputWidth{
-  width: 70%;
+
+.inputWidth {
+  width: 80%;
+  margin-left: -1em;
+
 }
 
+.inputContainer {
+  margin-top: -1.5em;
+  margin-left: 0em;
+}
+
+.locationButton {
+  margin-left: -1em;
+}

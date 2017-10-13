@@ -1,7 +1,9 @@
 md-card {
-  width: 22em;
+  width: 25em;
   margin: 5px 5px;
   flex: 0 0 20em;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 form {
@@ -20,7 +22,7 @@ form {
 }
 
 .titlePosition {
-  margin-left: 7em;
+  margin-left: 5.5em;
   font-weight: bold;
   font-size: large;
   color: #f44336;
@@ -29,6 +31,7 @@ form {
 .bottonPosition {
   width: 100%;
   color: white;
+  margin-top: 1.4em;
 }
 
 div {

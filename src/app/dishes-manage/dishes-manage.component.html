@@ -1,0 +1,50 @@
+<div class="box">
+  <div class="box-header with-border">
+    <button class="btn btn-success btn-sm" [routerLink]="['/dishes/0']"><span class="glyphicon glyphicon-plus"></span>Create
+    </button>
+    <div class="box-tools">
+      <div class="input-group input-group-sm" style="width: 150px; margin-top: 5px;">
+        <input type="text" name="table_search" class="form-control pull-right"
+               placeholder="Dish's name">
+
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table class="table table-bordered">
+      <tr>
+        <th style="width: 10px">#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Desc</th>
+        <th>Operation</th>
+      </tr>
+      <tr *ngFor="let dish of dishes; let i = index;">
+        <td>{{i + 1}}</td>
+        <td>{{dish.name}}</td>
+        <td>{{dish.price}}</td>
+        <td>{{dish.desc}}</td>
+        <td>
+          <a class="btn btn-warning btn-xs" (click)="update(dish)"><span
+            class="glyphicon glyphicon-pencil"></span>Update</a>
+          <a class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer clearfix">
+    <ul class="pagination pagination-sm no-margin pull-right">
+      <li><a href="#">&laquo;</a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div>
+</div>
