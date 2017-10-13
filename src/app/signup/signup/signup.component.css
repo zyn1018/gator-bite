@@ -29,11 +29,18 @@ form {
 .bottonPosition {
   width: 100%;
   color: white;
+  margin-top: 10%;
 }
 
-div {
+.backGround {
   background: url("../../../assets/backimg.jpg");
   background-size: 100%;
   background-position: center;
-  padding: 5.3%;
+  padding-bottom:10%;
+}
+.md-radio-button ~ .md-radio-button {
+  padding-right: 16px;
+}
+.errorColor{
+  color: red;
 }
