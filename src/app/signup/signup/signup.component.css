@@ -32,19 +32,18 @@ form {
   width: 100%;
   color: white;
   margin-top: 1.4em;
+
 }
 
 .backGround {
   background: url("../../../assets/backimg.jpg");
   background-size: 100%;
   background-position: center;
-  padding-bottom: 10%;
+  padding-bottom:10%;
 }
-
 .md-radio-button ~ .md-radio-button {
   padding-right: 16px;
 }
-
-.errorColor {
+.errorColor{
   color: red;
 }
