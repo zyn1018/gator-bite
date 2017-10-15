@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,6 @@ import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   fb: FormBuilder = new FormBuilder();
-
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
