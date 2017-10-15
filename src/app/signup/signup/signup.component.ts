@@ -9,7 +9,6 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   fb: FormBuilder = new FormBuilder();
-
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -17,7 +16,6 @@ export class SignupComponent implements OnInit {
     console.log('email' + valid);
     return valid ? null : {email: true};
   }
-
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
     const confirmPassword: FormControl = info.get('confirmPassword') as FormControl;
