@@ -1,4 +1,5 @@
-<form [formGroup]="signupForm" (submit) = signUp()>
+<div class="backGround">
+  <form [formGroup]="signupForm" (submit)=signUp()>
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -22,13 +23,17 @@
             <input mdInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
           </md-input-container>
         </div>
-        <div [hidden] ="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword do not match !</div>
+        <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
+          do not match !
+        </div>
         <div>
           <md-radio-button value="1">Custmor</md-radio-button>
           <md-radio-button value="2">Restaurant</md-radio-button>
         </div>
-        <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">Create Your Account</button>
+        <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
+          Create Your Account
+        </button>
       </md-card-content>
     </md-card>
   </form>
-
+</div>

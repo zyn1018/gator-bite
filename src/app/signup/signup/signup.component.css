@@ -1,9 +1,11 @@
 md-card {
-  width: 22em;
+  width: 25em;
   margin: 5px 5px;
   flex: 0 0 20em;
   padding-left: 2%;
   padding-right: 2%;
+  margin-top: 3.5em;
+  margin-bottom: 3em;
 }
 
 form {
@@ -22,7 +24,7 @@ form {
 }
 
 .titlePosition {
-  margin-left: 7em;
+  margin-left: 5em;
   font-weight: bold;
   font-size: large;
   color: #f44336;
@@ -36,10 +38,10 @@ form {
 }
 
 .backGround {
+  flex: 1;
   background: url("../../../assets/backimg.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
-  padding-bottom:10%;
 }
 .md-radio-button ~ .md-radio-button {
   padding-right: 16px;
