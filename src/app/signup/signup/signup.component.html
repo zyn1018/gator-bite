@@ -1,5 +1,5 @@
-<div>
-  <form>
+<div class="backGround">
+  <form [formGroup]="signupForm" (submit)=signUp()>
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -8,18 +8,31 @@
       </md-card-header>
       <md-card-content>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="Email">
+          <input mdInput type="text" placeholder="Email" formControlName="email">
+          <md-error>Invalid email address !</md-error>
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="UserName">
+          <input mdInput type="text" placeholder="UserName" formControlName="userName">
+          <md-error>UserName length must be more than 6 !</md-error>
         </md-input-container>
-        <md-input-container class="full-width">
-          <input mdInput type="password" placeholder="Password">
-        </md-input-container>
-        <md-input-container class="full-width">
-          <input mdInput type="password" placeholder="Confirm your Password">
-        </md-input-container>
-        <button md-raised-button type="button" class="bottonPosition" color="primary">Create Your Account</button>
+        <div formGroupName="passwordInfo">
+          <md-input-container class="full-width">
+            <input mdInput type="password" placeholder="Password" formControlName="password">
+          </md-input-container>
+          <md-input-container class="full-width">
+            <input mdInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
+          </md-input-container>
+        </div>
+        <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
+          do not match !
+        </div>
+        <div>
+          <md-radio-button value="1">Custmor</md-radio-button>
+          <md-radio-button value="2">Restaurant</md-radio-button>
+        </div>
+        <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
+          Create Your Account
+        </button>
       </md-card-content>
     </md-card>
   </form>

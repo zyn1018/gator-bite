@@ -1,5 +1,5 @@
 <div>
-  <form>
+  <form [formGroup]="form" (submit)="login()">
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -8,12 +8,16 @@
       </md-card-header>
       <md-card-content>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="Email">
+          <input mdInput type="text" placeholder="Email" formControlName="email">
+          <md-error>Invalid email!</md-error>
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="password" placeholder="Password">
+          <input mdInput type="password" placeholder="Password" formControlName="password">
+          <md-error>Password should be longer than 8!</md-error>
         </md-input-container>
-        <button md-raised-button type="button" class="bottonPosition" color="primary">Login</button>
+        <button md-raised-button type="submit" class="bottonPosition" [routerLink]="['/dishes']" color="primary"
+                [disabled]="!form.valid">Login
+        </button>
       </md-card-content>
       <md-card-actions class="text-right">
         <p>Don't have an account? <a [routerLink]="['/signup']" style="text-decoration: none">Create Your Account</a>
