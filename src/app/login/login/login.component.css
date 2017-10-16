@@ -1,9 +1,12 @@
 md-card {
-  width: 22em;
+  width: 25em;
   margin: 5px 5px;
   flex: 0 0 20em;
-  margin-top: 5em;
+  margin-top: 4.5em;
   margin-bottom: 5em;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 5%;
 
 }
 
@@ -23,14 +26,8 @@ form {
   text-align: start;
 }
 
-div {
-  background: url("../../../assets/backimg.jpg");
-  background-size: 100%;
-  background-position: center;
-}
-
 .titlePosition {
-  margin-left: 7em;
+  padding-left: 5em;
   font-weight: bold;
   font-size: large;
   color: #f44336;
@@ -39,4 +36,12 @@ div {
 .bottonPosition {
   width: 100%;
   color: white;
+  margin-top: 4em;
+}
+
+.backGround {
+  flex: 1;
+  background: url("../../../assets/backimg.jpg");
+  background-size: cover;
+  background-position: center;
 }
