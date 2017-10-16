@@ -19,6 +19,7 @@ import {DishFormRoutingModule} from '../dish-form/dish-form-routing.module';
 import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
+import {UserService} from '../domain/user.service';
 
 @NgModule({
   imports: [
@@ -53,7 +54,7 @@ import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
     DishesManageRoutingModule
   ],
   providers: [
-    RestaurantService, DishService
+    RestaurantService, DishService, UserService
   ]
 })
 export class CoreModule {

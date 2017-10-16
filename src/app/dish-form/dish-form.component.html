@@ -4,7 +4,7 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form [formGroup]="formModel" class="form-horizontal" (submit)="createDish()">
+  <form [formGroup]="formModel" class="form-horizontal">
     <div class="box-body">
       <div class="form-group"
            [class.has-error]="formModel.get('name').touched && formModel.hasError('required', 'name')">

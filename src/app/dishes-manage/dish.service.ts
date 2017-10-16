@@ -21,7 +21,7 @@ export class DishService {
   }
 
   getDish(id: number): Dish {
-    let dish = this.dishes.find(dish => dish.id == id);
+    let dish = this.dishes.find(dish => dish.dishId == id);
     if (dish == null) {
       dish = new Dish(0, '', null, '');
     }
@@ -29,18 +29,18 @@ export class DishService {
   }
 
   updateDishes(dish: Dish) {
-    if (dish.id == 0) {
-      dish.id = this.dishes.length + 1;
+    if (dish.dishId == 0) {
+      dish.dishId = this.dishes.length + 1;
       this.dishes.push(dish);
-      this.dishes.sort((d1, d2) => d1.id - d2.id);
+      this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
     } else {
-      this.dishes.splice(dish.id - 1, 1, dish);
+      this.dishes.splice(dish.dishId - 1, 1, dish);
     }
   }
 }
 
 export class Dish {
-  constructor(public id: number,
+  constructor(public dishId: number,
               public name: string,
               public price: number,
               public desc: string) {
