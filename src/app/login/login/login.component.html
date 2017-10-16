@@ -15,7 +15,7 @@
           <input mdInput type="password" placeholder="Password" formControlName="password">
           <md-error>Password should be longer than 8!</md-error>
         </md-input-container>
-        <button md-raised-button type="submit" class="bottonPosition" [routerLink]="['/dishes']" color="primary"
+        <button md-raised-button type="submit" class="bottonPosition" (click)="login()" color="primary"
                 [disabled]="!form.valid">Login
         </button>
       </md-card-content>

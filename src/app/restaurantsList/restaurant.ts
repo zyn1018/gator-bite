@@ -1,5 +1,5 @@
 export class Restaurant {
-  constructor(public id: number,
+  constructor(public restaurantId: number,
               public picture: string,
               public title: string,
               public content: string) {
