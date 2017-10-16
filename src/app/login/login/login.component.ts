@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from '../../domain/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public userEmail: string;
   form: FormGroup;
   fb: FormBuilder = new FormBuilder();
   emailValidator(email: FormControl): any {
@@ -15,16 +18,18 @@ export class LoginComponent implements OnInit {
     const valid = myEmail.test(value);
     return valid ? null : {email: true};
   }
-  constructor() {
+
+  constructor(private router: Router, private userService: UserService) {
   }
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', this.emailValidator],
       password: ['']
     });
+    this.userEmail = this.userService.getUser().email;
   }
 
   login() {
-    console.log(this.form.value);
+    this.router.navigateByUrl('/dishes/' + this.userEmail);
   }
 }

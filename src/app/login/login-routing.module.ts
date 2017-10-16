@@ -5,7 +5,7 @@ import {DishesManageComponent} from '../dishes-manage/dishes-manage.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'dishes', component: DishesManageComponent}
+  {path: 'dishes/:email', component: DishesManageComponent}
 ];
 
 @NgModule({
