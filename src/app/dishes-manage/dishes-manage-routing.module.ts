@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {DishesManageComponent} from './dishes-manage.component';
 
 const routes: Routes = [
-  {path: 'dishes', component: DishesManageComponent},
 ];
 
 @NgModule({

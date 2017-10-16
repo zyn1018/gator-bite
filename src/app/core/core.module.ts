@@ -17,6 +17,8 @@ import {OrderManageComponent} from '../order-manage/order-manage.component';
 import {DishFormComponent} from '../dish-form/dish-form.component';
 import {DishFormRoutingModule} from '../dish-form/dish-form-routing.module';
 import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
 
 @NgModule({
   imports: [
@@ -32,7 +34,8 @@ import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.
     SignupComponent,
     DishesManageComponent,
     OrderManageComponent,
-    DishFormComponent
+    DishFormComponent,
+    DishFilterPipe
   ],
   exports: [
     HeaderComponent,

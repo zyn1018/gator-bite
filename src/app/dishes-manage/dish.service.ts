@@ -20,6 +20,23 @@ export class DishService {
     return this.dishes;
   }
 
+  getDish(id: number): Dish {
+    let dish = this.dishes.find(dish => dish.id == id);
+    if (dish == null) {
+      dish = new Dish(0, '', null, '');
+    }
+    return dish;
+  }
+
+  updateDishes(dish: Dish) {
+    if (dish.id == 0) {
+      dish.id = this.dishes.length + 1;
+      this.dishes.push(dish);
+      this.dishes.sort((d1, d2) => d1.id - d2.id);
+    } else {
+      this.dishes.splice(dish.id - 1, 1, dish);
+    }
+  }
 }
 
 export class Dish {
