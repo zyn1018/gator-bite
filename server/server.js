@@ -3,6 +3,7 @@ var exprss = require("express"),
   app = exprss(),
   mongoose = require('mongoose');
 
+module.exports = app
 mongoose.connect('mongodb://senb:slksl@ds121535.mlab.com:21535/gator-bite',{useMongoClient: true});
 app.use(exprss.static("public"));
 app.use(bodyParser.urlencoded({extende: true}));
@@ -46,18 +47,32 @@ app.get("/restaurant", function (req, res) {
 //get a certain restaurant's dish
 app.get("/dishes/:email", function (req, res) {
   var email = req.params.email;
-  Restaurant.find({email:email},{"menu":1}, function (err, menues) {
-    if(err){
+  Restaurant.find({email: email}, {"menu": 1,"_id":0}, function (err, menues) {
+    if (err) {
       console.log(err);
-    }else{
-      res.send(menues);
+    } else {
+      res.send(menues[0]);
     }
-  })
+  });
 });
 
 //login api
 app.post("/login", function (req, res) {
-
+  var lemail = req.body.email;
+  var lpassword = req.body.password;
+  User.find({$and:[{email: lemail}, {password: lpassword}]}, function (err, user) {
+    if(err){
+      Restaurant.find({$and:[{email: lemail}, {password: lpassword}]}, function (err, user){
+        if(err){
+          res.send({"success":0});
+        }else{
+          res.render("/dishes/" + lemail);
+        }
+      });
+    }else{
+      res.send({"success":1});
+    }
+  });
 });
 
 
