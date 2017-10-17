@@ -36,10 +36,13 @@
 }
 
 .inputContainer {
-  margin-top: -1.5em;
   margin-left: 0em;
 }
 
 .locationButton {
   margin-left: -1em;
+}
+
+.cardcontent {
+  margin-top: -1.5em;
 }
