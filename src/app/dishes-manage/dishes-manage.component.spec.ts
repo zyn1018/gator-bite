@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DishesManageComponent} from './dishes-manage.component';
+import {Pipe} from '@angular/core';
 
 describe('DishesManageComponent', () => {
   let component: DishesManageComponent;
@@ -8,7 +9,12 @@ describe('DishesManageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DishesManageComponent]
+      declarations: [DishesManageComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        Pipe,
+      ]
     })
       .compileComponents();
   }));
@@ -17,9 +23,5 @@ describe('DishesManageComponent', () => {
     fixture = TestBed.createComponent(DishesManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
