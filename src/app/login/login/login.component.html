@@ -8,15 +8,16 @@
       </md-card-header>
       <md-card-content>
         <md-input-container class="full-width">
-          <input mdInput type="text" name="login[email]" placeholder="Email" formControlName="email">
+          <input mdInput type="text" id="loginEmail" name="login[email]" placeholder="Email" formControlName="email">
           <md-error>Invalid email!</md-error>
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="password" name="login[password]" placeholder="Password" formControlName="password">
+          <input mdInput type="password" id="loginPassword" name="login[password]" placeholder="Password"
+                 formControlName="password">
           <md-error>Password should be longer than 8!</md-error>
         </md-input-container>
-        <button md-raised-button type="submit" class="bottonPosition" (click)="login()" color="primary"
-                [disabled]="!form.valid">Login
+        <button md-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
+                [disabled]="!form.valid" id="loginButton">Login
         </button>
       </md-card-content>
       <md-card-actions class="text-right">
