@@ -1,11 +1,10 @@
 import {DishFilterPipe} from './dish-filter.pipe';
-import { TestBed, async } from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {Pipe} from '@angular/core';
 describe('DishFilterPipe', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-      ],
+      declarations: [],
       imports: [
         Pipe,
       ],

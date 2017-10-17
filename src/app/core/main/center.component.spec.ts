@@ -11,7 +11,7 @@ describe('CenterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CenterComponent ],
+      declarations: [CenterComponent],
       imports: [
         RouterModule.forRoot([]),
         MdCardModule,

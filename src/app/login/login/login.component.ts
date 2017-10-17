@@ -30,6 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl('http://localhost:3000/login');
+    this.router.navigateByUrl('/dishes/' + this.userEmail);
   }
 }
