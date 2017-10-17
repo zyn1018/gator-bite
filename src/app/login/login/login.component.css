@@ -39,7 +39,7 @@ form {
   margin-top: 4em;
 }
 
-.backGround {
+div {
   flex: 1;
   background: url("../../../assets/backimg.jpg");
   background-size: cover;
