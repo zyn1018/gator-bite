@@ -17,7 +17,7 @@ describe('gator-bite App', () => {
     const restaurantCount = element.all(by.id('restaurantList')).count();
     expect(restaurantCount).toEqual(4);
 
-    const gatorbiteButton = element(by.id('gatorbiteButton'))
+    const gatorbiteButton = element(by.id('gatorbiteButton'));
     gatorbiteButton.click();
 
     expect(element(by.id('findButton')).getText()).toEqual('Find Food');
