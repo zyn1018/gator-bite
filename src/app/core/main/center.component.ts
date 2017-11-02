@@ -10,10 +10,11 @@ import {Observable} from 'rxjs/';
 })
 export class CenterComponent implements OnInit {
   dataSource: Observable<any>;
-  a: any;
+  locationInfo: any;
+  str: any;
   constructor(public http: Http) {
     this.dataSource = this.http.get('https://maps.googleapis.com/maps/api/geocode/json?'
-      + 'latlng=29.6477898,-82.3438111&key=AIzaSyC2wdo6kMAXpuhwuUa8fM4mCkDy_kZeWKY').map(Response => Response.json());
+      + 'latlng=' + this.str + '&key=AIzaSyC2wdo6kMAXpuhwuUa8fM4mCkDy_kZeWKY').map(Response => Response.json());
   }
   ngOnInit() {
   }
@@ -25,16 +26,17 @@ export class CenterComponent implements OnInit {
   showPostion(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const s  = String(latitude + ',' + longitude);
-    console.log(s);
+    this.str.bind(this);
+    this.str = String(latitude + ',' + longitude);
+    console.log(this.str);
   }
   showError() {
     console.log('Invalid Address !');
   }
   getData() {
     this.dataSource.subscribe(
-      data => this.a = data
+      data => this.locationInfo = data
     );
-    console.log(this.a);
+    console.log(this.locationInfo);
   }
 }
