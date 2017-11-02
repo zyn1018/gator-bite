@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DishService} from '../dishes-manage/dish.service';
 
 @Component({
   selector: 'app-order-manage',
@@ -7,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class OrderManageComponent implements OnInit {
 
-  constructor() {
+  constructor(private dishService: DishService) {
   }
 
   ngOnInit() {
+    const dishes = this.dishService.getDishes();
   }
 
 }

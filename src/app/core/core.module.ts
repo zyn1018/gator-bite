@@ -17,13 +17,19 @@ import {OrderManageComponent} from '../order-manage/order-manage.component';
 import {DishFormComponent} from '../dish-form/dish-form.component';
 import {DishFormRoutingModule} from '../dish-form/dish-form-routing.module';
 import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
 import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
 import {UserService} from '../domain/user.service';
+import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule, SharedModule, LoginRoutingModule, SignupRoutingModule, DishFormRoutingModule, DishesManageRoutingModule
+    CommonModule,
+    SharedModule,
+    LoginRoutingModule,
+    SignupRoutingModule,
+    DishFormRoutingModule,
+    DishesManageRoutingModule,
+    RestaurantsRoutingModule
   ],
   declarations: [
     HeaderComponent,
