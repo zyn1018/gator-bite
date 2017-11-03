@@ -1,1 +1,28 @@
-
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" align="end">
+    <h3 style="font-family: Impact">Your order</h3>
+    <hr>
+    <md-list>
+      <md-list-item *ngFor="let dishitem of selectedDishes">
+        <p style="font-size: small; font-family: Verdana; color: dodgerblue">{{dishitem.name}}</p>
+        <hr>
+      </md-list-item>
+    </md-list>
+    <button class="submitButton" md-raised-button color="accent" style="font-family: Impact; font-size: medium">Submit
+      your order
+    </button>
+  </md-sidenav>
+  <div class="site">
+    <md-grid-list cols="3" rowHeight="12em">
+      <md-grid-tile *ngFor="let dish of dishes" rowspan="1">
+        <md-card>
+          <md-card-content style="font-size: large; font-family: Impact">
+            {{dish.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${{dish.price}}
+            <button class="addButton" color="primary" md-mini-fab (click)="addToOrder(dish)">+</button>
+          </md-card-content>
+        </md-card>
+      </md-grid-tile>
+    </md-grid-list>
+    <button class="orderButton" md-fab (click)="sidenav.toggle()" color="accent">Order</button>
+  </div>
+</md-sidenav-container>

@@ -1,0 +1,48 @@
+div {
+  flex: 1;
+}
+
+md-card {
+  width: 25em;
+  height: 8em;
+}
+
+.addButton {
+  margin-left: 18em;
+}
+
+md-grid-list {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.orderButton {
+  margin-left: 95%;
+  margin-bottom: 10px;
+}
+
+md-sidenav {
+  width: 300px;
+}
+
+h3 {
+  margin-left: 15px;
+}
+
+md-sidenav-container {
+  background-color: gainsboro;
+}
+
+p {
+  margin-left: 20px;
+}
+
+.submitButton {
+  width: 13em;
+  margin-bottom: 0%;
+  margin-left: 3em;
+}

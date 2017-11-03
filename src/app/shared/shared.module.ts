@@ -7,7 +7,7 @@ import {
   MdGridListModule,
   MdIconModule,
   MatChipsModule,
-  MatRadioModule
+  MatRadioModule, MdSidenavModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {} from '@angular/material';
@@ -26,7 +26,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MdSidenavModule,
   ],
   exports: [
     MdCardModule,
@@ -39,7 +40,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MdSidenavModule
   ],
   declarations: []
 })

@@ -42,7 +42,7 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     DishesManageComponent,
     OrderManageComponent,
     DishFormComponent,
-    DishFilterPipe
+    DishFilterPipe,
   ],
   exports: [
     HeaderComponent,
@@ -57,7 +57,7 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     OrderManageComponent,
     DishFormComponent,
     DishFormRoutingModule,
-    DishesManageRoutingModule
+    DishesManageRoutingModule,
   ],
   providers: [
     RestaurantService, DishService, UserService
