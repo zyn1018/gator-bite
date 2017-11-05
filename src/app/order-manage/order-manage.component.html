@@ -3,13 +3,46 @@
     <h3 style="font-family: Impact">Your order</h3>
     <hr>
     <md-list>
-      <md-list-item *ngFor="let dishitem of selectedDishes">
-        <p style="font-size: small; font-family: Verdana; color: dodgerblue">{{dishitem.name}}</p>
-        <hr>
+      <md-list-item class="emptyBag" *ngIf="!show" style="font-family: Impact; color: #cccccc; font-size: xx-large">
+        Your bag is empty
+      </md-list-item>
+      <md-list-item *ngFor="let dishName of orderDetail.keys()">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <i role="button" class="material-icons removeButton" (click)="removeDish(dishName)">remove_circle</i>
+              <span class="selectDishName" style="font-size: medium; font-family: Verdana; color: dodgerblue">{{dishName}}</span>
+              <i role="button" class="material-icons addCircle" (click)="addDishCount(dishName)">add_circle_outline</i>
+              <span class="dishCount" style="font-family: Impact">{{(orderDetail.get(dishName))[0]}}</span>
+              <i role="button" class="material-icons minusCircle" (click)="minusDishCount(dishName)">remove_circle_outline</i>
+              <span class="selectDishPrice" style="font-family: Impact; color: gray; font-size: medium"> ${{((orderDetail.get(dishName))[0]*(orderDetail.get(dishName))[1]).toFixed(2)}} </span>
+            </div>
+          </div>
+        </div>
+        <hr style="color: grey">
       </md-list-item>
     </md-list>
-    <button class="submitButton" md-raised-button color="accent" style="font-family: Impact; font-size: medium">Submit
-      your order
+    <div class="priceDetails" *ngIf="show">
+      <p style="font-family: Verdana">
+        <span>Items Subtotal:</span>
+        <span class="prices">${{totalPrice.toFixed(2)}}</span>
+      </p>
+      <p style="font-family: Verdana">
+        <span>Delivery Fee:</span>
+        <span class="prices">$2.00</span>
+      </p>
+      <p style="font-family: Verdana">
+        <span>Sales Tax:</span>
+        <span class="prices">${{tax.toFixed(2)}}</span>
+      </p>
+      <p style="font-family: Verdana">
+        <span>Total:</span>
+        <span class="prices">${{(totalPrice + tax + 2).toFixed(2)}}</span>
+      </p>
+    </div>
+    <button *ngIf="show" class="submitButton" md-raised-button color="accent"
+            style="font-family: Impact; font-size: medium">
+      Submit your order
     </button>
   </md-sidenav>
   <div class="site">
@@ -17,7 +50,8 @@
       <md-grid-tile *ngFor="let dish of dishes" rowspan="1">
         <md-card>
           <md-card-content style="font-size: large; font-family: Impact">
-            {{dish.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${{dish.price}}
+            <span>{{dish.name}}</span>
+            <span class="dishPrice">${{dish.price}}</span>
             <button class="addButton" color="primary" md-mini-fab (click)="addToOrder(dish)">+</button>
           </md-card-content>
         </md-card>

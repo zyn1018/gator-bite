@@ -1,32 +1,19 @@
-div {
-  flex: 1;
-}
-
 md-card {
-  width: 25em;
+  width: 22em;
   height: 8em;
 }
 
 .addButton {
-  margin-left: 18em;
-}
-
-md-grid-list {
-  margin-top: 1%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  margin-left: 16em;
 }
 
 .orderButton {
-  margin-left: 95%;
+  margin-left: 94%;
   margin-bottom: 10px;
 }
 
 md-sidenav {
-  width: 300px;
+  width: 30em;
 }
 
 h3 {
@@ -37,12 +24,60 @@ md-sidenav-container {
   background-color: gainsboro;
 }
 
-p {
-  margin-left: 20px;
-}
+/*p {*/
+/*margin-left: 20px;*/
+/*}*/
 
 .submitButton {
-  width: 13em;
-  margin-bottom: 0%;
-  margin-left: 3em;
+  width: 200px;
+  margin-left: 7em;
+  margin-top: 3em;
+}
+
+.selectDishName {
+  margin-left: 1em;
+}
+
+.removeButton {
+  margin-left: 1em;
+}
+
+.addCircle {
+  margin-left: 1em;
+  position: absolute;
+  left: 220px;
+}
+
+.minusCircle {
+  position: absolute;
+  left: 285px;
+}
+
+.selectDishPrice {
+  position: absolute;
+  left: 350px;
+}
+
+.dishCount {
+  position: absolute;
+  left: 270px;
+}
+
+.priceDetails {
+  margin-left: 1.5em;
+}
+
+.dishPrice {
+  margin-left: 1em;
+}
+
+.prices {
+  position: absolute;
+  left: 350px;
+}
+
+.emptyBag {
+  position: relative;
+  top: 200px;
+  left: 100px;
 }
