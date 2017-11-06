@@ -3,13 +3,13 @@
   <span class="fill-remaining-space"></span>
   <button *ngIf="!isLogin" mat-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
   <button *ngIf="!isLogin" mat-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
-  <button mat-icon-button *ngIf="isLogin">
+  <button mat-icon-button *ngIf="isLogin" (click)="openUserProfile()">
     <i class="material-icons">account_box</i>
   </button>
   <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()">
     <i class="material-icons">card_travel</i>
   </button>
-  <button mat-raised-button *ngIf="isLogin" (click)="logout()" color="accent">
+  <button mat-button *ngIf="isLogin" (click)="logout()">
     Log out
   </button>
 

@@ -13,7 +13,8 @@ export class UserService {
   }
 
   users: User[] = [
-    new User('wingzone@gmail.com', 'wingzone', 'admin', true)
+    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', true),
+    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', false),
   ];
 
   getUser() {
@@ -44,7 +45,8 @@ export class UserService {
 }
 
 export class User {
-  constructor(public email: string,
+  constructor(public userId: number,
+              public email: string,
               public username: string,
               public password: string,
               public isRestaurant: boolean) {

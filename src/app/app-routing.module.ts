@@ -12,15 +12,6 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: CenterComponent},
   {path: 'restaurants', component: RestaurantsComponent},
-  {path: 'user', component: TogetherComponent,
-    children: [
-      {path: '', component: ProfileComponent},
-      {path: 'profile', component: ProfileComponent},
-      {path: 'address', component: AddressComponent},
-      {path: 'payment', component: PaymentComponent},
-      {path: 'orders', component: OrdersComponent}
-    ]
-  },
 ];
 
 @NgModule({

@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  public userId: number;
   public isLogin: boolean = false;
   public isRestaurant: boolean = false;
   @Output() toggle = new EventEmitter<void>();
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId = this.userService.getUser().userId;
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
     });
@@ -35,5 +37,9 @@ export class HeaderComponent implements OnInit {
     this.isLogin = false;
     this.isRestaurant = false;
     this.router.navigateByUrl('/home');
+  }
+
+  openUserProfile() {
+    this.router.navigateByUrl('/user/' + this.userId);
   }
 }
