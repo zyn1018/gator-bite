@@ -1,16 +1,16 @@
 <app-research></app-research>
 <div class="global-contain">
-  <md-grid-list cols="4" rowHeight="1:2">
-    <md-grid-tile id="restaurantList" *ngFor="let res of restaurants">
-      <md-card class="container">
-        <md-card-title style="font-family: Impact" (click)="goToMenu(res)">{{res.title}}</md-card-title>
-        <img (click)="goToMenu(res)" class="pic" md-card-image [src]="res.picture">
+  <mat-grid-list cols="4" rowHeight="1:2">
+    <mat-grid-tile id="restaurantList" *ngFor="let res of restaurants">
+      <mat-card class="container">
+        <mat-card-title style="font-family: Impact" (click)="goToMenu(res)">{{res.title}}</mat-card-title>
+        <img (click)="goToMenu(res)" class="pic" mat-card-image [src]="res.picture">
         <hr>
-        <md-card-content (click)="goToMenu(res)" style="font-family: Verdana">
+        <mat-card-content (click)="goToMenu(res)" style="font-family: Verdana">
           {{res.content}}
-        </md-card-content>
-      </md-card>
-    </md-grid-tile>
-  </md-grid-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
