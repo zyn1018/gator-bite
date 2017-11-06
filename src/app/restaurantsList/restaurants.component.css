@@ -1,17 +1,18 @@
 div {
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 20px;
+  margin-top: -1em;
   background-image: none;
 }
 
 .pic{
-  height: 200px;
-  width: 200px;
+  height: 11em;
+  width: 13em;
   margin: auto;
 
 }
 .container {
-  width: 230px;
-  height: 350px;
+  width: 16em;
+  height: 25em;
 }
+

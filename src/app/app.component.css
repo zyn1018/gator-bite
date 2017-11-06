@@ -1,0 +1,14 @@
+.orderButton {
+  margin-left: 94%;
+  margin-bottom: 10px;
+}
+
+md-sidenav {
+  width: 30em;
+}
+
+md-sidenav-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}

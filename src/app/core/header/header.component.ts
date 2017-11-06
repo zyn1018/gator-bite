@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {SharedModule} from '../../shared/shared.module';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {UserService} from '../../domain/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,31 @@ import {SharedModule} from '../../shared/shared.module';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public isLogin: boolean = false;
+  public isRestaurant: boolean = false;
+  @Output() toggle = new EventEmitter<void>();
 
-  ngOnInit() {
+  constructor(private userService: UserService, private cdr: ChangeDetectorRef, private router: Router) {
   }
 
+  ngOnInit() {
+    this.userService.getIsLoginSubject().subscribe(data => {
+      this.isLogin = data;
+    });
+    this.userService.getIsRestaurantSubject().subscribe(data => {
+      this.isRestaurant = data;
+    })
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
+
+  openSideBar() {
+    this.toggle.emit();
+  }
+
+  logout() {
+    this.isLogin = false;
+    this.isRestaurant = false;
+    this.router.navigateByUrl('/home');
+  }
 }

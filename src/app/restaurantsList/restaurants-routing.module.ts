@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {OrderManageComponent} from '../order-manage/order-manage.component';
+import {OrderManageComponent} from '../order/order-manage/order-manage.component';
 
 const routes: Routes = [
   {path: 'restaurants/:restaurantId', component: OrderManageComponent},

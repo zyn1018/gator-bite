@@ -2,7 +2,7 @@
 @import '~@angular/material/theming';
 @import 'theme.scss';
 
-html, body, app-root .site {
+html, body, app-root, .site {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -13,17 +13,17 @@ html, body, app-root .site {
   flex-direction: column;
 }
 
-app-center {
-  flex: 1;
-  background: url("assets/backimg.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
 .fill-remaining-space {
   flex: 1 1 auto;
 }
 
 .full-width {
   width: 100%;
+}
+
+app-center {
+  flex: 1;
+  background: url("assets/backimg.jpg");
+  background-size: cover;
+  background-position: center;
 }
