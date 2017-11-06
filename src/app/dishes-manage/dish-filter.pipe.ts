@@ -10,7 +10,7 @@ export class DishFilterPipe implements PipeTransform {
       return list;
     }
     return list.filter(item => {
-      let itemFieldValue = item[field].toLowerCase();
+      const itemFieldValue = item[field].toLowerCase();
       return itemFieldValue.indexOf(keyword) >= 0;
     });
 
