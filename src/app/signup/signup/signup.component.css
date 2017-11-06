@@ -1,4 +1,4 @@
-md-card {
+mat-card {
   width: 25em;
   margin: 5px 5px;
   flex: 0 0 20em;
@@ -43,7 +43,8 @@ form {
   background-size: cover;
   background-position: center;
 }
-.md-radio-button ~ .md-radio-button {
+
+.mat-radio-button ~ .mat-radio-button {
   padding-right: 16px;
 }
 .errorColor{

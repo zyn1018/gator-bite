@@ -1,36 +1,36 @@
 <div class="wholePage">
   <form [formGroup]="form" (submit)="login()">
-    <md-card>
-      <md-card-header>
-        <md-card-title>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
           <span color="primary" class="titlePosition">Gator Bite</span>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
-        <md-input-container class="full-width">
-          <input mdInput type="text" id="loginEmail" name="login[email]" placeholder="Email" formControlName="email">
-          <md-error>Invalid email!</md-error>
-        </md-input-container>
-        <md-input-container class="full-width">
-          <input mdInput type="password" id="loginPassword" name="login[password]" placeholder="Password"
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-input-container class="full-width">
+          <input matInput type="text" id="loginEmail" name="login[email]" placeholder="Email" formControlName="email">
+          <mat-error>Invalid email!</mat-error>
+        </mat-input-container>
+        <mat-input-container class="full-width">
+          <input matInput type="password" id="loginPassword" name="login[password]" placeholder="Password"
                  formControlName="password">
-          <md-error>Password should be longer than 8!</md-error>
-        </md-input-container>
+          <mat-error>Password should be longer than 8!</mat-error>
+        </mat-input-container>
         <div>
-          <md-radio-group formControlName="loginRole" name="login[loginRole]">
-            <md-radio-button [value]="1">Customer</md-radio-button>
-            <md-radio-button [value]="2">Restaurant</md-radio-button>
-          </md-radio-group>
+          <mat-radio-group formControlName="loginRole" name="login[loginRole]">
+            <mat-radio-button [value]="1">Customer</mat-radio-button>
+            <mat-radio-button [value]="2">Restaurant</mat-radio-button>
+          </mat-radio-group>
         </div>
-        <button md-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
+        <button mat-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
                 [disabled]="!form.valid" id="loginButton">Login
         </button>
-      </md-card-content>
-      <md-card-actions class="text-right">
+      </mat-card-content>
+      <mat-card-actions class="text-right">
         <p>Don't have an account? <a [routerLink]="['/signup']" style="text-decoration: none">Create Your Account</a>
         </p>
         <a href="" style="text-decoration: none">Forgot Password?</a>
-      </md-card-actions>
-    </md-card>
+      </mat-card-actions>
+    </mat-card>
   </form>
 </div>

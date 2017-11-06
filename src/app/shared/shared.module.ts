@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
-  MatInputModule,
-  MatToolbarModule,
+  MatChipsModule,
   MatGridListModule,
   MatIconModule,
-  MatChipsModule,
+  MatInputModule,
   MatRadioModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatToolbarModule
 } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -45,4 +45,5 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   declarations: []
 })
-export class SharedModule { }
+export class SharedModule {
+}

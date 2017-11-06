@@ -1,16 +1,16 @@
-<md-toolbar color="primary">
-  <button md-button id="gatorbiteButton" class="word" [routerLink]="['/home']">Gator Bite</button>
+<mat-toolbar color="primary">
+  <button mat-button id="gatorbiteButton" class="word" [routerLink]="['/home']">Gator Bite</button>
   <span class="fill-remaining-space"></span>
-  <button *ngIf="!isLogin" md-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
-  <button *ngIf="!isLogin" md-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
-  <button md-icon-button *ngIf="isLogin">
+  <button *ngIf="!isLogin" mat-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
+  <button *ngIf="!isLogin" mat-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
+  <button mat-icon-button *ngIf="isLogin">
     <i class="material-icons">account_box</i>
   </button>
-  <button md-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()">
+  <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()">
     <i class="material-icons">card_travel</i>
   </button>
-  <button md-raised-button *ngIf="isLogin" (click)="logout()" color="accent">
+  <button mat-raised-button *ngIf="isLogin" (click)="logout()" color="accent">
     Log out
   </button>
 
-</md-toolbar>
+</mat-toolbar>
