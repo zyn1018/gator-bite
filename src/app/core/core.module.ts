@@ -22,6 +22,7 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
 import {OrderModule} from '../order/order.module';
 import {OrderService} from '../order/order.service';
 import {UserModule} from '../user/user.module';
+import {HeaderRoutingModule} from './header/header-routing.module';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import {UserModule} from '../user/user.module';
     RestaurantsRoutingModule,
     OrderModule,
     RestaurantsRoutingModule,
-    UserModule
+    UserModule,
+    HeaderRoutingModule
   ],
   declarations: [
     HeaderComponent,
@@ -61,7 +63,8 @@ import {UserModule} from '../user/user.module';
     DishFormComponent,
     DishFormRoutingModule,
     DishesManageRoutingModule,
-    OrderModule
+    OrderModule,
+    HeaderRoutingModule
   ],
   providers: [
     RestaurantService, DishService, UserService, OrderService
