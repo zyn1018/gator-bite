@@ -7,6 +7,8 @@ export class UserService {
 
   isLogin: boolean = false;
 
+  isRestaurant: boolean = false;
+
   constructor() {
   }
 
@@ -20,15 +22,25 @@ export class UserService {
 
   private isLoginSubject = new Subject<boolean>();
 
-  public setisLoginSubject(isLogin: boolean) {
+  private isRestaurantSubject = new Subject<boolean>();
+
+  public setIsLoginSubject(isLogin: boolean) {
     this.isLogin = isLogin;
     this.isLoginSubject.next(isLogin);
   }
 
-  public getisLoginSubject(): Observable<boolean> {
+  public getIsLoginSubject(): Observable<boolean> {
     return this.isLoginSubject.asObservable();
   }
 
+  public setIsRestaurantSubject(isRestaurant: boolean) {
+    this.isRestaurant = isRestaurant;
+    this.isRestaurantSubject.next(isRestaurant);
+  }
+
+  public getIsRestaurantSubject(): Observable<boolean> {
+    return this.isRestaurantSubject.asObservable();
+  }
 }
 
 export class User {

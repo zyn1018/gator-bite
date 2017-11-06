@@ -6,8 +6,11 @@
   <button md-icon-button *ngIf="isLogin">
     <i class="material-icons">account_box</i>
   </button>
-  <button md-icon-button *ngIf="isLogin" (click)="openSideBar()">
+  <button md-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()">
     <i class="material-icons">card_travel</i>
+  </button>
+  <button md-raised-button *ngIf="isLogin" (click)="logout()" color="accent">
+    Log out
   </button>
 
 </md-toolbar>

@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../domain/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,25 +10,30 @@ import {UserService} from '../../domain/user.service';
 export class HeaderComponent implements OnInit {
 
   public isLogin: boolean = false;
+  public isRestaurant: boolean = false;
   @Output() toggle = new EventEmitter<void>();
 
-  constructor(private userService: UserService, private cdr: ChangeDetectorRef) {
+  constructor(private userService: UserService, private cdr: ChangeDetectorRef, private router: Router) {
   }
 
   ngOnInit() {
-    this.userService.getisLoginSubject().subscribe(data => {
+    this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
-      console.log(data);
     });
+    this.userService.getIsRestaurantSubject().subscribe(data => {
+      this.isRestaurant = data;
+    })
     this.cdr.markForCheck();
     this.cdr.detectChanges();
   }
 
-  public isLoginResultHandler(isLogin: boolean) {
-    this.isLogin = isLogin;
-  }
-
   openSideBar() {
     this.toggle.emit();
+  }
+
+  logout() {
+    this.isLogin = false;
+    this.isRestaurant = false;
+    this.router.navigateByUrl('/home');
   }
 }

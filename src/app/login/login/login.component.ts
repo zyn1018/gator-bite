@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../../domain/user.service';
 
@@ -9,17 +9,15 @@ import {UserService} from '../../domain/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public userEmail: string;
+  private userEmail: string;
 
-  public isLogin: boolean = false;
+  private isLogin: boolean = false;
+
+  private isRestaurant: boolean = false;
 
   form: FormGroup;
 
   fb: FormBuilder = new FormBuilder();
-
-  public loginOptions = ['Customer', 'Restaurant'];
-
-  public loginRole: string;
 
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
@@ -34,14 +32,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', this.emailValidator],
-      password: ['']
+      password: [''],
+      loginRole: ['', Validators.required]
     });
     this.userEmail = this.userService.getUser().email;
   }
 
   login() {
-    this.isLogin = true;
-    this.userService.setisLoginSubject(this.isLogin);
-    this.router.navigateByUrl('/restaurants');
+    if (this.form.value.loginRole == 1) {
+      this.isLogin = true;
+      this.userService.setIsLoginSubject(this.isLogin);
+      this.router.navigateByUrl('/restaurants');
+    } else if (this.form.value.loginRole == 2) {
+      this.isLogin = true;
+      this.userService.setIsLoginSubject(this.isLogin);
+      this.isRestaurant = true;
+      this.userService.setIsRestaurantSubject(this.isRestaurant);
+      this.router.navigateByUrl('/dishes/' + this.userEmail);
+    }
   }
 }

@@ -8,5 +8,17 @@ md-card {
 }
 
 .addButton {
-  margin-left: 16em;
+  margin-left: 15.5em;
+  margin-top: 0.5em;
+}
+
+.navigateBack {
+  background-color: #eeeeee;
+  padding-top: 0.3em;
+  padding-left: 0.5em;
+}
+
+.dishPrice {
+  position: absolute;
+  left: 240px;
 }
