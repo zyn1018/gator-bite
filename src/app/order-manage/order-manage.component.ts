@@ -1,18 +1,18 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DishService} from '../dishes-manage/dish.service';
+
 @Component({
   selector: 'app-order-manage',
   templateUrl: './order-manage.component.html',
   styleUrls: ['./order-manage.component.css']
 })
 export class OrderManageComponent implements OnInit {
-  @Output() toggle = new EventEmitter<void>();
-  constructor() {
+
+  constructor(private dishService: DishService) {
   }
 
   ngOnInit() {
+    const dishes = this.dishService.getDishes();
   }
 
-  openSidebar() {
-    this.toggle.emit();
-  }
 }

@@ -1,0 +1,18 @@
+.size{
+  width: 965px;
+  height: 181px;
+}
+.textSize{
+  text-align: start;
+  font-size: 200%;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.nameSize{
+  text-align: start;
+  font-size: 200%;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-left: 20px;
+}

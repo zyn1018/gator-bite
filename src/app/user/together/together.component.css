@@ -1,0 +1,15 @@
+.left{
+  width:300px;
+  height:545px;
+  float:left;
+  felx: 1;
+  background-color: #eeeeee;
+  border-right: 2px solid;
+}
+.right{
+  width:965px;
+  height:545px;
+  float:left;
+  felx: 1;
+  background-color: #eeeeee;
+}
