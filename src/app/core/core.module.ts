@@ -21,6 +21,7 @@ import {UserService} from '../domain/user.service';
 import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.module';
 import {OrderModule} from '../order/order.module';
 import {OrderService} from '../order/order.service';
+import {UserModule} from '../user/user.module';
 
 @NgModule({
   imports: [
@@ -31,7 +32,9 @@ import {OrderService} from '../order/order.service';
     DishFormRoutingModule,
     DishesManageRoutingModule,
     RestaurantsRoutingModule,
-    OrderModule
+    OrderModule,
+    RestaurantsRoutingModule,
+    UserModule
   ],
   declarations: [
     HeaderComponent,
