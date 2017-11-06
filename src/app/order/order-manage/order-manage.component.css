@@ -1,0 +1,12 @@
+.menu {
+  background-color: #eeeeee;
+}
+
+md-card {
+  width: 22em;
+  height: 8em;
+}
+
+.addButton {
+  margin-left: 16em;
+}

@@ -1,6 +1,13 @@
-<md-toolbar color = "primary">
+<md-toolbar color="primary">
   <button md-button id="gatorbiteButton" class="word" [routerLink]="['/home']">Gator Bite</button>
   <span class="fill-remaining-space"></span>
-  <button md-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
-  <button md-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
+  <button *ngIf="!isLogin" md-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
+  <button *ngIf="!isLogin" md-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
+  <button md-icon-button *ngIf="isLogin">
+    <i class="material-icons">account_box</i>
+  </button>
+  <button md-icon-button *ngIf="isLogin" (click)="openSideBar()">
+    <i class="material-icons">card_travel</i>
+  </button>
+
 </md-toolbar>

@@ -27,8 +27,10 @@
           do not match !
         </div>
         <div>
-          <md-radio-button value="1">Custmor</md-radio-button>
-          <md-radio-button value="2">Restaurant</md-radio-button>
+          <md-radio-group>
+            <md-radio-button value="1">Custmor</md-radio-button>
+            <md-radio-button value="2">Restaurant</md-radio-button>
+          </md-radio-group>
         </div>
         <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
           Create Your Account

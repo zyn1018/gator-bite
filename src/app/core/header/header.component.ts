@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {SharedModule} from '../../shared/shared.module';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {UserService} from '../../domain/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +8,26 @@ import {SharedModule} from '../../shared/shared.module';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public isLogin: boolean = false;
+  @Output() toggle = new EventEmitter<void>();
 
-  ngOnInit() {
+  constructor(private userService: UserService, private cdr: ChangeDetectorRef) {
   }
 
+  ngOnInit() {
+    this.userService.getisLoginSubject().subscribe(data => {
+      this.isLogin = data;
+      console.log(data);
+    });
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
+
+  public isLoginResultHandler(isLogin: boolean) {
+    this.isLogin = isLogin;
+  }
+
+  openSideBar() {
+    this.toggle.emit();
+  }
 }

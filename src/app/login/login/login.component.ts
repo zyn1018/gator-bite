@@ -10,8 +10,17 @@ import {UserService} from '../../domain/user.service';
 })
 export class LoginComponent implements OnInit {
   public userEmail: string;
+
+  public isLogin: boolean = false;
+
   form: FormGroup;
+
   fb: FormBuilder = new FormBuilder();
+
+  public loginOptions = ['Customer', 'Restaurant'];
+
+  public loginRole: string;
+
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -21,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) {
   }
+
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', this.emailValidator],
@@ -30,6 +40,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl('/dishes/' + this.userEmail);
+    this.isLogin = true;
+    this.userService.setisLoginSubject(this.isLogin);
+    this.router.navigateByUrl('/restaurants');
   }
 }

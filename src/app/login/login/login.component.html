@@ -1,4 +1,4 @@
-<div>
+<div class="wholePage">
   <form [formGroup]="form" (submit)="login()">
     <md-card>
       <md-card-header>
@@ -16,6 +16,10 @@
                  formControlName="password">
           <md-error>Password should be longer than 8!</md-error>
         </md-input-container>
+        <!--<md-radio-group [(ngModel)]="loginRole">-->
+        <!--<md-radio-button *ngFor="let loginoption of loginOptions" [value]="loginoption">{{loginoption}}-->
+        <!--</md-radio-button>-->
+        <!--</md-radio-group>-->
         <button md-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
                 [disabled]="!form.valid" id="loginButton">Login
         </button>

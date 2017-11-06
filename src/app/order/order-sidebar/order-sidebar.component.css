@@ -1,32 +1,6 @@
-md-card {
-  width: 22em;
-  height: 8em;
-}
-
-.addButton {
-  margin-left: 16em;
-}
-
-.orderButton {
-  margin-left: 94%;
-  margin-bottom: 10px;
-}
-
-md-sidenav {
-  width: 30em;
-}
-
 h3 {
   margin-left: 15px;
 }
-
-md-sidenav-container {
-  background-color: gainsboro;
-}
-
-/*p {*/
-/*margin-left: 20px;*/
-/*}*/
 
 .submitButton {
   width: 200px;
