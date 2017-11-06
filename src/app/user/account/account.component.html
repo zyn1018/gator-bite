@@ -1,14 +1,14 @@
-<md-sidenav-container class="sidenav">
-  <md-sidenav>
-    <md-list>
-      <md-list-item>
+<mat-sidenav-container class="sidenav">
+  <mat-sidenav>
+    <mat-list>
+      <mat-list-item>
         <div class = "tittle">Your Account</div>
-      </md-list-item>
-      <md-list-item class="item">
+      </mat-list-item>
+      <mat-list-item class="item">
         <div *ngFor="let menu of menus" class="space">
           <a href="javascript:;" (click)="nav(menu)"><span>{{menu.name}}</span></a>
         </div>
-      </md-list-item>
-    </md-list>
-  </md-sidenav>
-</md-sidenav-container>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>

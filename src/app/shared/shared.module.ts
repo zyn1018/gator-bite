@@ -1,47 +1,47 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule,
-  MdCardModule,
-  MdInputModule,
-  MdToolbarModule,
-  MdGridListModule,
-  MdIconModule,
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatGridListModule,
+  MatIconModule,
   MatChipsModule,
-  MatRadioModule, MdSidenavModule
+  MatRadioModule,
+  MatSidenavModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   imports: [
-    MdCardModule,
-    MdInputModule,
+    MatCardModule,
+    MatInputModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MdSidenavModule,
+    MatSidenavModule,
   ],
   exports: [
-    MdCardModule,
-    MdInputModule,
+    MatCardModule,
+    MatInputModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MdSidenavModule
+    MatSidenavModule
   ],
   declarations: []
 })
