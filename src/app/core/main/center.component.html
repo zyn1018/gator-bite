@@ -1,19 +1,19 @@
 <form class="container">
-  <md-card class="card">
-    <md-card-header></md-card-header>
-    <md-card-content class="cardcontent">
-      <button md-icon-button type="button" (click)="getLocation()" id="locationInfo">
-        <md-icon>
+  <mat-card class="card">
+    <mat-card-header></mat-card-header>
+    <mat-card-content class="cardcontent">
+      <button mat-icon-button type="button" (click)="getLocation()" id="locationInfo">
+        <mat-icon>
           <i class="material-icons material-icons-color locationButton">room</i>
-        </md-icon>
+        </mat-icon>
       </button>
-      <md-input-container class="inputWidth">
-        <input mdInput type="text" placeholder="Location">
-      </md-input-container>
-    </md-card-content>
-    <md-card-actions></md-card-actions>
-  </md-card>
-  <button id="findButton" md-raised-button type="button" class="button findButton" color="primary"
+      <mat-input-container class="inputWidth">
+        <input matInput type="text" placeholder="Location">
+      </mat-input-container>
+    </mat-card-content>
+    <mat-card-actions></mat-card-actions>
+  </mat-card>
+  <button id="findButton" mat-raised-button type="button" class="button findButton" color="primary"
           [routerLink]="['/restaurants']">Find Food
   </button>
 </form>

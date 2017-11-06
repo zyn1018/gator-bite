@@ -1,11 +1,11 @@
 <form>
   <h3 style="font-family: Impact">Your order</h3>
   <hr>
-  <md-list>
-    <md-list-item class="emptyBag" *ngIf="!show" style="font-family: Impact; color: #cccccc; font-size: xx-large">
+  <mat-list>
+    <mat-list-item class="emptyBag" *ngIf="!show" style="font-family: Impact; color: #cccccc; font-size: xx-large">
       Your bag is empty
-    </md-list-item>
-    <md-list-item *ngFor="let dishName of orderDetail.keys()">
+    </mat-list-item>
+    <mat-list-item *ngFor="let dishName of orderDetail.keys()">
       <div class="container">
         <div class="row">
           <div class="col-sm">
@@ -22,8 +22,8 @@
         </div>
       </div>
       <hr style="color: grey">
-    </md-list-item>
-  </md-list>
+    </mat-list-item>
+  </mat-list>
   <div class="priceDetails" *ngIf="show">
     <p style="font-family: Verdana">
       <span>Items Subtotal:</span>
@@ -42,7 +42,7 @@
       <span class="prices">${{(totalPrice + tax + 2).toFixed(2)}}</span>
     </p>
   </div>
-  <button *ngIf="show" class="submitButton" md-raised-button color="accent"
+  <button *ngIf="show" class="submitButton" mat-raised-button color="accent"
           style="font-family: Impact; font-size: medium">
     Submit your order
   </button>
