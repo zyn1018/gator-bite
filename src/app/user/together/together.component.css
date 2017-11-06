@@ -1,6 +1,6 @@
 .left{
   width: 30%;
-  height: 525px;
+  height: 38em;
   float:left;
   felx: 1;
   background-color: #eeeeee;
@@ -8,7 +8,7 @@
 }
 .right{
   width: 70%;
-  height: 525px;
+  height: 38em;
   float:left;
   felx: 1;
   background-color: #eeeeee;
