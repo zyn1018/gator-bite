@@ -13,13 +13,14 @@ import {SignupComponent} from '../signup/signup/signup.component';
 import {ResearchComponent} from '../research/research.component';
 import {DishService} from '../dishes-manage/dish.service';
 import {DishesManageComponent} from '../dishes-manage/dishes-manage.component';
-import {OrderManageComponent} from '../order-manage/order-manage.component';
 import {DishFormComponent} from '../dish-form/dish-form.component';
 import {DishFormRoutingModule} from '../dish-form/dish-form-routing.module';
 import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.module';
 import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
 import {UserService} from '../domain/user.service';
 import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.module';
+import {OrderModule} from '../order/order.module';
+import {OrderService} from '../order/order.service';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     SignupRoutingModule,
     DishFormRoutingModule,
     DishesManageRoutingModule,
-    RestaurantsRoutingModule
+    RestaurantsRoutingModule,
+    OrderModule
   ],
   declarations: [
     HeaderComponent,
@@ -40,7 +42,6 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     ResearchComponent,
     SignupComponent,
     DishesManageComponent,
-    OrderManageComponent,
     DishFormComponent,
     DishFilterPipe,
   ],
@@ -54,13 +55,13 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     ResearchComponent,
     SignupRoutingModule,
     DishesManageComponent,
-    OrderManageComponent,
     DishFormComponent,
     DishFormRoutingModule,
     DishesManageRoutingModule,
+    OrderModule
   ],
   providers: [
-    RestaurantService, DishService, UserService
+    RestaurantService, DishService, UserService, OrderService
   ]
 })
 export class CoreModule {

@@ -1,19 +1,19 @@
-<div class="site">
-  <header>
-    <app-header>
-
-    </app-header>
-  </header>
-  <router-outlet>
-  </router-outlet>
-  <footer>
-    <app-footer>
-
-    </app-footer>
-  </footer>
-</div>
-
-
-
+<md-sidenav-container>
+  <md-sidenav #sidenav align="end" mode="over">
+    <app-order-sidebar></app-order-sidebar>
+  </md-sidenav>
+  <div class="site">
+    <header>
+      <app-header (toggle)="sidenav.toggle()">
+      </app-header>
+    </header>
+    <router-outlet>
+    </router-outlet>
+    <footer>
+      <app-footer>
+      </app-footer>
+    </footer>
+  </div>
+</md-sidenav-container>
 
 

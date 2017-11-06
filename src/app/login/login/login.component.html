@@ -1,4 +1,4 @@
-<div>
+<div class="wholePage">
   <form [formGroup]="form" (submit)="login()">
     <md-card>
       <md-card-header>
@@ -16,6 +16,12 @@
                  formControlName="password">
           <md-error>Password should be longer than 8!</md-error>
         </md-input-container>
+        <div>
+          <md-radio-group formControlName="loginRole" name="login[loginRole]">
+            <md-radio-button [value]="1">Customer</md-radio-button>
+            <md-radio-button [value]="2">Restaurant</md-radio-button>
+          </md-radio-group>
+        </div>
         <button md-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
                 [disabled]="!form.valid" id="loginButton">Login
         </button>

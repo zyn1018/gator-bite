@@ -9,11 +9,11 @@
       <md-card-content>
         <md-input-container class="full-width">
           <input mdInput type="text" placeholder="Email" formControlName="email">
-          <md-error>Invalid email address !</md-error>
+          <md-error>Invalid email address!</md-error>
         </md-input-container>
         <md-input-container class="full-width">
           <input mdInput type="text" placeholder="UserName" formControlName="userName">
-          <md-error>UserName length must be more than 6 !</md-error>
+          <md-error>UserName length must be more than 6!</md-error>
         </md-input-container>
         <div formGroupName="passwordInfo">
           <md-input-container class="full-width">
@@ -24,12 +24,12 @@
           </md-input-container>
         </div>
         <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
-          do not match !
+          do not match!
         </div>
-        <div>
-          <md-radio-button value="1">Custmor</md-radio-button>
-          <md-radio-button value="2">Restaurant</md-radio-button>
-        </div>
+        <md-radio-group formControlName="loginRole" name="login[loginRole]">
+          <md-radio-button [value]="1">Customer</md-radio-button>
+          <md-radio-button [value]="2">Restaurant</md-radio-button>
+          </md-radio-group>
         <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
           Create Your Account
         </button>

@@ -36,12 +36,16 @@ form {
 .bottonPosition {
   width: 100%;
   color: white;
-  margin-top: 4em;
+  margin-top: 2em;
 }
 
-div {
+.wholePage {
   flex: 1;
   background: url("../../../assets/backimg.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.loginOption {
+  margin-top: 20px;
 }

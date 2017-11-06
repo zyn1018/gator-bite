@@ -1,25 +1,34 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Dish, DishService} from '../dishes-manage/dish.service';
+import {OrderService} from '../order.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-order-manage',
-  templateUrl: './order-manage.component.html',
-  styleUrls: ['./order-manage.component.css']
+  selector: 'app-order-sidebar',
+  templateUrl: './order-sidebar.component.html',
+  styleUrls: ['./order-sidebar.component.css']
 })
-export class OrderManageComponent implements OnInit {
-  public dishes: Dish[];
+export class OrderSidebarComponent implements OnInit {
+
   public orderDetail = new Map<string, number[]>();
   public show: boolean = false;
   public totalPrice: number = 0;
   public tax: number = 0;
 
-  constructor(private dishService: DishService, private cdr: ChangeDetectorRef) {
+  constructor(private orderService: OrderService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes();
+    this.orderService.getOrderDetailSubject().subscribe(data => {
+      this.orderDetail = data;
+      this.checkShowParam();
+      this.calTotalPrice();
+      this.calTax();
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    });
+
   }
+
 
   checkShowParam() {
     if (this.orderDetail.size == 0) {
@@ -38,18 +47,6 @@ export class OrderManageComponent implements OnInit {
 
   calTax() {
     this.tax = this.totalPrice * 0.06;
-  }
-
-  addToOrder(dish: Dish) {
-    if (this.orderDetail.get(dish.name) == null) {
-      this.orderDetail.set(dish.name, [1, dish.price]);
-    } else {
-      let oldCount = this.orderDetail.get(dish.name)[0];
-      this.orderDetail.set(dish.name, [oldCount + 1, dish.price]);
-    }
-    this.checkShowParam();
-    this.calTotalPrice();
-    this.calTax();
   }
 
   removeDish(dishName: string) {
@@ -81,4 +78,3 @@ export class OrderManageComponent implements OnInit {
     this.calTax();
   }
 }
-
