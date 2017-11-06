@@ -20,6 +20,7 @@ import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.
 import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
 import {UserService} from '../domain/user.service';
 import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.module';
+import {UserModule} from '../user/user.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     SignupRoutingModule,
     DishFormRoutingModule,
     DishesManageRoutingModule,
-    RestaurantsRoutingModule
+    RestaurantsRoutingModule,
+    UserModule
   ],
   declarations: [
     HeaderComponent,
@@ -42,7 +44,7 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     DishesManageComponent,
     OrderManageComponent,
     DishFormComponent,
-    DishFilterPipe
+    DishFilterPipe,
   ],
   exports: [
     HeaderComponent,
@@ -57,7 +59,7 @@ import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.m
     OrderManageComponent,
     DishFormComponent,
     DishFormRoutingModule,
-    DishesManageRoutingModule
+    DishesManageRoutingModule,
   ],
   providers: [
     RestaurantService, DishService, UserService
