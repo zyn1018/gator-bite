@@ -13,23 +13,26 @@
   </div>
   <div class="distance">
     <p class="title">
-      city
+      City
     </p>
     <input type="text" class="input">
   </div>
   <div class="distance">
     <p class="title">
-      state
+      State
     </p>
-    <input type="text" class="input">
+    <select id="inputState" class="input">
+      <option selected>FL</option>
+      <option *ngFor="let state of states">{{state}}</option>
+    </select>
   </div>
   <div class="distance">
     <p class="title">
-      zipCode
+      ZipCode
     </p>
     <input type="text" class="input">
   </div>
   <div class="distance">
-    <button>Update</button>
+    <button mat-raised-button color="Primary">Update</button>
   </div>
 </form>
