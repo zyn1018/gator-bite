@@ -3,7 +3,7 @@
   <span class="fill-remaining-space"></span>
   <button *ngIf="!isLogin" mat-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
   <button *ngIf="!isLogin" mat-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
-  <button mat-icon-button *ngIf="isLogin" (click)="openUserProfile()">
+  <button mat-icon-button *ngIf="isLogin" (click)="openUserProfile()" id="userButton">
     <i class="material-icons">account_box</i>
   </button>
   <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()" id="orderSideNavToggle">

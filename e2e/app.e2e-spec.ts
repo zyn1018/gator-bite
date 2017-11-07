@@ -91,20 +91,21 @@ describe('gator-bite App', () => {
     expect(dishNameNew).toBe('26 Boneless Wings');
   });
 
-  it('Test Order manage page function add dish to order', () => {
+  it('Test User page', () => {
     browser.get('/login');
     const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
     const userPassword = element(by.id('loginPassword')).sendKeys('admin');
     element(by.id('customerOption')).click();
-    const button = element(by.id('loginButton'));
-    button.click();
+    const loginButton = element(by.id('loginButton'));
+    loginButton.click();
 
-    const RestaurantList = element.all(by.id('restaurantList')).get(1).element(by.id('restaurantTitle')).click();
-    element.all(by.id('dishesOption')).get(1).element(by.id('addButton')).click();
-
-    element(by.id('orderSideNavToggle')).click();
-
-    const dishCount = element.all(by.id('selectedDishes')).get(0).element(by.id('dishCount')).getText();
-
+    const userButton = element(by.id('userButton'));
+    userButton.click();
+    element(by.id('profile')).click();
+    element(by.id('address')).click();
+    element(by.id('payment')).click();
+    element(by.id('orders')).click();
+    expect(element.all(by.id('menuList')).count()).toBe(4);
   });
+});
 });

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User, UserService} from '../../domain/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  user: User;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private userService: UserService) {
   }
 
+  ngOnInit() {
+    this.user = this.userService.getUser();
+  }
+  makePassword(n: number): string {
+    let s = '';
+    for (let i = 0; i < n; i++) {
+      s += '*';
+    }
+      return s;
+}
 }
