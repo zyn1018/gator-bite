@@ -17,10 +17,10 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.userId = this.userService.getUser().userId;
     this.menus = [
-      new Menu(1, 'profile', '/user/' + this.userId + '/profile'),
-      new Menu(2, 'address', '/user/' + this.userId + '/address'),
-      new Menu(3, 'payment', '/user/' + this.userId + '/payment'),
-      new Menu(4, 'orders', '/user/' + this.userId + '/orders')
+      new Menu(1, 'Profile', '/user/' + this.userId + '/profile'),
+      new Menu(2, 'Address', '/user/' + this.userId + '/address'),
+      new Menu(3, 'Payment', '/user/' + this.userId + '/payment'),
+      new Menu(4, 'Orders', '/user/' + this.userId + '/orders')
     ];
   }
   nav(menu: Menu) {
