@@ -1,45 +1,30 @@
-.ctittle{
-  font-size: 150%;
-  font-weight: bolder;
-  margin-left: 40px;
-}
-.etittle{
-  font-size: 150%;
-  font-weight: bolder;
-  margin-left: 120px;
-}
-.stittle{
-  font-size: 150%;
-  font-weight: bolder;
-  margin-left: 40px;
-}
-.ptittle{
-  font-size: 150%;
-  font-weight: bolder;
-  margin-left: 40px;
-}
-.cinput{
-  width:200px;
-  height: 40px;
-  margin-left: 40px;
-}
-.einput{
-  width:100px;
-  height: 40px;
-  margin-left: 50px;
-}
-.sinput{
-  width:100px;
-  height: 40px;
-  margin-left: 50px;
-}
-.pinput{
-  width:100px;
-  height: 40px;
-  margin-left: 80px;
-}
-.position{
-  margin-top: 40px;
+.div{
   margin-left: 20px;
+  margin-top: 40px;
 }
 
+.title{
+  font-size: 150%;
+  font-weight: bold;
+}
+.holder{
+  width:200px;
+  height: 30px;
+}
+.number{
+  width:70px;
+  height: 30px;
+  margin-left: 10px;
+}
+.number1{
+  width:70px;
+  height: 30px;
+}
+.date{
+  width: 100px;
+  height: 30px;
+}
+.cvv{
+  width: 70px;
+  height: 30px;
+}
