@@ -3,12 +3,12 @@
 </div>
 <div class="menu">
   <mat-grid-list cols="3" rowHeight="11.5em">
-    <mat-grid-tile *ngFor="let dish of dishes" rowspan="1">
+    <mat-grid-tile id="dishesOption" *ngFor="let dish of dishes" rowspan="1">
       <mat-card>
         <mat-card-content style="font-size: large; font-family: Impact">
           <span>{{dish.name}}</span>
           <span class="dishPrice">${{dish.price}}</span>
-          <button class="addButton" color="primary" mat-mini-fab (click)="addToOrder(dish)">+</button>
+          <button id="addButton" class="addButton" color="primary" mat-mini-fab (click)="addToOrder(dish)">+</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

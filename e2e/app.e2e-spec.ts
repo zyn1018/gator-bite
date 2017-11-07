@@ -8,7 +8,6 @@ describe('gator-bite App', () => {
     page = new AppPage();
   });
 
-
   it('Test Find food and gator-bite button', () => {
     browser.get('/');
     const findButton = element(by.id('findButton'));
@@ -28,8 +27,8 @@ describe('gator-bite App', () => {
     browser.get('/login');
     const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
     const userPassword = element(by.id('loginPassword')).sendKeys('admin');
+    element(by.id('restaurantOption')).click();
     const button = element(by.id('loginButton'));
-
     button.click();
 
     expect(element.all(by.tagName('tr')).count()).toBe(8);
@@ -40,6 +39,7 @@ describe('gator-bite App', () => {
     const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
     const userPassword = element(by.id('loginPassword')).sendKeys('admin');
     const loginButton = element(by.id('loginButton'));
+    element(by.id('restaurantOption')).click();
     loginButton.click();
 
     const createButton = element(by.id('createButton'));
@@ -57,6 +57,7 @@ describe('gator-bite App', () => {
     const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
     const userPassword = element(by.id('loginPassword')).sendKeys('admin');
     const loginButton = element(by.id('loginButton'));
+    element(by.id('restaurantOption')).click();
     loginButton.click();
 
     const deleteButton = element.all(by.id('dishes')).get(2)
@@ -73,6 +74,7 @@ describe('gator-bite App', () => {
     const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
     const userPassword = element(by.id('loginPassword')).sendKeys('admin');
     const loginButton = element(by.id('loginButton'));
+    element(by.id('restaurantOption')).click();
     loginButton.click();
 
     const updateButton = element.all(by.id('dishes')).get(2)
@@ -87,5 +89,22 @@ describe('gator-bite App', () => {
     const dishNameNew = element.all(by.id('dishes')).get(2)
       .element(by.id('tdDishName')).getText();
     expect(dishNameNew).toBe('26 Boneless Wings');
+  });
+
+  it('Test Order manage page function add dish to order', () => {
+    browser.get('/login');
+    const userEmail = element(by.id('loginEmail')).sendKeys('wingzone@gmail.com');
+    const userPassword = element(by.id('loginPassword')).sendKeys('admin');
+    element(by.id('customerOption')).click();
+    const button = element(by.id('loginButton'));
+    button.click();
+
+    const RestaurantList = element.all(by.id('restaurantList')).get(1).element(by.id('restaurantTitle')).click();
+    element.all(by.id('dishesOption')).get(1).element(by.id('addButton')).click();
+
+    element(by.id('orderSideNavToggle')).click();
+
+    const dishCount = element.all(by.id('selectedDishes')).get(0).element(by.id('dishCount')).getText();
+
   });
 });

@@ -6,7 +6,7 @@
   <button mat-icon-button *ngIf="isLogin" (click)="openUserProfile()">
     <i class="material-icons">account_box</i>
   </button>
-  <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()">
+  <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()" id="orderSideNavToggle">
     <i class="material-icons">card_travel</i>
   </button>
   <button mat-button *ngIf="isLogin" (click)="logout()">

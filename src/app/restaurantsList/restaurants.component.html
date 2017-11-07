@@ -3,10 +3,11 @@
   <mat-grid-list cols="4" rowHeight="1:2">
     <mat-grid-tile id="restaurantList" *ngFor="let res of restaurants">
       <mat-card class="container">
-        <mat-card-title style="font-family: Impact" (click)="goToMenu(res)">{{res.title}}</mat-card-title>
-        <img (click)="goToMenu(res)" class="pic" mat-card-image [src]="res.picture">
+        <mat-card-title style="font-family: Impact" (click)="goToMenu(res)" id="restaurantTitle">{{res.title}}
+        </mat-card-title>
+        <img (click)="goToMenu(res)" class="pic" mat-card-image [src]="res.picture" id="restaurantImg">
         <hr>
-        <mat-card-content (click)="goToMenu(res)" style="font-family: Verdana">
+        <mat-card-content id="restaurantDesc" (click)="goToMenu(res)" style="font-family: Verdana">
           {{res.content}}
         </mat-card-content>
       </mat-card>

@@ -5,17 +5,17 @@
     <mat-list-item class="emptyBag" *ngIf="!show" style="font-family: Impact; color: #cccccc; font-size: xx-large">
       Your bag is empty
     </mat-list-item>
-    <mat-list-item *ngFor="let dishName of orderDetail.keys()">
+    <mat-list-item *ngFor="let dishName of orderDetail.keys()" id="selectedDishes">
       <div class="container">
         <div class="row">
           <div class="col-sm">
-            <i role="button" class="material-icons removeButton" (click)="removeDish(dishName)">remove_circle</i>
+            <i role="button" id="removeDishButton" class="material-icons removeButton" (click)="removeDish(dishName)">remove_circle</i>
             <span class="selectDishName"
                   style="font-size: medium; font-family: Verdana; color: dodgerblue">{{dishName}}</span>
-            <i role="button" class="material-icons addCircle"
+            <i role="button" id="addCountButton" class="material-icons addCircle"
                (click)="addDishCount(dishName)">add_circle_outline</i>
-            <span class="dishCount" style="font-family: Impact">{{(orderDetail.get(dishName))[0]}}</span>
-            <i role="button" class="material-icons minusCircle"
+            <span class="dishCount" style="font-family: Impact" id="dishCount">{{(orderDetail.get(dishName))[0]}}</span>
+            <i role="button" id="minusCountButton" class="material-icons minusCircle"
                (click)="minusDishCount(dishName)">remove_circle_outline</i>
             <span class="selectDishPrice" style="font-family: Impact; color: gray; font-size: medium"> ${{((orderDetail.get(dishName))[0]*(orderDetail.get(dishName))[1]).toFixed(2)}} </span>
           </div>
