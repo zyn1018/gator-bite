@@ -23,7 +23,7 @@ import {OrderModule} from '../order/order.module';
 import {OrderService} from '../order/order.service';
 import {UserModule} from '../user/user.module';
 import {HeaderRoutingModule} from './header/header-routing.module';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
