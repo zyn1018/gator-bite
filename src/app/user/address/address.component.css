@@ -1,0 +1,12 @@
+.title{
+  font-size: 150%;
+  font-weight: bold;
+}
+.input{
+  width: 200px;
+  height: 30px
+}
+.distance{
+  padding-top: 20px;
+  padding-left: 20px;
+}

@@ -1,14 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 @import 'theme.scss';
-html, body, app-root .site{
-  width : 100%;
+
+html, body, app-root, .site {
+  width: 100%;
   height: 100%;
   margin: 0;
 }
-.site{
+
+.site {
   display: flex;
   flex-direction: column;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.full-width {
+  width: 100%;
 }
 
 app-center {
@@ -16,12 +26,4 @@ app-center {
   background: url("assets/backimg.jpg");
   background-size: cover;
   background-position: center;
-}
-
-.fill-remaining-space{
-  flex: 1 1 auto;
-}
-
-.full-width {
-  width: 100%;
 }

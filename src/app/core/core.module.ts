@@ -13,17 +13,30 @@ import {SignupComponent} from '../signup/signup/signup.component';
 import {ResearchComponent} from '../research/research.component';
 import {DishService} from '../dishes-manage/dish.service';
 import {DishesManageComponent} from '../dishes-manage/dishes-manage.component';
-import {OrderManageComponent} from '../order-manage/order-manage.component';
 import {DishFormComponent} from '../dish-form/dish-form.component';
 import {DishFormRoutingModule} from '../dish-form/dish-form-routing.module';
 import {DishesManageRoutingModule} from '../dishes-manage/dishes-manage-routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
 import {DishFilterPipe} from '../dishes-manage/dish-filter.pipe';
 import {UserService} from '../domain/user.service';
+import {RestaurantsRoutingModule} from '../restaurantsList/restaurants-routing.module';
+import {OrderModule} from '../order/order.module';
+import {OrderService} from '../order/order.service';
+import {UserModule} from '../user/user.module';
+import {HeaderRoutingModule} from './header/header-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule, SharedModule, LoginRoutingModule, SignupRoutingModule, DishFormRoutingModule, DishesManageRoutingModule
+    CommonModule,
+    SharedModule,
+    LoginRoutingModule,
+    SignupRoutingModule,
+    DishFormRoutingModule,
+    DishesManageRoutingModule,
+    RestaurantsRoutingModule,
+    OrderModule,
+    RestaurantsRoutingModule,
+    UserModule,
+    HeaderRoutingModule
   ],
   declarations: [
     HeaderComponent,
@@ -34,9 +47,8 @@ import {UserService} from '../domain/user.service';
     ResearchComponent,
     SignupComponent,
     DishesManageComponent,
-    OrderManageComponent,
     DishFormComponent,
-    DishFilterPipe
+    DishFilterPipe,
   ],
   exports: [
     HeaderComponent,
@@ -48,13 +60,14 @@ import {UserService} from '../domain/user.service';
     ResearchComponent,
     SignupRoutingModule,
     DishesManageComponent,
-    OrderManageComponent,
     DishFormComponent,
     DishFormRoutingModule,
-    DishesManageRoutingModule
+    DishesManageRoutingModule,
+    OrderModule,
+    HeaderRoutingModule
   ],
   providers: [
-    RestaurantService, DishService, UserService
+    RestaurantService, DishService, UserService, OrderService
   ]
 })
 export class CoreModule {

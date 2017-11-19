@@ -1,0 +1,39 @@
+<div>
+  <div class="div">
+    <form>
+      <p class="title">Card holder's name</p>
+      <input class="holder">
+    </form>
+  </div>
+  <div class="div">
+    <p class="title">Card number</p>
+    <form>
+      <input type="text" class="number1" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+      <input type="text" class="number" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+      <input type="text" class="number" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+      <input type="text" class="number" autocomplete="off" maxlength="4" pattern="\d{4}" title="Forth four digits" required>
+    </form>
+  </div>
+  <div class="div">
+    <form>
+      <p class="title">Card expiry date</p>
+      <select id="inputMonth" class="date">
+        <option selected>January</option>
+        <option *ngFor="let month of months">{{month}}</option>
+      </select>
+      <select id="inputYear" class="date">
+        <option selected>2017</option>
+        <option *ngFor="let year of years">{{year}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="div">
+    <form>
+      <p class="title">Card CVV</p>
+      <input type="text" class="cvv" autocomplete="off" maxlength="3" pattern="\d{4}" required>
+    </form>
+  </div>
+  <div class="div">
+    <button mat-raised-button>Update</button>
+  </div>
+</div>

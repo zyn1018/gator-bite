@@ -32,8 +32,8 @@ describe('default-restaurants', function () {
 /*  it('should validate the login user on /login POST', function (done) {
     chai.request(server)
       .post('/login')
-      .send({'email':'zpd@ufl.com','password':'123456'})
-      .end(function (err,res) {
+      .send({'email': 'zpd@ufl.com', 'password': '123456'})
+      .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
@@ -45,8 +45,8 @@ describe('default-restaurants', function () {
 /*  it('should deny the login user on /login POST', function (done) {
     chai.request(server)
       .post('/login')
-      .send({'email':'zpd@ufl.comd','password':'1234567'})
-      .end(function (err,res) {
+      .send({'email': 'zpd@ufl.comd', 'password': '1234567'})
+      .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');

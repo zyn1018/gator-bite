@@ -1,0 +1,57 @@
+h3 {
+  margin-left: 15px;
+}
+
+.submitButton {
+  width: 200px;
+  margin-left: 7em;
+  margin-top: 3em;
+}
+
+.selectDishName {
+  margin-left: 1em;
+}
+
+.removeButton {
+  margin-left: 1em;
+}
+
+.addCircle {
+  margin-left: 1em;
+  position: absolute;
+  left: 220px;
+}
+
+.minusCircle {
+  position: absolute;
+  left: 285px;
+}
+
+.selectDishPrice {
+  position: absolute;
+  left: 350px;
+}
+
+.dishCount {
+  position: absolute;
+  left: 270px;
+}
+
+.priceDetails {
+  margin-left: 1.5em;
+}
+
+.dishPrice {
+  margin-left: 1em;
+}
+
+.prices {
+  position: absolute;
+  left: 350px;
+}
+
+.emptyBag {
+  position: relative;
+  top: 200px;
+  left: 100px;
+}

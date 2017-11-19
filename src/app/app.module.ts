@@ -6,7 +6,6 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DishFilterPipe} from './dishes-manage/dish-filter.pipe';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

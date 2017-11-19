@@ -10,31 +10,37 @@ import {Observable} from 'rxjs/';
 })
 export class CenterComponent implements OnInit {
   dataSource: Observable<any>;
-  a: any;
+  locationInfo: any;
+  str: any;
   constructor(public http: Http) {
-    this.dataSource = this.http.get('https://maps.googleapis.com/maps/api/geocode/json?'
-      + 'latlng=29.6477898,-82.3438111&key=AIzaSyC2wdo6kMAXpuhwuUa8fM4mCkDy_kZeWKY').map(Response => Response.json());
   }
   ngOnInit() {
   }
+  location() {
+    this.getLocation();
+    console.log(this.str);
+    //this.getInfor();
+    //console.log(this.locationInfo);
+  }
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPostion, this.showError);
+      navigator.geolocation.getCurrentPosition(this.showPostion.bind(this), this.showError.bind(this));
     }
   }
-  showPostion(position) {
+  showPostion (position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const s  = String(latitude + ',' + longitude);
-    console.log(s);
+    this.str = String(latitude + ',' + longitude);
+    //console.log(this.str);
   }
   showError() {
     console.log('Invalid Address !');
   }
-  getData() {
+  getInfor= () => {
+    this.dataSource = this.http.get('https://maps.googleapis.com/maps/api/geocode/json?'
+      + 'latlng=' + this.str + '&key=AIzaSyC2wdo6kMAXpuhwuUa8fM4mCkDy_kZeWKY').map(Response => Response.json());
     this.dataSource.subscribe(
-      data => this.a = data
+      data => this.locationInfo = data
     );
-    console.log(this.a);
   }
 }

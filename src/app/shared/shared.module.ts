@@ -1,46 +1,49 @@
-import { NgModule } from '@angular/core';
-import {
-  MdButtonModule,
-  MdCardModule,
-  MdInputModule,
-  MdToolbarModule,
-  MdGridListModule,
-  MdIconModule,
-  MatChipsModule,
-  MatRadioModule
-} from '@angular/material';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 
 
 @NgModule({
   imports: [
-    MdCardModule,
-    MdInputModule,
+    MatCardModule,
+    MatInputModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSidenavModule,
   ],
   exports: [
-    MdCardModule,
-    MdInputModule,
+    MatCardModule,
+    MatInputModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
     MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSidenavModule
   ],
   declarations: []
 })
-export class SharedModule { }
+export class SharedModule {
+}

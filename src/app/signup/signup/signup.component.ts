@@ -35,7 +35,8 @@ export class SignupComponent implements OnInit {
       passwordInfo: this.fb.group({
         password: [''],
         confirmPassword: ['']
-      }, {validator: this.passwordValidator})
+      }, {validator: this.passwordValidator}),
+      loginRole: ['', Validators.required]
     });
   }
   signUp(f: NgForm) {

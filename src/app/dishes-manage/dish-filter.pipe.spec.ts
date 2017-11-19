@@ -1,8 +1,14 @@
 import {DishFilterPipe} from './dish-filter.pipe';
-
+import {TestBed, async} from '@angular/core/testing';
+import {Pipe} from '@angular/core';
+import {AppComponent} from '../app.component';
 describe('DishFilterPipe', () => {
-  it('create an instance', () => {
-    const pipe = new DishFilterPipe();
-    expect(pipe).toBeTruthy();
-  });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [],
+      imports: [
+        Pipe,
+      ],
+    }).compileComponents();
+  }));
 });
