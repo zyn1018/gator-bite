@@ -29,7 +29,7 @@ describe('default-restaurants', function () {
         done();
       })
   });
-  it('should validate the login user on /login POST', function (done) {
+/*  it('should validate the login user on /login POST', function (done) {
     chai.request(server)
       .post('/login')
       .send({'email': 'zpd@ufl.com', 'password': '123456'})
@@ -41,8 +41,8 @@ describe('default-restaurants', function () {
         res.body.success.should.equal(1);
         done();
       })
-  });
-  it('should deny the login user on /login POST', function (done) {
+  });*/
+/*  it('should deny the login user on /login POST', function (done) {
     chai.request(server)
       .post('/login')
       .send({'email': 'zpd@ufl.comd', 'password': '1234567'})
@@ -54,5 +54,21 @@ describe('default-restaurants', function () {
         res.body.success.should.equal(0);
         done();
       })
+  })*/
+
+
+  //save register test
+  it('should register on /register POST', function (done) {
+    chai.request(server)
+      .post('/register')
+      .type('form')
+      .send({'email': 'zpd@ufld.comd', 'username': 'tdsds', 'password': '1234567'})
+      .end(function (err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        done();
+      });
   })
+
 })
