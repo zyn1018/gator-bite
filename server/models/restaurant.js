@@ -8,6 +8,7 @@ var foodSchema = new mongoose.Schema({
 });
 
 var restSchema = new mongoose.Schema({
+  name: String,
   email: String,
   password: String,
   picture: String,
