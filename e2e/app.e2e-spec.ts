@@ -43,7 +43,7 @@ describe('gator-bite App', () => {
     loginButton.click();
 
     const createButton = element(by.id('createButton'));
-    createButton.click()
+    createButton.click();
 
     const dishName = element(by.id('dishName')).sendKeys('Sweet Coleslaw');
     const dishPrice = element(by.id('dishPrice')).sendKeys(2.29);
