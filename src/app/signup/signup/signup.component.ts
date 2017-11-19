@@ -27,7 +27,6 @@ export class SignupComponent implements OnInit {
   }
   constructor(private http: HttpClient) {
   }
-
   ngOnInit() {
     this.signupForm = this.fb.group ({
       email: ['', this.emailValidator],
