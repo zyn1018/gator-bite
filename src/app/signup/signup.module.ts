@@ -6,7 +6,7 @@ import {SharedModule} from '../shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [SignupComponent]
 })

@@ -29,32 +29,32 @@ describe('default-restaurants', function () {
         done();
       })
   });
-  /*  it('should validate the login user on /login POST', function (done) {
-      chai.request(server)
-        .post('/login')
-        .send({'email': 'zpd@ufl.com', 'password': '123456'})
-        .end(function (err, res) {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body.should.have.property('success');
-          res.body.success.should.equal(1);
-          done();
-        })
-    });*/
-  /*  it('should deny the login user on /login POST', function (done) {
-      chai.request(server)
-        .post('/login')
-        .send({'email': 'zpd@ufl.comd', 'password': '1234567'})
-        .end(function (err, res) {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body.should.have.property('success');
-          res.body.success.should.equal(0);
-          done();
-        })
-    })*/
+/*  it('should validate the login user on /login POST', function (done) {
+    chai.request(server)
+      .post('/login')
+      .send({'email': 'zpd@ufl.com', 'password': '123456'})
+      .end(function (err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('success');
+        res.body.success.should.equal(1);
+        done();
+      })
+  });*/
+/*  it('should deny the login user on /login POST', function (done) {
+    chai.request(server)
+      .post('/login')
+      .send({'email': 'zpd@ufl.comd', 'password': '1234567'})
+      .end(function (err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('success');
+        res.body.success.should.equal(0);
+        done();
+      })
+  })*/
 
 
   //save register test

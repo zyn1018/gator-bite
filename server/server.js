@@ -4,13 +4,13 @@ var express = require("express"),
   mongoose = require('mongoose'),
   User = require('./models/user'),
   Restaurant = require("./models/restaurant").Restaurant;
-LocalStrategy = require("passport-local"),
+  LocalStrategy = require("passport-local"),
   passport = require("passport"),
   authRouter = require("./api/auth"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 module.exports = app;
-mongoose.connect('mongodb://senb:slksl@ds121535.mlab.com:21535/gator-bite', {useMongoClient: true});
+mongoose.connect('mongodb://senb:slksl@ds121535.mlab.com:21535/gator-bite',{useMongoClient: true});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extende: true}));
 app.use(bodyParser.json());
@@ -36,7 +36,7 @@ app.use("/api", authRouter);
   password: String,
   picture: String,
   type: Array,
-  delivery_fee:Number,
+  delivery_fee: Number,
   menu: Array
 });
 var Restaurant = mongoose.model("Restaurant", restSchema);
@@ -52,16 +52,16 @@ var userSchema = mongoose.Schema({
   email: String,
   username: String,
   password: String
-});*/
-/*var User = mongoose.model("users", userSchema);*/
+});
+var User = mongoose.model("users", userSchema);*/
 
 //for default search
 
 app.get("/restaurant", function (req, res) {
-  Restaurant.find({}, {"password": 0, "menu": 0}, function (err, rests) {
-    if (err) {
+  Restaurant.find({},{"password":0,"menu":0 }, function (err, rests) {
+    if(err){
       console.log("err");
-    } else {
+    }else{
       res.send(rests);
     }
   });
@@ -92,12 +92,11 @@ app.get("/dishes/:email", function (req, res) {
           res.render("/dishes/" + lemail);
         }
       });
-    } else {
-      res.send({"success": 1});
+    }else{
+      res.send({"success":1});
     }
   });
 });*/
-
 
 app.listen(3000, process.env.IP, function () {
   console.log("server is running");
