@@ -108,4 +108,3 @@ describe('gator-bite App', () => {
     expect(element.all(by.id('menuList')).count()).toBe(4);
   });
 });
-});
