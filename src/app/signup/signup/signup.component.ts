@@ -25,10 +25,8 @@ export class SignupComponent implements OnInit {
     console.log('password is right:' + valid1);
     return valid1 ? null : {password: true};
   }
-
   constructor(private http: HttpClient) {
   }
-
   ngOnInit() {
     this.signupForm = this.fb.group ({
       email: ['', this.emailValidator],
@@ -40,7 +38,6 @@ export class SignupComponent implements OnInit {
       loginRole: ['', Validators.required]
     });
   }
-
   signUp(f: NgForm) {
     console.log(f.value);
     const headers = new HttpHeaders({'content-type': 'application/json', 'Accept': 'application/json'});

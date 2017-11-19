@@ -23,6 +23,7 @@ import {OrderModule} from '../order/order.module';
 import {OrderService} from '../order/order.service';
 import {UserModule} from '../user/user.module';
 import {HeaderRoutingModule} from './header/header-routing.module';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {HeaderRoutingModule} from './header/header-routing.module';
     OrderModule,
     RestaurantsRoutingModule,
     UserModule,
-    HeaderRoutingModule
+    HeaderRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     HeaderComponent,
@@ -67,7 +69,7 @@ import {HeaderRoutingModule} from './header/header-routing.module';
     HeaderRoutingModule
   ],
   providers: [
-    RestaurantService, DishService, UserService, OrderService
+    RestaurantService, DishService, UserService, OrderService, HttpClient
   ]
 })
 export class CoreModule {
