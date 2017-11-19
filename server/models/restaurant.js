@@ -1,6 +1,11 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose")
 var passportLocalMongoose = require("passport-local-mongoose");
-mongoose.connect('mongodb://senb:slksl@ds121535.mlab.com:21535/gator-bite');
+
+var foodSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  discript: String
+});
 
 var restSchema = new mongoose.Schema({
   email: String,
@@ -8,9 +13,8 @@ var restSchema = new mongoose.Schema({
   picture: String,
   type: Array,
   delivery_fee:Number,
-  menu: Array
+  menu: [foodSchema]
 });
+restSchema.plugin(passportLocalMongoose);
 var Restaurant = mongoose.model("Restaurant", restSchema);
 module.exports.Restaurant = Restaurant;
-
-

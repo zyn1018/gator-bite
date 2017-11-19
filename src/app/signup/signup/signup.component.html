@@ -1,5 +1,5 @@
 <div class="backGround">
-  <form [formGroup]="signupForm" (submit)=signUp()>
+  <form [formGroup]="signupForm" #f="ngForm" (submit)=signUp(f)>
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -8,16 +8,16 @@
       </md-card-header>
       <md-card-content>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="Email" formControlName="email">
+          <input mdInput type="text" placeholder="Email" name = "email" formControlName="email">
           <md-error>Invalid email address !</md-error>
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="UserName" formControlName="userName">
+          <input mdInput type="text" placeholder="UserName" name="username" formControlName="userName">
           <md-error>UserName length must be more than 6 !</md-error>
         </md-input-container>
         <div formGroupName="passwordInfo">
           <md-input-container class="full-width">
-            <input mdInput type="password" placeholder="Password" formControlName="password">
+            <input mdInput type="password" placeholder="Password" name="password" formControlName="password">
           </md-input-container>
           <md-input-container class="full-width">
             <input mdInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">

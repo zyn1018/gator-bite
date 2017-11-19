@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +25,7 @@ export class SignupComponent implements OnInit {
     console.log('password is right:' + valid1);
     return valid1 ? null : {password: true};
   }
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -36,7 +38,13 @@ export class SignupComponent implements OnInit {
       }, {validator: this.passwordValidator})
     });
   }
-  signUp() {
+  signUp(f: NgForm) {
+    console.log(f.value);
+    const headers = new HttpHeaders({ 'content-type': 'application/json', 'Accept': 'application/json' });
+    const user = {email: f.value.email, username: f.value.userName, password: f.value.passwordInfo.password};
+    console.log(user);
+    this.http.post('/api/register', JSON.stringify(user), { headers: headers }).subscribe();
     console.log(this.signupForm.value);
+    console.log(f.value.email);
   }
 }
