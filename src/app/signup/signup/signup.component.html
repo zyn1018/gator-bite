@@ -1,5 +1,5 @@
 <div class="backGround">
-  <form [formGroup]="signupForm" (submit)=signUp()>
+  <form [formGroup]="signupForm" #f="ngForm" (submit)=signUp(f)>
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -8,28 +8,28 @@
       </mat-card-header>
       <mat-card-content>
         <mat-input-container class="full-width">
-          <input matInput type="text" placeholder="Email" formControlName="email">
-          <mat-error>Invalid email address!</mat-error>
+          <input matInput type="text" placeholder="Email" name="email" formControlName="email">
+          <mat-error>Invalid email address !</mat-error>
         </mat-input-container>
         <mat-input-container class="full-width">
-          <input matInput type="text" placeholder="UserName" formControlName="userName">
-          <mat-error>UserName length must be more than 6!</mat-error>
+          <input matInput type="text" placeholder="UserName" name="username" formControlName="userName">
+          <mat-error>UserName length must be more than 6 !</mat-error>
         </mat-input-container>
         <div formGroupName="passwordInfo">
           <mat-input-container class="full-width">
-            <input matInput type="password" placeholder="Password" formControlName="password">
+            <input matInput type="password" placeholder="Password" name="password" formControlName="password">
           </mat-input-container>
           <mat-input-container class="full-width">
             <input matInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
           </mat-input-container>
         </div>
         <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
-          do not match!
+          do not match !
         </div>
-        <mat-radio-group formControlName="loginRole" name="login[loginRole]">
-          <mat-radio-button [value]="1">Customer</mat-radio-button>
-          <mat-radio-button [value]="2">Restaurant</mat-radio-button>
-        </mat-radio-group>
+        <div>
+          <mat-radio-button value="1">Custmor</mat-radio-button>
+          <mat-radio-button value="2">Restaurant</mat-radio-button>
+        </div>
         <button mat-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
           Create Your Account
         </button>
