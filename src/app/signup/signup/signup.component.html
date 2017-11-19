@@ -8,12 +8,12 @@
       </mat-card-header>
       <mat-card-content>
         <mat-input-container class="full-width">
-          <input matInput type="text" placeholder="Email" name = "email" formControlName="email">
+          <input matInput type="text" placeholder="Email" name="email" formControlName="email">
           <mat-error>Invalid email address !</mat-error>
         </mat-input-container>
         <mat-input-container class="full-width">
           <input matInput type="text" placeholder="UserName" name="username" formControlName="userName">
-          <mat-error>UserName length must be more than 6 !</mat-error>
+          <mat-error>UserName length must be more than 6!</mat-error>
         </mat-input-container>
         <div formGroupName="passwordInfo">
           <mat-input-container class="full-width">
@@ -24,12 +24,12 @@
           </mat-input-container>
         </div>
         <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
-          do not match !
+          do not match!
         </div>
-        <div>
-          <mat-radio-button value="1">Custmor</mat-radio-button>
-          <mat-radio-button value="2">Restaurant</mat-radio-button>
-        </div>
+        <mat-radio-group formControlName="loginRole" name="login[loginRole]">
+          <mat-radio-button [value]="1">Customer</mat-radio-button>
+          <mat-radio-button [value]="2">Restaurant</mat-radio-button>
+        </mat-radio-group>
         <button mat-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
           Create Your Account
         </button>

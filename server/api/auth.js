@@ -10,7 +10,7 @@ router.post("/register", function (req, res) {
   var user = new User({email: req.body.email, username: req.body.username});
   console.log(req.body);
   User.register(user, req.body.password, function (err, user) {
-    if(err){
+    if (err) {
       console.log(err);
       return res.json({
         error: err
@@ -30,7 +30,7 @@ router.post("/registerRes", function (req, res) {
   var user = new User({email: req.body.email, username: req.body.username});
   console.log(req.body);
   User.register(user, req.body.password, function (err, user) {
-    if(err){
+    if (err) {
       console.log(err);
       return res.json({
         error: err

@@ -33,6 +33,7 @@ export class CenterComponent implements OnInit {
     this.str = String(latitude + ',' + longitude);
     //console.log(this.str);
   }
+
   showError() {
     console.log('Invalid Address !');
   }

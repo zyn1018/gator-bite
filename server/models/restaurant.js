@@ -13,7 +13,7 @@ var restSchema = new mongoose.Schema({
   password: String,
   picture: String,
   type: Array,
-  delivery_fee:Number,
+  delivery_fee: Number,
   menu: [foodSchema]
 });
 restSchema.plugin(passportLocalMongoose);
