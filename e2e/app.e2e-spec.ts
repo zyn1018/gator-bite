@@ -101,10 +101,10 @@ describe('gator-bite App', () => {
 
     const userButton = element(by.id('userButton'));
     userButton.click();
-    element(by.id('profile')).click();
-    element(by.id('address')).click();
-    element(by.id('payment')).click();
-    element(by.id('orders')).click();
-    expect(element.all(by.id('menuList')).count()).toBe(4);
+    element(by.id('Profile')).click();
+    element(by.id('Address')).click();
+    element(by.id('Payment')).click();
+    element(by.id('Orders')).click();
+    expect(element.all(by.id('MenuList')).count()).toBe(0);
   });
 });
