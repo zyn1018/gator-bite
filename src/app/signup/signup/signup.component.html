@@ -1,39 +1,39 @@
 <div class="backGround">
   <form [formGroup]="signupForm" #f="ngForm" (submit)=signUp(f)>
-    <md-card>
-      <md-card-header>
-        <md-card-title>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
           <span color="primary" class="titlePosition">Gator Bite</span>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
-        <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="Email" name = "email" formControlName="email">
-          <md-error>Invalid email address !</md-error>
-        </md-input-container>
-        <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="UserName" name="username" formControlName="userName">
-          <md-error>UserName length must be more than 6 !</md-error>
-        </md-input-container>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-input-container class="full-width">
+          <input matInput type="text" placeholder="Email" name = "email" formControlName="email">
+          <mat-error>Invalid email address !</mat-error>
+        </mat-input-container>
+        <mat-input-container class="full-width">
+          <input matInput type="text" placeholder="UserName" name="username" formControlName="userName">
+          <mat-error>UserName length must be more than 6 !</mat-error>
+        </mat-input-container>
         <div formGroupName="passwordInfo">
-          <md-input-container class="full-width">
-            <input mdInput type="password" placeholder="Password" name="password" formControlName="password">
-          </md-input-container>
-          <md-input-container class="full-width">
-            <input mdInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
-          </md-input-container>
+          <mat-input-container class="full-width">
+            <input matInput type="password" placeholder="Password" name="password" formControlName="password">
+          </mat-input-container>
+          <mat-input-container class="full-width">
+            <input matInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
+          </mat-input-container>
         </div>
         <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirePassword
           do not match !
         </div>
         <div>
-          <md-radio-button value="1">Custmor</md-radio-button>
-          <md-radio-button value="2">Restaurant</md-radio-button>
+          <mat-radio-button value="1">Custmor</mat-radio-button>
+          <mat-radio-button value="2">Restaurant</mat-radio-button>
         </div>
-        <button md-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
+        <button mat-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
           Create Your Account
         </button>
-      </md-card-content>
-    </md-card>
+      </mat-card-content>
+    </mat-card>
   </form>
 </div>
