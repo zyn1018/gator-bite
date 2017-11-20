@@ -27,8 +27,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CustomHttp} from '../utils/customHttp';
 import {AuthGuard} from '../utils/AuthGuard';
 import {AuthenticationService} from '../utils/authentication.service';
-import {AlertComponent} from '../utils/Alert.Component';
 import {AlertService} from '../utils/Alert.Service';
+import {AlertComponent} from '../alert/alert.component';
 
 @NgModule({
   imports: [
