@@ -49,7 +49,6 @@ export class CustomHttp extends Http {
     if (currentUser && currentUser.token) {
       options.headers.append('Authorization', 'Bearer ' + currentUser.token);
     }
-
     return options;
   }
   private handleError(error: any) {

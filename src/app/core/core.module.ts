@@ -24,6 +24,9 @@ import {OrderService} from '../order/order.service';
 import {UserModule} from '../user/user.module';
 import {HeaderRoutingModule} from './header/header-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {CustomHttp} from '../utils/customHttp';
+import {AuthGuard} from '../utils/AuthGuard';
+import {AuthenticationService} from '../utils/authentication.service';
 
 @NgModule({
   imports: [
@@ -69,7 +72,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     HeaderRoutingModule
   ],
   providers: [
-    RestaurantService, DishService, UserService, OrderService, HttpClient
+    RestaurantService, DishService, UserService, OrderService, HttpClient,
+    CustomHttp, AuthGuard, AuthenticationService
   ]
 })
 export class CoreModule {
