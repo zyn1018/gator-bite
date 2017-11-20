@@ -27,6 +27,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CustomHttp} from '../utils/customHttp';
 import {AuthGuard} from '../utils/AuthGuard';
 import {AuthenticationService} from '../utils/authentication.service';
+import {AlertComponent} from '../utils/Alert.Component';
+import {AlertService} from '../utils/Alert.Service';
 
 @NgModule({
   imports: [
@@ -41,7 +43,7 @@ import {AuthenticationService} from '../utils/authentication.service';
     RestaurantsRoutingModule,
     UserModule,
     HeaderRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     HeaderComponent,
@@ -54,6 +56,7 @@ import {AuthenticationService} from '../utils/authentication.service';
     DishesManageComponent,
     DishFormComponent,
     DishFilterPipe,
+    AlertComponent
   ],
   exports: [
     HeaderComponent,
@@ -69,11 +72,12 @@ import {AuthenticationService} from '../utils/authentication.service';
     DishFormRoutingModule,
     DishesManageRoutingModule,
     OrderModule,
-    HeaderRoutingModule
+    HeaderRoutingModule,
+    AlertComponent
   ],
   providers: [
     RestaurantService, DishService, UserService, OrderService, HttpClient,
-    CustomHttp, AuthGuard, AuthenticationService
+    CustomHttp, AuthGuard, AuthenticationService, AlertService
   ]
 })
 export class CoreModule {

@@ -9,6 +9,11 @@ export class PaymentComponent implements OnInit {
   years: Array<number>;
   constructor() { }
 
+  /**
+   * Store all months and years to choose
+   */
+
+
   ngOnInit() {
     this.months = [
       'February',

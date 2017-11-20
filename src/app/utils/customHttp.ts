@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 import {
   ConnectionBackend,
   Headers,
@@ -7,9 +7,9 @@ import {
   RequestOptionsArgs,
   Response,
   XHRBackend
-} from "@angular/http";
+} from '@angular/http';
 
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
@@ -45,13 +45,12 @@ export class CustomHttp extends Http {
     options.headers = options.headers || new Headers();
 
     // add authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
       options.headers.append('Authorization', 'Bearer ' + currentUser.token);
     }
     return options;
   }
-
   private handleError(error: any) {
     if (error.status === 401) {
       // 401 unauthorized response so log user out of client

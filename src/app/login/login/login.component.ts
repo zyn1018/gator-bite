@@ -12,9 +12,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class LoginComponent implements OnInit {
   private userEmail: string;
 
-  private isLogin: boolean = false;
+  private isLogin = false;
 
-  private isRestaurant: boolean = false;
+  private isRestaurant = false;
 
   form: FormGroup;
 
