@@ -25,14 +25,25 @@ export class DishesManageComponent implements OnInit {
     this.userEmail = this.userService.getUser().email;
   }
 
+  /**
+   * Create new dish
+   */
   create() {
     this.router.navigateByUrl('/dishes/' + this.userEmail + '/0');
   }
 
+  /**
+   * Update existing dish
+   * @param {Dish} dish
+   */
   update(dish: Dish) {
     this.router.navigateByUrl('/dishes/' + this.userEmail + '/' + dish.dishId);
   }
 
+  /**
+   * Delete dish that is no longer provided
+   * @param {Dish} dish
+   */
   delete(dish: Dish) {
     if (confirm('Are you sure to delete ' + dish.name + '?')) {
       this.dishes.splice(dish.dishId - 1, 1);

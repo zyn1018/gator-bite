@@ -29,7 +29,11 @@ export class OrderSidebarComponent implements OnInit {
 
   }
 
-
+  /**
+   * update show flag based on the number of items in orderDetail
+   * size == 0 , don't show
+   * size > 0, show
+   */
   checkShowParam() {
     if (this.orderDetail.size == 0) {
       this.show = false;
@@ -38,6 +42,9 @@ export class OrderSidebarComponent implements OnInit {
     }
   }
 
+  /**
+   * Calculate the total price of order
+   */
   calTotalPrice() {
     this.totalPrice = 0;
     this.orderDetail.forEach((value, key) => {
@@ -45,10 +52,17 @@ export class OrderSidebarComponent implements OnInit {
     });
   }
 
+  /**
+   * Calculate the tax based on total price
+   */
   calTax() {
     this.tax = this.totalPrice * 0.06;
   }
 
+  /**
+   * Remove dish from order
+   * @param {string} dishName
+   */
   removeDish(dishName: string) {
     if (confirm('Remove ' + dishName + ' from your bag?')) {
       this.orderDetail.delete(dishName);
@@ -58,6 +72,10 @@ export class OrderSidebarComponent implements OnInit {
     this.calTax();
   }
 
+  /**
+   * In sidebar, increase the number of one dishes
+   * @param {string} dishName
+   */
   addDishCount(dishName: string) {
     let value = this.orderDetail.get(dishName);
     this.orderDetail.set(dishName, [value[0] + 1, value[1]]);
@@ -66,6 +84,10 @@ export class OrderSidebarComponent implements OnInit {
     this.calTax();
   }
 
+  /**
+   * In sidebar, increase the number of one dishes
+   * @param {string} dishName
+   */
   minusDishCount(dishName: string) {
     let value = this.orderDetail.get(dishName);
     if (value[0] == 1) {
