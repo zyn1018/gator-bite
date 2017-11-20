@@ -11,9 +11,9 @@ import {UserService} from '../../domain/user.service';
 export class LoginComponent implements OnInit {
   private userEmail: string;
 
-  private isLogin: boolean = false;
+  private isLogin = false;
 
-  private isRestaurant: boolean = false;
+  private isRestaurant = false;
 
   form: FormGroup;
 
@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.form.value.loginRole == 1) {
+    if (this.form.value.loginRole === 1) {
       this.isLogin = true;
       this.userService.setIsLoginSubject(this.isLogin);
       this.router.navigateByUrl('/restaurants');
-    } else if (this.form.value.loginRole == 2) {
+    } else if (this.form.value.loginRole === 2) {
       this.isLogin = true;
       this.userService.setIsLoginSubject(this.isLogin);
       this.isRestaurant = true;
