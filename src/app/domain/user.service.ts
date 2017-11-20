@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class UserService {
@@ -9,20 +10,27 @@ export class UserService {
 
   isRestaurant: boolean = false;
 
-  constructor() {
+  constructor(private http: Http) {
   }
 
-  users: User[] = [
-    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', true),
-    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', false),
-  ];
+  // getAll() {
+  //   return this.http.get('/users').map((response: Response) => response.json());
+  // }
+  //
+  // getById(_id: string) {
+  //   return this.http.get('/users/' + _id).map((response: Response) => response.json());
+  // }
 
-  /**
-   * Get user
-   * @returns {User}
-   */
-  getUser() {
-    return this.users[0];
+  create(user: User) {
+    return this.http.post('/users/register', user);
+  }
+
+  update(user: User) {
+    return this.http.put('/users/' + user.userId, user);
+  }
+
+  delete(_id: string) {
+    return this.http.delete('/users/' + _id);
   }
 
   private isLoginSubject = new Subject<boolean>();
