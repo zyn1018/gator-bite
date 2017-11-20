@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AlertService} from './Alert.Service';
-
+import { Component, OnInit } from '@angular/core';
+import {AlertService} from '../utils/Alert.Service';
 @Component({
   moduleId: module.id,
   selector: 'alert',
@@ -16,3 +15,4 @@ export class AlertComponent {
     this.alertService.getMessage().subscribe(message => { this.message = message; });
   }
 }
+
