@@ -52,7 +52,6 @@ export class CustomHttp extends Http {
 
     return options;
   }
-
   private handleError(error: any) {
     if (error.status === 401) {
       // 401 unauthorized response so log user out of client
