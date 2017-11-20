@@ -5,6 +5,13 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class DishFilterPipe implements PipeTransform {
 
+  /**
+   * Based on keyword, search corresponding dish
+   * @param {any[]} list
+   * @param {string} field
+   * @param {string} keyword
+   * @returns {any}
+   */
   transform(list: any[], field: string, keyword: string): any {
     if (!field || !keyword) {
       return list;

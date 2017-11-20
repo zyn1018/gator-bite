@@ -1,5 +1,5 @@
 <div class="wholePage">
-  <form [formGroup]="form" (submit)="login()">
+  <form [formGroup]="form" #f="ngForm" (submit)="login(f)">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -8,11 +8,11 @@
       </mat-card-header>
       <mat-card-content>
         <mat-input-container class="full-width">
-          <input matInput type="text" id="loginEmail" name="login[email]" placeholder="Email" formControlName="email">
+          <input matInput type="text" id="loginEmail" name="email" placeholder="Email" formControlName="email">
           <mat-error>Invalid email!</mat-error>
         </mat-input-container>
         <mat-input-container class="full-width">
-          <input matInput type="password" id="loginPassword" name="login[password]" placeholder="Password"
+          <input matInput type="password" id="loginPassword" name="password" placeholder="Password"
                  formControlName="password">
           <mat-error>Password should be longer than 8!</mat-error>
         </mat-input-container>
