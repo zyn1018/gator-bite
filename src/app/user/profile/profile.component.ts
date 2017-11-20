@@ -16,6 +16,10 @@ export class ProfileComponent implements OnInit {
     this.user = this.userService.getUser();
   }
 
+  /**
+   * Hide the password and show * instead
+   */
+
   makePassword(n: number): string {
     let s = '';
     for (let i = 0; i < n; i++) {

@@ -14,6 +14,10 @@ export class AccountComponent implements OnInit {
   constructor(public router: Router, private userService: UserService) {
   }
 
+  /**
+   * Navigate to different URL as chosen
+   */
+
   ngOnInit() {
     this.userId = this.userService.getUser().userId;
     this.menus = [
@@ -23,6 +27,10 @@ export class AccountComponent implements OnInit {
       new Menu(4, 'Orders', '/user/' + this.userId + '/orders')
     ];
   }
+
+  /**
+   * The navigator of the whole page which is to show the specific chosen information
+   */
   nav(menu: Menu) {
     this.router.navigateByUrl(menu.link);
   }

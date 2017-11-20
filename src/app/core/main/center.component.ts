@@ -20,7 +20,9 @@ export class CenterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  /**
+   * Get user's current location and then show the address of user's location
+   */
   getLocation() {
     if (navigator.geolocation) {
       this.process = true;
@@ -31,6 +33,13 @@ export class CenterComponent implements OnInit {
       }, 6000);
     }
   }
+
+
+  /**
+   * When user has a location, use this function to get the latitude and longitude of user location
+   * and then send it to GoogleMap API to get the address name and city name.
+   */
+
 
   showPosition(position) {
     const latitude = position.coords.latitude;
@@ -44,6 +53,12 @@ export class CenterComponent implements OnInit {
     // const obj = JSON.parse(this.locationInfo);
     // console.log(obj.result[0].formatAddress);
   }
+
+
+  /**
+   * If get location goes wrong, log 'Invalid Address'
+   */
+
 
   showErrorPosition() {
     console.log('Invalid Address !');

@@ -5,9 +5,9 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class UserService {
 
-  isLogin: boolean = false;
+  isLogin = false;
 
-  isRestaurant: boolean = false;
+  isRestaurant = false;
 
   constructor() {
   }
