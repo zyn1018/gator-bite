@@ -13,6 +13,23 @@ export class UserService {
   constructor(private http: Http) {
   }
 
+  /**
+   * Fake data for test
+   * @type {[User , User]}
+   */
+  users: User[] = [
+    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2),
+    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1),
+  ];
+
+  /**
+   * Get user
+   * @returns {User}
+   */
+  getUser() {
+    return this.users[0];
+  }
+
   // getAll() {
   //   return this.http.get('/users').map((response: Response) => response.json());
   // }
@@ -22,7 +39,11 @@ export class UserService {
   // }
 
   create(user: User) {
-    return this.http.post('/users/register', user);
+    if (user.loginRole === 1) {
+      return this.http.post('/api/register', user);
+    } else if (user.loginRole === 2) {
+      return this.http.post('/api/registerRes', user);
+    }
   }
 
   update(user: User) {
@@ -61,6 +82,6 @@ export class User {
               public email: string,
               public username: string,
               public password: string,
-              public isRestaurant: boolean) {
+              public loginRole: number) {
   }
 }

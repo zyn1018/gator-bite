@@ -60,6 +60,9 @@ export class SignupComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/login']);
-        },);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
