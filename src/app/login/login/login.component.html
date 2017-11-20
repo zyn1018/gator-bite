@@ -1,5 +1,5 @@
 <div class="wholePage">
-  <form [formGroup]="form" #f="ngForm" (submit)="login(f)">
+  <form [formGroup]="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -8,21 +8,23 @@
       </mat-card-header>
       <mat-card-content>
         <mat-input-container class="full-width">
-          <input matInput type="text" id="loginEmail" name="email" placeholder="Email" formControlName="email">
+          <input matInput type="text" id="loginEmail" name="email" [(ngModel)]="model.email" placeholder="Email"
+                 formControlName="email">
           <mat-error>Invalid email!</mat-error>
         </mat-input-container>
         <mat-input-container class="full-width">
-          <input matInput type="password" id="loginPassword" name="password" placeholder="Password"
+          <input matInput type="password" id="loginPassword" name="password" [(ngModel)]="model.password"
+                 placeholder="Password"
                  formControlName="password">
           <mat-error>Password should be longer than 8!</mat-error>
         </mat-input-container>
         <div>
-          <mat-radio-group formControlName="loginRole" name="login[loginRole]">
+          <mat-radio-group formControlName="loginRole" [(ngModel)]="model.loginRole" name="login[loginRole]">
             <mat-radio-button [value]="1" id="customerOption">Customer</mat-radio-button>
             <mat-radio-button [value]="2" id="restaurantOption">Restaurant</mat-radio-button>
           </mat-radio-group>
         </div>
-        <button mat-raised-button type="submit" class="bottonPosition loginButton" (click)="login()" color="primary"
+        <button mat-raised-button type="submit" class="bottonPosition loginButton" color="primary"
                 [disabled]="!form.valid" id="loginButton">Login
         </button>
       </mat-card-content>

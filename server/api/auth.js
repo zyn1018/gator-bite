@@ -69,6 +69,8 @@ router.post("/registerRes", function (req, res) {
 router.post("/login", function(req, res){
     var email = req.body.email;
     var pwd = req.body.password;
+  console.log(pwd);
+  console.log(email);
     User.findOne({"email": email}, function (err, data) {
       if(err){
         console.log(err);
@@ -81,7 +83,7 @@ router.post("/login", function(req, res){
           var token = data.generateJwt();
           res.status(200);
           res.json({
-            "resturant" : restaurant,
+            "restaurant": data,
             "token": token
           });
         }
