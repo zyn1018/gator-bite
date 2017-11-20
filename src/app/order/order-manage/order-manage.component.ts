@@ -21,6 +21,10 @@ export class OrderManageComponent implements OnInit {
     this.dishes = this.dishService.getDishes();
   }
 
+  /**
+   * Add dish to order
+   * @param {Dish} dish
+   */
   addToOrder(dish: Dish) {
     if (this.orderDetail.get(dish.name) == null) {
       this.orderDetail.set(dish.name, [1, dish.price]);
@@ -31,6 +35,9 @@ export class OrderManageComponent implements OnInit {
     this.orderService.setOrderDetailSubject(this.orderDetail);
   }
 
+  /**
+   * Navigate back to restaurant list page
+   */
   navigateBack() {
     this.router.navigateByUrl('/restaurants');
   }

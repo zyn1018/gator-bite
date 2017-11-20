@@ -16,10 +16,19 @@ export class DishService {
     new Dish(7, '10 tenders', 12.79, '10 Juicy chicken tenders'),
   ];
 
+  /**
+   * Get All the dishes
+   * @returns {Dish[]}
+   */
   getDishes() {
     return this.dishes;
   }
 
+  /**
+   * Get one dish based on dishId
+   * @param {number} id
+   * @returns {Dish}
+   */
   getDish(id: number): Dish {
     let dish = this.dishes.find(dish => dish.dishId == id);
     if (dish == null) {
@@ -28,6 +37,10 @@ export class DishService {
     return dish;
   }
 
+  /**
+   * Update dishes manage page
+   * @param {Dish} dish
+   */
   updateDishes(dish: Dish) {
     if (dish.dishId == 0) {
       dish.dishId = this.dishes.length + 1;

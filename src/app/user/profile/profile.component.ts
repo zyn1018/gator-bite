@@ -15,11 +15,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.userService.getUser();
   }
+
   makePassword(n: number): string {
     let s = '';
     for (let i = 0; i < n; i++) {
       s += '*';
     }
-      return s;
-}
+    return s;
+  }
 }
