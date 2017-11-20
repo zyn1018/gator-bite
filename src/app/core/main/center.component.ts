@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/';
@@ -12,16 +12,27 @@ export class CenterComponent implements OnInit {
   dataSource: Observable<any>;
   locationInfo: any;
   public str: any;
+  obj = '';
+  process: boolean;
+
   constructor(public http: Http) {
   }
+
   ngOnInit() {
   }
+
   getLocation() {
     if (navigator.geolocation) {
+      this.process = true;
       navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showErrorPosition.bind(this));
+      setTimeout(() => {
+        this.obj = this.locationInfo['results'][0]['formatted_address'];
+        this.process = false;
+      }, 6000);
     }
   }
-  showPosition (position) {
+
+  showPosition(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     this.str = String(latitude + ',' + longitude);
@@ -30,10 +41,10 @@ export class CenterComponent implements OnInit {
     this.dataSource.subscribe(
       data => this.locationInfo = data
     );
-    console.log(this.locationInfo);
     // const obj = JSON.parse(this.locationInfo);
-    // console.log(obj[0].formatAddress);
+    // console.log(obj.result[0].formatAddress);
   }
+
   showErrorPosition() {
     console.log('Invalid Address !');
   }

@@ -43,12 +43,15 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(f: NgForm) {
-    console.log(f.value);
     const headers = new HttpHeaders({'content-type': 'application/json', 'Accept': 'application/json'});
     const user = {email: f.value.email, username: f.value.userName, password: f.value.passwordInfo.password};
-    console.log(user);
-    this.http.post('/api/register', JSON.stringify(user), {headers: headers}).subscribe();
+    if (f.value.loginRole.value === 1) {
+      this.http.post('/api/register', JSON.stringify(user), {headers: headers}).subscribe();
+    }else {
+      this.http.post('/api/registerRes', JSON.stringify(user), {headers: headers}).subscribe();
+    }
     console.log(this.signupForm.value);
     console.log(f.value.email);
+    console.log(f.value.loginRole.value);
   }
 }
