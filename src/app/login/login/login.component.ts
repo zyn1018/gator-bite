@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
     this.userEmail = this.userService.getUser().email;
   }
 
+  /**
+   * User login
+   */
   login() {
     if (this.form.value.loginRole == 1) {
       this.isLogin = true;

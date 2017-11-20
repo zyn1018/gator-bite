@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DishFilterPipe} from './dishes-manage/dish-filter.pipe';
 
 @NgModule({
   declarations: [

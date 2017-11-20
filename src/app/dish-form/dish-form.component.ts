@@ -35,10 +35,12 @@ export class DishFormComponent implements OnInit {
     );
   }
 
+  //Discard change and go back to dishes manage page
   cancel() {
     this.router.navigateByUrl('/dishes/' + this.userEmail);
   }
 
+  //Save the dish details after update
   save() {
     this.dish.name = this.formModel.get('name').value;
     this.dish.price = this.formModel.get('price').value;

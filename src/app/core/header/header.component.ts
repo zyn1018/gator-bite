@@ -29,16 +29,25 @@ export class HeaderComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  /**
+   * Show sidebar
+   */
   openSideBar() {
     this.toggle.emit();
   }
 
+  /**
+   * When user logs out, change header
+   */
   logout() {
     this.isLogin = false;
     this.isRestaurant = false;
     this.router.navigateByUrl('/home');
   }
 
+  /**
+   * Show user profile page
+   */
   openUserProfile() {
     this.router.navigateByUrl('/user/' + this.userId);
   }

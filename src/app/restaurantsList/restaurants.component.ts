@@ -24,6 +24,10 @@ export class RestaurantsComponent implements OnInit {
   constructor(private restaurantService: RestaurantService, private router: Router) {
   }
 
+  /**
+   * Navigate to restaurant menu
+   * @param {Restaurant} res
+   */
   goToMenu(res: Restaurant) {
     this.router.navigateByUrl('/restaurants/' + res.restaurantId);
   }

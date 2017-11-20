@@ -17,6 +17,10 @@ export class UserService {
     new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', false),
   ];
 
+  /**
+   * Get user
+   * @returns {User}
+   */
   getUser() {
     return this.users[0];
   }
