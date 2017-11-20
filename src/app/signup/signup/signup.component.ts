@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from '../../domain/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +12,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   fb: FormBuilder = new FormBuilder();
+  model: any = {};
 
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
@@ -27,7 +30,7 @@ export class SignupComponent implements OnInit {
     return valid1 ? null : {password: true};
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -42,13 +45,24 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  signUp(f: NgForm) {
-    console.log(f.value);
-    const headers = new HttpHeaders({'content-type': 'application/json', 'Accept': 'application/json'});
-    const user = {email: f.value.email, username: f.value.userName, password: f.value.passwordInfo.password};
-    console.log(user);
-    this.http.post('/api/register', JSON.stringify(user), {headers: headers}).subscribe();
-    console.log(this.signupForm.value);
-    console.log(f.value.email);
+  // signUp(f: NgForm) {
+  //   console.log(f.value);
+  //   const headers = new HttpHeaders({'content-type': 'application/json', 'Accept': 'application/json'});
+  //   const user = {email: f.value.email, username: f.value.userName, password: f.value.passwordInfo.password};
+  //   console.log(user);
+  //   this.http.post('/api/register', JSON.stringify(user), {headers: headers}).subscribe();
+  //   console.log(this.signupForm.value);
+  //   console.log(f.value.email);
+  // }
+
+  register() {
+    this.userService.create(this.model)
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class UserService {
@@ -9,12 +10,16 @@ export class UserService {
 
   isRestaurant: boolean = false;
 
-  constructor() {
+  constructor(private http: Http) {
   }
 
+  /**
+   * Fake data for test
+   * @type {[User , User]}
+   */
   users: User[] = [
-    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', true),
-    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', false),
+    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2),
+    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1),
   ];
 
   /**
@@ -23,6 +28,30 @@ export class UserService {
    */
   getUser() {
     return this.users[0];
+  }
+
+  // getAll() {
+  //   return this.http.get('/users').map((response: Response) => response.json());
+  // }
+  //
+  // getById(_id: string) {
+  //   return this.http.get('/users/' + _id).map((response: Response) => response.json());
+  // }
+
+  create(user: User) {
+    if (user.loginRole === 1) {
+      return this.http.post('/api/register', user);
+    } else if (user.loginRole === 2) {
+      return this.http.post('/api/registerRes', user);
+    }
+  }
+
+  update(user: User) {
+    return this.http.put('/users/' + user.userId, user);
+  }
+
+  delete(_id: string) {
+    return this.http.delete('/users/' + _id);
   }
 
   private isLoginSubject = new Subject<boolean>();
@@ -53,6 +82,6 @@ export class User {
               public email: string,
               public username: string,
               public password: string,
-              public isRestaurant: boolean) {
+              public loginRole: number) {
   }
 }
