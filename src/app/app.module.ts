@@ -5,12 +5,10 @@ import { AppComponent } from './app.component';
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule,
