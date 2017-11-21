@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../domain/user.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from '../../utils/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   private userEmail: string;
-
-  private isLogin = false;
-
-  private isRestaurant = false;
-
+  private isLogin: boolean = false;
+  private isRestaurant: boolean = false;
   form: FormGroup;
-
+  model: any = {};
+  returnUrl: string;
   fb: FormBuilder = new FormBuilder();
 
   emailValidator(email: FormControl): any {
@@ -27,7 +26,11 @@ export class LoginComponent implements OnInit {
     return valid ? null : {email: true};
   }
 
-  constructor(private router: Router, private userService: UserService, private http: HttpClient) {
+  constructor(private router: Router,
+              private userService: UserService,
+              private http: HttpClient,
+              private route: ActivatedRoute,
+              private authenticationService: AuthenticationService,) {
   }
 
   ngOnInit() {
@@ -37,27 +40,40 @@ export class LoginComponent implements OnInit {
       loginRole: ['', Validators.required]
     });
     this.userEmail = this.userService.getUser().email;
+    this.authenticationService.logout();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   /**
    * User login
    */
-  login(f: NgForm) {
-    console.log(f.form);
-    const user = {email: f.form.value.email, password: f.form.value.password};
+  login() {
     if (this.form.value.loginRole == 1) {
-      this.isLogin = true;
-      this.userService.setIsLoginSubject(this.isLogin);
-      const headers = new HttpHeaders({ 'content-type': 'application/json', 'Accept': 'application/json' });
-      console.log(user);
-      this.http.post('/api/login', JSON.stringify(user), { headers: headers }).subscribe();
-      this.router.navigateByUrl('/restaurants');
+      this.authenticationService.loginCustomer(this.model.email, this.model.password).subscribe(
+        data => {
+          this.isLogin = true;
+          this.userService.setIsLoginSubject(this.isLogin);
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          console.log(error);
+          alert("Invalid customer account");
+        }
+      )
     } else if (this.form.value.loginRole == 2) {
-      this.isLogin = true;
-      this.userService.setIsLoginSubject(this.isLogin);
-      this.isRestaurant = true;
-      this.userService.setIsRestaurantSubject(this.isRestaurant);
-      this.router.navigateByUrl('/dishes/' + this.userEmail);
+      this.authenticationService.loginRestaurant(this.model.email, this.model.password).subscribe(
+        data => {
+          this.isLogin = true;
+          this.userService.setIsLoginSubject(this.isLogin);
+          this.isRestaurant = true;
+          this.userService.setIsRestaurantSubject(this.isRestaurant);
+          this.router.navigateByUrl('/dishes/' + data['restaurant'].email);
+        },
+        error => {
+          console.log(error);
+          alert("Invalid restaurant account");
+        }
+      )
     }
   }
 }

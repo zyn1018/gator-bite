@@ -18,15 +18,13 @@ export class SignupComponent implements OnInit {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
     const valid = myEmail.test(value);
-    console.log('email' + valid);
     return valid ? null : {email: true};
   }
 
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
     const confirmPassword: FormControl = info.get('confirmPassword') as FormControl;
-    const valid1: boolean = (password.value === confirmPassword.value);
-    console.log('password is right:' + valid1);
+    const valid1: boolean = password.value === confirmPassword.value;
     return valid1 ? null : {password: true};
   }
 
@@ -45,16 +43,6 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  // signUp(f: NgForm) {
-  //   console.log(f.value);
-  //   const headers = new HttpHeaders({'content-type': 'application/json', 'Accept': 'application/json'});
-  //   const user = {email: f.value.email, username: f.value.userName, password: f.value.passwordInfo.password};
-  //   console.log(user);
-  //   this.http.post('/api/register', JSON.stringify(user), {headers: headers}).subscribe();
-  //   console.log(this.signupForm.value);
-  //   console.log(f.value.email);
-  // }
-
   register() {
     this.userService.create(this.model)
       .subscribe(
@@ -62,7 +50,8 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error => {
-          console.log(error);
+          alert("Register failed");
         });
+    console.log(this.model.value);
   }
 }
