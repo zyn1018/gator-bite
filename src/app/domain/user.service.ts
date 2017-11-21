@@ -38,6 +38,11 @@ export class UserService {
   //   return this.http.get('/users/' + _id).map((response: Response) => response.json());
   // }
 
+  /**
+   * Create new user
+   * @param {User} user
+   * @returns {Observable<Response>}
+   */
   create(user: User) {
     if (user.loginRole === 1) {
       return this.http.post('/api/register', user);
@@ -46,16 +51,26 @@ export class UserService {
     }
   }
 
+  /**
+   * edit existing user
+   * @param {User} user
+   * @returns {Observable<Response>}
+   */
   update(user: User) {
     return this.http.put('/users/' + user.userId, user);
   }
 
+  /**
+   * delete user
+   * @param {string} _id
+   * @returns {Observable<Response>}
+   */
   delete(_id: string) {
     return this.http.delete('/users/' + _id);
   }
 
+  // For communication among different components
   private isLoginSubject = new Subject<boolean>();
-
   private isRestaurantSubject = new Subject<boolean>();
 
   public setIsLoginSubject(isLogin: boolean) {

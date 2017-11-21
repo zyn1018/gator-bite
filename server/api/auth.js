@@ -8,23 +8,24 @@ router.post("/register", function (req, res) {
   console.log("has reg");
   var user = new User({email: req.body.email, username: req.body.username});
   console.log(req.body.email);
+  console.log(req.body.username);
   user.setPassword(req.body.password);
   User.findOne({"email": user.email}, function (err, indata) {
-    if(err){
+    if (err) {
       res.status(400);
     }
-    if(indata){
+    if (indata) {
       res.status(400).send();
-    }else{
+    } else {
       user.save(function (err) {
-        if(err){
+        if (err) {
           res.status(400);
           console.log(err)
-        }else {
+        } else {
           var token = user.generateJwt();
           res.status(200);
           res.json({
-            "user" : user,
+            "user": user,
             "token": token
           });
         }
@@ -38,21 +39,22 @@ router.post("/registerRes", function (req, res) {
   console.log("has reg");
   var restaurant = new Restaurant({email: req.body.email, username: req.body.username});
   console.log(req.body.email);
+  console.log(req.body.username);
   restaurant.setPassword(req.body.password);
   Restaurant.findOne({"email": restaurant.email}, function (err, indata) {
-    if(err){
+    if (err) {
       console.log(err);
       res.status(400);
     }
-    if(indata){
+    if (indata) {
       console.log("repeate");
       res.status(400).send();
-    }else{
+    } else {
       restaurant.save(function (err) {
-        if(err){
+        if (err) {
           res.status(400);
           console.log(err)
-        }else {
+        } else {
           var token = restaurant.generateJwt();
           res.status(200);
           res.json({
@@ -66,20 +68,20 @@ router.post("/registerRes", function (req, res) {
 })
 
 //login for user
-router.post("/login", function(req, res){
+router.post("/login", function (req, res) {
     var email = req.body.email;
     var pwd = req.body.password;
   console.log(pwd);
   console.log(email);
     User.findOne({"email": email}, function (err, data) {
-      if(err){
+      if (err) {
         console.log(err);
         res.status(400).send();
-      }else{
-        if(!(data && data.validPassword(pwd))){
+      } else {
+        if (!(data && data.validPassword(pwd))) {
           console.log("wrong");
           res.status(400).send();
-        }else{
+        } else {
           var token = data.generateJwt();
           res.status(200);
           res.json({
@@ -92,18 +94,18 @@ router.post("/login", function(req, res){
   }
 );
 //login for restaurant
-router.post("/loginRes", function(req, res){
+router.post("/loginRes", function (req, res) {
     var email = req.body.email;
     var pwd = req.body.password;
     Restaurant.findOne({"email": email}, function (err, data) {
-      if(err){
+      if (err) {
         console.log(err);
         res.status(400).send();
-      }else{
-        if(!(data && data.validPassword(pwd))){
+      } else {
+        if (!(data && data.validPassword(pwd))) {
           console.log("wrong");
           res.status(400).send();
-        }else{
+        } else {
           var token = data.generateJwt();
           res.status(200);
           res.json({
