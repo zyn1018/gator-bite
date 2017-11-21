@@ -7,6 +7,12 @@ export class AuthenticationService {
   constructor(private http: Http) {
   }
 
+  /**
+   * Login as customer
+   * @param {string} email
+   * @param {string} password
+   * @returns {Observable<any>}
+   */
   loginCustomer(email: string, password: string) {
     return this.http.post('/api/login', {email: email, password: password})
       .map((response: Response) => {
@@ -21,6 +27,12 @@ export class AuthenticationService {
       });
   }
 
+  /**
+   * Login as a restaurant manager
+   * @param {string} email
+   * @param {string} password
+   * @returns {Observable<any>}
+   */
   loginRestaurant(email: string, password: string) {
     return this.http.post('/api/loginRes', {email: email, password: password})
       .map((response: Response) => {
@@ -34,6 +46,10 @@ export class AuthenticationService {
         return user;
       });
   }
+
+  /**
+   * Logout
+   */
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

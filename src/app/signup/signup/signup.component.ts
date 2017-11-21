@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.fb.group({
       email: ['', this.emailValidator],
-      userName: ['', [Validators.required, Validators.minLength(6)]],
+      username: ['', [Validators.required, Validators.minLength(6)]],
       passwordInfo: this.fb.group({
         password: [''],
         confirmPassword: ['']
@@ -43,6 +43,9 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  /**
+   *  User register
+   */
   register() {
     this.userService.create(this.model)
       .subscribe(
