@@ -10,7 +10,6 @@ import { AlertComponent } from './alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule,

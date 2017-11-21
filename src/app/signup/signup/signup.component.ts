@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
     const confirmPassword: FormControl = info.get('confirmPassword') as FormControl;
-    const valid1: boolean = password.value === confirmPassword.value;
+    const valid1: boolean = (password.value === confirmPassword.value);
     console.log('password is right:' + valid1);
     return valid1 ? null : {password: true};
   }
