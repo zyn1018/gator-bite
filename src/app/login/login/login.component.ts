@@ -47,33 +47,33 @@ export class LoginComponent implements OnInit {
   /**
    * User login
    */
-  // login(f: NgForm) {
-  //   console.log(f.form);
-  //   const user = {email: f.form.value.email, password: f.form.value.password};
-  //   if (this.form.value.loginRole == 1) {
-  //     this.isLogin = true;
-  //     this.userService.setIsLoginSubject(this.isLogin);
-  //     const headers = new HttpHeaders({ 'content-type': 'application/json', 'Accept': 'application/json' });
-  //     console.log(user);
-  //     this.http.post('/api/login', JSON.stringify(user), { headers: headers }).subscribe();
-  //     this.router.navigateByUrl('/restaurants');
-  //   } else if (this.form.value.loginRole == 2) {
-  //     this.isLogin = true;
-  //     this.userService.setIsLoginSubject(this.isLogin);
-  //     this.isRestaurant = true;
-  //     this.userService.setIsRestaurantSubject(this.isRestaurant);
-  //     this.router.navigateByUrl('/dishes/' + this.userEmail);
-  //   }
-  // }
   login() {
-    this.authenticationService.login(this.model.email, this.model.password).subscribe(
-      data => {
-        this.router.navigate([this.returnUrl]);
-      },
-      error => {
-        console.log(error);
-      }
-    )
-
+    if (this.form.value.loginRole == 1) {
+      this.authenticationService.loginCustomer(this.model.email, this.model.password).subscribe(
+        data => {
+          this.isLogin = true;
+          this.userService.setIsLoginSubject(this.isLogin);
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          console.log(error);
+          alert("Invalid customer account");
+        }
+      )
+    } else if (this.form.value.loginRole == 2) {
+      this.authenticationService.loginRestaurant(this.model.email, this.model.password).subscribe(
+        data => {
+          this.isLogin = true;
+          this.userService.setIsLoginSubject(this.isLogin);
+          this.isRestaurant = true;
+          this.userService.setIsRestaurantSubject(this.isRestaurant);
+          this.router.navigateByUrl('/dishes/' + data['restaurant'].email);
+        },
+        error => {
+          console.log(error);
+          alert("Invalid restaurant account");
+        }
+      )
+    }
   }
 }

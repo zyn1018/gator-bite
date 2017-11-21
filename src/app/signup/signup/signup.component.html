@@ -26,9 +26,8 @@
             <input matInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
           </mat-input-container>
         </div>
-        <div [hidden]="!signupForm.hasError('password', 'passwordInfo')" class="errorColor">Password and confirm
-          Password
-          do not match!
+        <div [hidden]="!signupForm.hasError('password', 'confirmPassword')" class="errorColor">
+          Password and confirm password do not match!
         </div>
         <mat-radio-group formControlName="loginRole" name="login[loginRole]" [(ngModel)]="model.loginRole">
           <mat-radio-button [value]="1">Customer</mat-radio-button>

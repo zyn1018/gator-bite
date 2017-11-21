@@ -56,7 +56,7 @@ router.post("/registerRes", function (req, res) {
           var token = restaurant.generateJwt();
           res.status(200);
           res.json({
-            "resturant" : restaurant,
+            "restaurant": restaurant,
             "token": token
           });
         }
@@ -83,7 +83,7 @@ router.post("/login", function(req, res){
           var token = data.generateJwt();
           res.status(200);
           res.json({
-            "restaurant": data,
+            "user": data,
             "token": token
           });
         }
@@ -107,7 +107,7 @@ router.post("/loginRes", function(req, res){
           var token = data.generateJwt();
           res.status(200);
           res.json({
-            "user": data,
+            "restaurant": data,
             "token": token
           });
         }
