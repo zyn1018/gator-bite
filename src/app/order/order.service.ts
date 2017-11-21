@@ -5,6 +5,9 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class OrderService {
 
+  /**
+   * For share order information
+   */
   private orderDetail: Map<string, number[]>;
 
   private orderDetailSubject = new Subject<Map<string, number[]>>();
