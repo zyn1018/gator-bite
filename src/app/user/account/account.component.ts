@@ -19,6 +19,8 @@ export class AccountComponent implements OnInit {
    */
 
   ngOnInit() {
+    const user : string = localStorage.getItem('currentUser');
+    console.log(user);
     this.userId = this.userService.getUser().userId;
     this.menus = [
       new Menu(1, 'Profile', '/user/' + this.userId + '/profile'),
