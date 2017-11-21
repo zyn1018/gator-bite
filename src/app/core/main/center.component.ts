@@ -20,7 +20,6 @@ export class CenterComponent implements OnInit {
 
   ngOnInit() {
   }
-
   /**
    * Get user's current location and then show the address of user's location
    */
@@ -51,16 +50,13 @@ export class CenterComponent implements OnInit {
     this.dataSource.subscribe(
       data => this.locationInfo = data
     );
-    // const obj = JSON.parse(this.locationInfo);
-    // console.log(obj.result[0].formatAddress);
+
   }
 
 
   /**
    * If get location goes wrong, log 'Invalid Address'
    */
-
-
   showErrorPosition() {
     console.log('Invalid Address !');
   }
