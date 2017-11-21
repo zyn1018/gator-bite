@@ -6,9 +6,9 @@ import {Http} from '@angular/http';
 @Injectable()
 export class UserService {
 
-  isLogin: boolean = false;
+  isLogin = false;
 
-  isRestaurant: boolean = false;
+  isRestaurant = false;
 
   constructor(private http: Http) {
   }

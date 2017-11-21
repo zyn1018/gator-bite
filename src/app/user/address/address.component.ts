@@ -9,6 +9,11 @@ export class AddressComponent implements OnInit {
   states: Array<string>;
   constructor() { }
 
+  /**
+   * Store the abbreviation of all states in US to show
+   */
+
+
   ngOnInit() {
     this.states = [
       'AL',

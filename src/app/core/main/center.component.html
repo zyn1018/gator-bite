@@ -7,10 +7,9 @@
           <i class="material-icons material-icons-color locationButton">room</i>
         </mat-icon>
       </button>
-      <!--<mat-input-container class="inputWidth">-->
-      <!--<input matInput type="text" placeholder="Location">-->
-      <!--</mat-input-container>-->
-
+      <mat-input-container class="inputWidth">
+        <input matInput type="text" placeholder="Location" [value]="obj">
+      </mat-input-container>
     </mat-card-content>
     <mat-card-actions></mat-card-actions>
   </mat-card>
@@ -18,7 +17,4 @@
           [routerLink]="['/restaurants']">Find Food
   </button>
 </form>
-
-
-
 
