@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/';
 
@@ -13,23 +13,24 @@ export class CenterComponent implements OnInit {
   locationInfo: any;
   public str: any;
   obj = '';
-  process: boolean;
+  showSpinner: boolean = false;
 
   constructor(public http: Http) {
   }
 
   ngOnInit() {
   }
+
   /**
    * Get user's current location and then show the address of user's location
    */
   getLocation() {
     if (navigator.geolocation) {
-      this.process = true;
+      this.showSpinner = true;
       navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showErrorPosition.bind(this));
       setTimeout(() => {
         this.obj = this.locationInfo['results'][0]['formatted_address'];
-        this.process = false;
+        this.showSpinner = false;
       }, 6000);
     }
   }

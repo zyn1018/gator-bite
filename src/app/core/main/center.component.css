@@ -30,8 +30,9 @@
 }
 
 .inputWidth {
-  width: 80%;
-  margin-left: -1em;
+  width: 90%;
+  position: absolute;
+  left: 30px;
 
 }
 
@@ -40,13 +41,17 @@
 }
 
 .locationButton {
-  margin-left: -1em;
+  position: absolute;
+  left: -5px;
 }
 
-.cardcontent {
+.cardContent {
   margin-top: -1.5em;
+  position: relative;
 }
 
-.process {
-  margin-left: -0.5em;
+mat-progress-spinner {
+  position: absolute;
+  top: -127px;
+  left: -145px;
 }
