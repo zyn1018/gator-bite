@@ -7,6 +7,7 @@ var express = require("express"),
 router.post("/register", function (req, res) {
   console.log("has reg");
   var user = new User({email: req.body.email, username: req.body.username});
+  console.log(user);
   console.log(req.body.email);
   user.setPassword(req.body.password);
   User.findOne({"email": user.email}, function (err, indata) {
@@ -81,7 +82,7 @@ router.post("/login", function(req, res){
           var token = data.generateJwt();
           res.status(200);
           res.json({
-            "resturant" : restaurant,
+            "user" : data,
             "token": token
           });
         }
@@ -105,7 +106,7 @@ router.post("/loginRes", function(req, res){
           var token = data.generateJwt();
           res.status(200);
           res.json({
-            "user": data,
+            "restaurant": data,
             "token": token
           });
         }
