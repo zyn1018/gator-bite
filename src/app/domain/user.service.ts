@@ -90,6 +90,11 @@ export class UserService {
   public getIsRestaurantSubject(): Observable<boolean> {
     return this.isRestaurantSubject.asObservable();
   }
+
+  // public stringToUser(str: string): User {
+  //   let strs: Array<string>;
+  //   strs = str.split(',');
+  // }
 }
 
 export class User {
