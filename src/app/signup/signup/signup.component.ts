@@ -55,6 +55,5 @@ export class SignupComponent implements OnInit {
         error => {
           alert("Register failed");
         });
-    console.log(this.model.value);
   }
 }
