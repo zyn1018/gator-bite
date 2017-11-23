@@ -12,6 +12,7 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatProgressSpinnerModule,
+  MatProgressBarModule,
 } from '@angular/material';
 
 
