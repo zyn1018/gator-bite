@@ -10,7 +10,7 @@ import {AuthenticationService} from '../../utils/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public userId: number;
+  public userId: string;
   public isLogin: boolean = false;
   public isRestaurant: boolean = false;
   @Output() toggle = new EventEmitter<void>();
@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    const user : string = localStorage.getItem('currentUser');
+    const userInfo: Array<string> = user.split(',');
+    console.log(userInfo);
     this.userId = this.userService.getUser().userId;
     this.isLogin = localStorage.getItem('currentUser') != null;
     this.userService.getIsLoginSubject().subscribe(data => {
