@@ -7,9 +7,9 @@ var getJwt = require("./getJwt");
 router.post("userUpdate", function (req, res) {
   var id = getJwt(req);
   User.findById(id, function (err, user) {
-    if(err){
+    if (err) {
       res.status(400).send(err);
-    }else{
+    } else {
 
     }
   })

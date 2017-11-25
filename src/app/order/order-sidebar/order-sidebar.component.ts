@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {OrderService} from '../order.service';
+import {Order, OrderService} from '../order.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -98,5 +98,8 @@ export class OrderSidebarComponent implements OnInit {
     this.checkShowParam();
     this.calTotalPrice();
     this.calTax();
+  }
+
+  submitOrder() {
   }
 }

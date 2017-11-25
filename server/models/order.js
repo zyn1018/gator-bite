@@ -10,6 +10,7 @@ var orderSchema = new mongoose.Schema({
   userId: String,
   restaurantId: String,
   order: [foodSchema],
+  count: [Number],
   address: String,
   done: Boolean
 })
