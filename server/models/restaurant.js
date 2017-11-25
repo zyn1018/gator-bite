@@ -19,7 +19,7 @@ var restSchema = new mongoose.Schema({
   },
   password: String,
   picture: String,
-  type: Array,
+  type: String,
   delivery_fee:Number,
   menu: [foodSchema],
   hash: String,

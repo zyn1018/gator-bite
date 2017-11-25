@@ -2,8 +2,7 @@ var mongoose = require("mongoose")
 
 var foodSchema = new mongoose.Schema({
   name: String,
-  price: Number,
-  discript: String
+  number: Number,
 });
 
 var orderSchema = new mongoose.Schema({
