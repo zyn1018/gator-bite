@@ -4,14 +4,14 @@ var express = require("express"),
   mongoose = require('mongoose'),
   User = require('./models/user'),
   Restaurant = require("./models/restaurant");
-  LocalStrategy = require("passport-local"),
+LocalStrategy = require("passport-local"),
   passport = require("passport"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 var authRouter = require("./api/auth");
 var db = require("./config.json").db;
 module.exports = app;
-mongoose.connect(db,{useMongoClient: true});
+mongoose.connect(db, {useMongoClient: true});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extende: true}));
 app.use(bodyParser.json());
@@ -47,10 +47,10 @@ var userSchema = mongoose.Schema({
 
 
 app.get("/restaurant", function (req, res) {
-  Restaurant.find({},{"password":0,"menu":0 }, function (err, rests) {
-    if(err){
+  Restaurant.find({}, {"password": 0, "menu": 0}, function (err, rests) {
+    if (err) {
       console.log("err");
-    }else{
+    } else {
       res.send(rests);
     }
   });
@@ -59,7 +59,7 @@ app.get("/restaurant", function (req, res) {
 //get a certain restaurant's dish
 app.get("/dishes/:email", function (req, res) {
   var email = req.params.email;
-  Restaurant.find({email: email}, {"menu": 1,"_id":0}, function (err, menues) {
+  Restaurant.find({email: email}, {"menu": 1, "_id": 0}, function (err, menues) {
     if (err) {
       console.log(err);
     } else {
@@ -86,7 +86,6 @@ app.get("/dishes/:email", function (req, res) {
     }
   });
 });*/
-
 
 
 app.listen(3000, process.env.IP, function () {

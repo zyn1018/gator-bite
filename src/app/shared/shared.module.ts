@@ -10,7 +10,9 @@ import {
   MatInputModule,
   MatRadioModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
 } from '@angular/material';
 
 
@@ -28,6 +30,7 @@ import {
     ReactiveFormsModule,
     MatRadioModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatCardModule,
@@ -41,7 +44,8 @@ import {
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressSpinnerModule
   ],
   declarations: []
 })

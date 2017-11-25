@@ -1,20 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class UserService {
 
-  isLogin: boolean = false;
+  isLogin = false;
 
-  isRestaurant: boolean = false;
+  isRestaurant = false;
 
-  constructor() {
+  constructor(private http: Http) {
   }
 
+  /**
+   * Fake data for test
+   * @type {[User , User]}
+   */
   users: User[] = [
-    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', true),
-    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', false),
+    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2),
+    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1),
   ];
 
   /**
@@ -25,8 +30,47 @@ export class UserService {
     return this.users[0];
   }
 
-  private isLoginSubject = new Subject<boolean>();
+  // getAll() {
+  //   return this.http.get('/users').map((response: Response) => response.json());
+  // }
+  //
+  // getById(_id: string) {
+  //   return this.http.get('/users/' + _id).map((response: Response) => response.json());
+  // }
 
+  /**
+   * Create new user
+   * @param {User} user
+   * @returns {Observable<Response>}
+   */
+  create(user: User) {
+    if (user.loginRole === 1) {
+      return this.http.post('/api/register', user);
+    } else if (user.loginRole === 2) {
+      return this.http.post('/api/registerRes', user);
+    }
+  }
+
+  /**
+   * edit existing user
+   * @param {User} user
+   * @returns {Observable<Response>}
+   */
+  update(user: User) {
+    return this.http.put('/users/' + user.userId, user);
+  }
+
+  /**
+   * delete user
+   * @param {string} _id
+   * @returns {Observable<Response>}
+   */
+  delete(_id: string) {
+    return this.http.delete('/users/' + _id);
+  }
+
+  // For communication among different components
+  private isLoginSubject = new Subject<boolean>();
   private isRestaurantSubject = new Subject<boolean>();
 
   public setIsLoginSubject(isLogin: boolean) {
@@ -46,6 +90,11 @@ export class UserService {
   public getIsRestaurantSubject(): Observable<boolean> {
     return this.isRestaurantSubject.asObservable();
   }
+
+  // public stringToUser(str: string): User {
+  //   let strs: Array<string>;
+  //   strs = str.split(',');
+  // }
 }
 
 export class User {
@@ -53,6 +102,6 @@ export class User {
               public email: string,
               public username: string,
               public password: string,
-              public isRestaurant: boolean) {
+              public loginRole: number,) {
   }
 }

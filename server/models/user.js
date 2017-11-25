@@ -5,7 +5,6 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var secret = require("../config.json").secret
 
-
 var userSchema = mongoose.Schema({
   email: {
     type: String,
@@ -13,6 +12,9 @@ var userSchema = mongoose.Schema({
   },
   username: String,
   password: String,
+  passwordLength: Number,
+  address: String,
+  payment: String,
   hash: String,
   salt: String
 });

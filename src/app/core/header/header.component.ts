@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../domain/user.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../utils/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,19 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public userId: number;
+  public userId: string;
   public isLogin: boolean = false;
   public isRestaurant: boolean = false;
   @Output() toggle = new EventEmitter<void>();
 
-  constructor(private userService: UserService, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(private userService: UserService, private cdr: ChangeDetectorRef, private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
-    this.userId = this.userService.getUser().userId;
+    const user : string = localStorage.getItem('currentUser');
+    const userInfo: Array<string> = user.split(',');
+    console.log(userInfo);
+    this.userId = userInfo[0].substring(16,userInfo[0].length - 1);
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
     });
@@ -40,6 +44,7 @@ export class HeaderComponent implements OnInit {
    * When user logs out, change header
    */
   logout() {
+    this.authenticationService.logout();
     this.isLogin = false;
     this.isRestaurant = false;
     this.router.navigateByUrl('/home');
