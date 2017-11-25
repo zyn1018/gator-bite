@@ -8,7 +8,7 @@ import {OrdersComponent} from '../../user/orders/orders.component';
 
 const routes: Routes = [
   {
-    path: 'user/:userId', component: TogetherComponent,
+    path: 'user/:userid', component: TogetherComponent,
     children: [
       {path: '', component: ProfileComponent},
       {path: 'profile', component: ProfileComponent},

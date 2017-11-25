@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from '../../domain/user.service';
+import {User, UserService} from '../../domain/user.service';
 
 @Component({
   selector: 'app-account',
@@ -9,8 +9,6 @@ import {UserService} from '../../domain/user.service';
 })
 export class AccountComponent implements OnInit {
   menus: Array<Menu>;
-  public userId: any;
-
   constructor(public router: Router, private userService: UserService) {
   }
 
@@ -19,14 +17,12 @@ export class AccountComponent implements OnInit {
    */
 
   ngOnInit() {
-    const user : string = localStorage.getItem('currentUser');
-    const userInfo: Array<string> = user.split(',');
-    this.userId = userInfo[0].substring(15,userInfo[0].length - 1);
+    const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.menus = [
-      new Menu(this.userId, 'Profile', '/user/' + this.userId + '/profile'),
-      new Menu(this.userId, 'Address', '/user/' + this.userId + '/address'),
-      new Menu(this.userId, 'Payment', '/user/' + this.userId + '/payment'),
-      new Menu(this.userId, 'Orders', '/user/' + this.userId + '/orders')
+      new Menu(userid, 'Profile', '/user/' + userid + '/profile'),
+      new Menu(userid, 'Address', '/user/' + userid + '/address'),
+      new Menu(userid, 'Payment', '/user/' + userid + '/payment'),
+      new Menu(userid, 'Orders', '/user/' + userid + '/orders')
     ];
   }
 
