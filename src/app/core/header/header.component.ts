@@ -20,12 +20,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.userService.getUser().userId;
+    this.isLogin = localStorage.getItem('currentUser') != null;
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
-    })
+    });
     this.cdr.markForCheck();
     this.cdr.detectChanges();
   }

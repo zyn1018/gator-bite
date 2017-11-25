@@ -1,9 +1,18 @@
 import {Injectable} from '@angular/core';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class DishService {
+  public menu: Dish[];
+  public headers: Headers;
+  public options: RequestOptions;
 
-  constructor() {
+  constructor(private http: Http) {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
   }
 
   public dishes: Dish[] = [
@@ -17,11 +26,19 @@ export class DishService {
   ];
 
   /**
-   * Get All the dishes
+   * Get all the dishes
    * @returns {Dish[]}
    */
   getDishes() {
     return this.dishes;
+  }
+
+  /**
+   * Get all the dishes in menu via database
+   */
+  getDishesDB(): Dish[] {
+    this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
+    return this.menu;
   }
 
   /**
@@ -30,7 +47,7 @@ export class DishService {
    * @returns {Dish}
    */
   getDish(id: number): Dish {
-    let dish = this.dishes.find(dish => dish.dishId == id);
+    let dish = this.menu.find(dish => dish.dishId == id);
     if (dish == null) {
       dish = new Dish(0, '', null, '');
     }
@@ -50,6 +67,31 @@ export class DishService {
       this.dishes.splice(dish.dishId - 1, 1, dish);
     }
   }
+
+  /**
+   * Update menu in both front-end and back-end
+   * @param {Dish} dish
+   */
+  updateDishesDB(dish: Dish) {
+    if (dish.dishId == 0) {
+      dish.dishId = this.dishes.length + 1;
+      this.menu.push(dish);
+      this.menu.sort((d1, d2) => d1.dishId - d2.dishId);
+      this.http.post('/api/resUpdate', this.menu, this.options).map((response: Response) => {
+        // update successful if there's a restaurant token in the response
+        let restaurant = response.json()['restaurant'];
+        localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      });
+    } else {
+      this.menu.splice(dish.dishId - 1, 1, dish);
+      this.http.post('/api/resUpdate', this.menu, this.options).map((response: Response) => {
+        // update successful if there's a restaurant token in the response
+        let restaurant = response.json()['restaurant'];
+        localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      });
+    }
+
+  }
 }
 
 export class Dish {
@@ -58,6 +100,4 @@ export class Dish {
               public price: number,
               public desc: string) {
   }
-
-
 }

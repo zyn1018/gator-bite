@@ -17,13 +17,13 @@ export class AuthenticationService {
     return this.http.post('/api/login', {email: email, password: password})
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let user = response.json();
-        if (user && user.token) {
+        let user = response.json()['user'];
+        let token = response.json()['token'];
+        if (user && token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('token', JSON.stringify(token));
         }
-
-        return user;
       });
   }
 
@@ -37,13 +37,15 @@ export class AuthenticationService {
     return this.http.post('/api/loginRes', {email: email, password: password})
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let user = response.json();
-        if (user && user.token) {
+        let restaurant = response.json()['restaurant'];
+        let token = response.json()['token'];
+        if (restaurant && token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUser', JSON.stringify(restaurant));
+          localStorage.setItem('token', JSON.stringify(token));
+          // console.log(JSON.stringify(restaurant));
+          // console.log(JSON.stringify(token));
         }
-
-        return user;
       });
   }
 
@@ -53,5 +55,6 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
   }
 }
