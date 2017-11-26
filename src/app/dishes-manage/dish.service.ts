@@ -77,16 +77,16 @@ export class DishService {
       dish.dishId = this.dishes.length + 1;
       this.menu.push(dish);
       this.menu.sort((d1, d2) => d1.dishId - d2.dishId);
-      this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
+      this.http.post('/api/restUpdate', this.menu).map((response: Response) => {
         // update successful if there's a restaurant token in the response
-        let restaurant = response.json()['restaurant'];
+        let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
       });
     } else {
       this.menu.splice(dish.dishId - 1, 1, dish);
-      this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
+      this.http.post('/api/restUpdate', this.menu).map((response: Response) => {
         // update successful if there's a restaurant token in the response
-        let restaurant = response.json()['restaurant'];
+        let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
       });
     }
