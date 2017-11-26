@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Restaurant} from './restaurant';
-import {Restaurants} from './mock-restaurants';
 import {Http} from '@angular/http';
 
 @Injectable()

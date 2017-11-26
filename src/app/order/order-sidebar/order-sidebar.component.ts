@@ -56,9 +56,12 @@ export class OrderSidebarComponent implements OnInit {
       this.cdr.detectChanges();
     });
 
-    this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-    this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-
+    if (localStorage.getItem('currentUser') != null) {
+      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+      this.address = JSON.parse(localStorage.getItem('currentUser')).address;
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    }
   }
 
   /**
@@ -141,6 +144,7 @@ export class OrderSidebarComponent implements OnInit {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
     this.order = new Order(this.userId, this.restaurantId, this.submitDetail, this.address, false);
+    console.log(this.userId);
     // this.http.post('/api/resUpdate', this.order, this.options);
     this.orderDetail.clear();
     this.checkShowParam();

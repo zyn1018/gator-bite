@@ -46,7 +46,7 @@ export class DishFormComponent implements OnInit {
     this.dish.name = this.formModel.get('name').value;
     this.dish.price = this.formModel.get('price').value;
     this.dish.desc = this.formModel.get('desc').value;
-    this.dishService.updateDishes(this.dish);
+    this.dishService.updateDishesDB(this.dish);
     this.router.navigateByUrl('/dishes/' + this.userId);
   }
 }

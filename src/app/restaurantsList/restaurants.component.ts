@@ -24,6 +24,9 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit() {
     this.restaurants = [];
+    /**
+     * To get available restaurants nearby
+     */
     this.http.get('/api/restaurant').subscribe(data => {
       // console.log(data.json());
       for (let i = 0; i < data.json().length; i++) {
