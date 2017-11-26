@@ -13,12 +13,17 @@ import {Router} from '@angular/router';
 })
 
 export class RestaurantsComponent implements OnInit {
-  restaurants: Restaurant[];
-  getRestaurants(): void {
-    this.restaurantService.getRestaurants().then(res => this.restaurants = res);
+  public restaurants: Restaurant[];
+
+  getRestaurants() {
+    this.restaurantService.getRestaurantsDB();
+    this.restaurants = this.restaurantService.restaurants;
+    console.log(this.restaurantService.restaurants);
   }
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.getRestaurants();
+    // console.log(this.restaurants);
   }
 
   constructor(private restaurantService: RestaurantService, private router: Router) {

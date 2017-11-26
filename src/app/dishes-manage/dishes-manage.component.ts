@@ -4,6 +4,7 @@ import {Dish, DishService} from './dish.service';
 import {FormControl} from '@angular/forms';
 import 'rxjs/Rx';
 import {UserService} from '../domain/user.service';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 
 @Component({
   selector: 'app-dishes-manage',
@@ -12,24 +13,31 @@ import {UserService} from '../domain/user.service';
 })
 export class DishesManageComponent implements OnInit {
   public dishes: Dish[];
-  public userEmail: string;
   public nameFilter: FormControl = new FormControl();
   public keyword: string;
+  public userId: string;
+  public headers: Headers;
+  public options: RequestOptions;
 
-  constructor(private router: Router, private dishService: DishService, private userService: UserService) {
+  constructor(private router: Router, private dishService: DishService, private userService: UserService, private http: Http) {
   }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes();
+    this.dishes = this.dishService.getDishesDB();
     this.nameFilter.valueChanges.debounceTime(500).subscribe(value => this.keyword = value);
-    this.userEmail = this.userService.getUser().email;
+    this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+    console.log(JSON.parse(localStorage.getItem('currentUser')).menu);
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
   }
 
   /**
    * Create new dish
    */
   create() {
-    this.router.navigateByUrl('/dishes/' + this.userEmail + '/0');
+    this.router.navigateByUrl('/dishes/' + this.userId + '/0');
   }
 
   /**
@@ -37,7 +45,7 @@ export class DishesManageComponent implements OnInit {
    * @param {Dish} dish
    */
   update(dish: Dish) {
-    this.router.navigateByUrl('/dishes/' + this.userEmail + '/' + dish.dishId);
+    this.router.navigateByUrl('/dishes/' + this.userId + '/' + dish.dishId);
   }
 
   /**
@@ -50,7 +58,12 @@ export class DishesManageComponent implements OnInit {
       for (let i = dish.dishId - 1; i < this.dishes.length; i++) {
         this.dishes[i].dishId -= 1;
       }
-      this.router.navigateByUrl('/dishes/' + this.userEmail);
+      this.http.post('/api/resUpdate', this.dishes, this.options).map((response: Response) => {
+        // update successful if there's a restaurant token in the response
+        let restaurant = response.json()['restaurant'];
+        localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      });
+      this.router.navigateByUrl('/dishes/' + this.userId);
     }
   }
 }

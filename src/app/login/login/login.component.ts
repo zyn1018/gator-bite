@@ -67,7 +67,8 @@ export class LoginComponent implements OnInit {
           this.userService.setIsLoginSubject(this.isLogin);
           this.isRestaurant = true;
           this.userService.setIsRestaurantSubject(this.isRestaurant);
-          this.router.navigateByUrl('/dishes/' + data['restaurant'].email);
+          const id = JSON.parse(localStorage.getItem('currentUser'))._id;
+          this.router.navigateByUrl('/dishes/' + id);
         },
         error => {
           console.log(error);

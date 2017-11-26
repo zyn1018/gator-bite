@@ -11,7 +11,7 @@ var orderSchema = new mongoose.Schema({
   order: [foodSchema],
   address: String,
   done: Boolean
-})
+});
 
 var Order = mongoose.models("orders", orderSchema);
 module.exports = Order;

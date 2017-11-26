@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DishFormComponent} from './dish-form.component';
 
 const routes: Routes = [
-  {path: 'dishes/:email/:dishId', component: DishFormComponent},
+  {path: 'dishes/:userId/:dishId', component: DishFormComponent},
 ];
 
 @NgModule({

@@ -21,21 +21,22 @@ export class CustomHttp extends Http {
     super(backend, defaultOptions);
   }
 
-  get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return super.get(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
-  }
 
-  post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-    return super.post(appConfig.apiUrl + url, body, this.addJwt(options)).catch(this.handleError);
-  }
-
-  put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
-    return super.put(appConfig.apiUrl + url, body, this.addJwt(options)).catch(this.handleError);
-  }
-
-  delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return super.delete(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
-  }
+  // get(url: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return super.get(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
+  // }
+  //
+  // post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return super.post(appConfig.apiUrl + url, body, this.addJwt(options)).catch(this.handleError);
+  // }
+  //
+  // put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return super.put(appConfig.apiUrl + url, body, this.addJwt(options)).catch(this.handleError);
+  // }
+  //
+  // delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
+  //   return super.delete(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
+  // }
 
   // private helper methods
 
