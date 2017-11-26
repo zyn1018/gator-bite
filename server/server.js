@@ -9,6 +9,7 @@ LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 var authRouter = require("./api/auth");
+var restRouter = require("./api/rest_crud");
 var db = require("./config.json").db;
 module.exports = app;
 mongoose.connect(db, {useMongoClient: true});
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extende: true}));
 app.use(bodyParser.json());
 app.use(authRouter);
+app.use(restRouter);
 
 
 //define a restaurant class
