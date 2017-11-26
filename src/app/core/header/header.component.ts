@@ -20,9 +20,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     const user: string = localStorage.getItem('currentUser');
-    const userInfo: Array<string> = user.split(',');
-    console.log(userInfo);
-    this.userId = userInfo[0].substring(16, userInfo[0].length - 1);
+    if (user != null) {
+      const userInfo: Array<string> = user.split(',');
+      console.log(userInfo);
+      this.userId = userInfo[0].substring(16, userInfo[0].length - 1);
+    }
     this.isLogin = localStorage.getItem('currentUser') != null;
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;

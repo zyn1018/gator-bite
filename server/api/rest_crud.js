@@ -12,9 +12,9 @@ var getJwt = require("./getJwt");
 router.post("/restUpdate", function (req, res) {
   var id = getJwt(req);
   Restaurant.findById(id, function (err, restaurant) {
-    if(err){
+    if (err) {
       res.status(400).send(err);
-    }else{
+    } else {
       restaurant.picture = req.body.picture || restaurant.picture;
       restaurant.type = req.body.type || restaurant.type;
       restaurant.delivery_fee = req.body.delivery_fee || restaurant.delivery_fee;
@@ -23,7 +23,6 @@ router.post("/restUpdate", function (req, res) {
 
   })
 });
-
 
 
 module.exports = router;

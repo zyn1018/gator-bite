@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Order, OrderService} from '../order.service';
+import {Order, OrderDetail, OrderService} from '../order.service';
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,15 +11,36 @@ import {Order, OrderService} from '../order.service';
 })
 export class OrderSidebarComponent implements OnInit {
 
+  orderForm: FormGroup;
+  fb: FormBuilder = new FormBuilder();
   public orderDetail = new Map<string, number[]>();
   public show: boolean = false;
   public totalPrice: number = 0;
   public tax: number = 0;
+  public restaurantId: string;
+  public userId: string;
+  public submitDetail: Array<OrderDetail>;
+  public address: string;
+  public order: Order;
+  public headers: Headers;
+  public options: RequestOptions;
 
-  constructor(private orderService: OrderService, private cdr: ChangeDetectorRef) {
+  constructor(private orderService: OrderService, private cdr: ChangeDetectorRef, private http: Http) {
   }
 
   ngOnInit() {
+    this.orderForm = this.fb.group({
+      email: [''],
+      username: ['',],
+      loginRole: ['']
+    });
+    this.submitDetail = [];
+    //Set token into header
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
+
     this.orderService.getOrderDetailSubject().subscribe(data => {
       this.orderDetail = data;
       this.checkShowParam();
@@ -26,6 +49,15 @@ export class OrderSidebarComponent implements OnInit {
       this.cdr.markForCheck();
       this.cdr.detectChanges();
     });
+
+    this.orderService.getRestaurantIdSubject().subscribe(data => {
+      this.restaurantId = data;
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    });
+
+    this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+    this.address = JSON.parse(localStorage.getItem('currentUser')).address;
 
   }
 
@@ -100,6 +132,19 @@ export class OrderSidebarComponent implements OnInit {
     this.calTax();
   }
 
+  /**
+   * When press submit your order button, the order will be sent to server
+   */
   submitOrder() {
+    console.log(this.orderDetail);
+    this.orderDetail.forEach((value: number[], key: string) => {
+      this.submitDetail.push(new OrderDetail(key, value[0]));
+    });
+    this.order = new Order(this.userId, this.restaurantId, this.submitDetail, this.address, false);
+    // this.http.post('/api/resUpdate', this.order, this.options);
+    this.orderDetail.clear();
+    this.checkShowParam();
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 }
