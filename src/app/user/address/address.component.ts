@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Http, RequestOptions} from '@angular/http';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
@@ -10,10 +10,11 @@ export class AddressComponent implements OnInit {
   states: Array<string>;
   addressForm: FormGroup;
   fb: FormBuilder = new FormBuilder();
-  address: Array<string>;
+  address: Array<any>;
   model: any = {};
-  headers: any;
+  headers: Headers;
   options: any;
+  ad: any = {};
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -104,10 +105,16 @@ export class AddressComponent implements OnInit {
     this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
     this.model.password = JSON.parse(localStorage.getItem('currentUser')).password;
     this.model.loginRole = JSON.parse(localStorage.getItem('currentUser')).loginRole;
-    this.model.address = this.model.address.aLine1 + ',' + this.model.address.aLine2 + ',' + this.model.address.city
-                        +',' +  this.model.address.state + ',' + this.model.address.zip;
+    this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
+                        +',' +  this.ad.state + ',' + this.ad.zip;
+    console.log(this.model.address);
     this.model.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
-    this.http.post('/api/userUpdate', this.model, this.options);
+    this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {
+      let user = response.json()['user'];
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+    });
   }
 }
 

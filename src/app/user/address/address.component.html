@@ -1,36 +1,35 @@
-<form [formGroup]="addressForm" (ngSubmit)=" updateAddress()" #f="ngForm">
+<form [formGroup]="addressForm" (ngSubmit)="updateAddress()">
   <div class="distance" >
     <p class="title">
       Address Line1
     </p>
-    <input type="text" class="input" formControlName="aLine1" [[ngModel]]="model.address.aLine1">
+    <input type="text" class="input" formControlName="aLine1" [(ngModel)]="ad.aLine1">
   </div>
   <div class="distance">
     <p class="title">
       Address Line2
     </p>
-    <input type="text" class="input" formControlName="aLine2" [[ngModel]]="model.address.aLine2">
+    <input type="text" class="input" formControlName="aLine2" [(ngModel)]="ad.aLine2">
   </div>
   <div class="distance">
     <p class="title">
       City
     </p>
-    <input type="text" class="input" formControlName="city" [[ngModel]]="model.address.city">
+    <input type="text" class="input" formControlName="city" [(ngModel)]="ad.city">
   </div>
   <div class="distance">
     <p class="title">
       State
     </p>
-    <select id="inputState" class="input" formControlName="state" [[ngModel]]="model.address.state">
-      <option selected>FL</option>
-      <option *ngFor="let state of states">{{state}}</option>
+    <select id="inputState" class="input" formControlName="state" [(ngModel)]="ad.state">
+      <option *ngFor="let state of states" [value]="state">{{state}}</option>
     </select>
   </div>
   <div class="distance">
     <p class="title">
       Zip code
     </p>
-    <input type="text" class="input" formControlName="zip" [[ngModel]]="model.address.zip">
+    <input type="text" class="input" formControlName="zip" [(ngModel)]="ad.zip">
   </div>
   <div class="distance">
     <button mat-raised-button color="Primary" type="submit">Update</button>

@@ -7,12 +7,16 @@ import {User, UserService} from '../../domain/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
+  username: string;
+  email: string;
+  passwordLength: number;
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.user = this.userService.getUser();
+    this.username = JSON.parse(localStorage.getItem('currentUser')).username;
+    this.email = JSON.parse(localStorage.getItem('currentUser')).email;
+    this.passwordLength = JSON.parse(localStorage.getItem('currentUser')).hash.length;
   }
 
   /**
@@ -21,6 +25,7 @@ export class ProfileComponent implements OnInit {
 
   makePassword(n: number): string {
     let s = '';
+    n = n / 8;
     for (let i = 0; i < n; i++) {
       s += '*';
     }

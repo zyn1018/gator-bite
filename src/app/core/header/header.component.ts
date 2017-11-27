@@ -19,12 +19,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+    const user: string = localStorage.getItem('currentUser');
+    if (user != null) {
+      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+      console.log(this.userId);
+    }
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
+      console.log(this.isRestaurant);
     })
     this.cdr.markForCheck();
     this.cdr.detectChanges();
@@ -51,6 +56,11 @@ export class HeaderComponent implements OnInit {
    * Show user profile page
    */
   openUserProfile() {
-    this.router.navigateByUrl('/user/' + this.userId);
+    if(this.isRestaurant == false){
+      this.router.navigateByUrl('/user/' + this.userId);
+    }else if(this.isRestaurant == true){
+      this.router.navigateByUrl('/restaurantInfo/' + this.userId);
+      // console.log(this.userId);
+    }
   }
 }

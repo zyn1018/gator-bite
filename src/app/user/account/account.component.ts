@@ -17,13 +17,16 @@ export class AccountComponent implements OnInit {
    */
 
   ngOnInit() {
-    const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
-    this.menus = [
-      new Menu(userid, 'Profile', '/user/' + userid + '/profile'),
-      new Menu(userid, 'Address', '/user/' + userid + '/address'),
-      new Menu(userid, 'Payment', '/user/' + userid + '/payment'),
-      new Menu(userid, 'Orders', '/user/' + userid + '/orders')
-    ];
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user){
+      const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
+      this.menus = [
+        new Menu(userid, 'Profile', '/user/' + userid + '/profile'),
+        new Menu(userid, 'Address', '/user/' + userid + '/address'),
+        new Menu(userid, 'Payment', '/user/' + userid + '/payment'),
+        new Menu(userid, 'Orders', '/user/' + userid + '/orders')
+      ];
+    }
   }
 
   /**
