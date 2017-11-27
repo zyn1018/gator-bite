@@ -4,7 +4,7 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form [formGroup]="formModel" class="form-horizontal">
+  <form [formGroup]="formModel" class="form-horizontal" (ngSubmit)="f.form.valid" #f="ngForm">
     <div class="box-body">
       <div class="form-group"
            [class.has-error]="formModel.get('name').touched && formModel.hasError('required', 'name')">
@@ -38,8 +38,8 @@
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
-        <button id="cancelButton" type="submit" class="btn btn-default" (click)="cancel()">Cancel</button>
-        <button id="saveButton" (click)="save()" [disabled]="formModel.invalid" type="submit"
+        <button id="cancelButton" class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+        <button id="saveButton" [disabled]="formModel.invalid" type="button" (click)="save()"
                 class="btn btn-info pull-right">Save
         </button>
       </div>

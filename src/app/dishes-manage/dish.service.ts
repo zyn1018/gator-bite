@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class DishService {
@@ -15,15 +14,16 @@ export class DishService {
     this.options = new RequestOptions({headers: this.headers});
   }
 
-  public dishes: Dish[] = [
-    new Dish(1, '10 Boneless Wings', 8.99, '10 boneless wings with multiple flavors'),
-    new Dish(2, '16 Boneless Wings', 13.99, '16 boneless wings with multiple flavors'),
-    new Dish(3, '20 Boneless Wings', 16.99, '20 boneless wings with multiple flavors'),
-    new Dish(4, 'Wedge Fries', 2.29, 'Crispy fires'),
-    new Dish(5, '4 tenders', 5.79, '4 Juicy chicken tenders'),
-    new Dish(6, '6 tenders', 7.79, '6 Juicy chicken tenders'),
-    new Dish(7, '10 tenders', 12.79, '10 Juicy chicken tenders'),
-  ];
+  public dishes: Dish[] = [];
+  // public dishes: Dish[] = [
+  //   new Dish(1, '10 Boneless Wings', 8.99, '10 boneless wings with multiple flavors'),
+  //   new Dish(2, '16 Boneless Wings', 13.99, '16 boneless wings with multiple flavors'),
+  //   new Dish(3, '20 Boneless Wings', 16.99, '20 boneless wings with multiple flavors'),
+  //   new Dish(4, 'Wedge Fries', 2.29, 'Crispy fires'),
+  //   new Dish(5, '4 tenders', 5.79, '4 Juicy chicken tenders'),
+  //   new Dish(6, '6 tenders', 7.79, '6 Juicy chicken tenders'),
+  //   new Dish(7, '10 tenders', 12.79, '10 Juicy chicken tenders'),
+  // ];
 
   /**
    * Get all the dishes
@@ -77,17 +77,23 @@ export class DishService {
       dish.dishId = this.dishes.length + 1;
       this.menu.push(dish);
       this.menu.sort((d1, d2) => d1.dishId - d2.dishId);
+      // console.log(this.menu);
       this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
-        let restaurant = response.json()['restaurant'];
+        let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      }).subscribe(data => {
+        console.log('received response');
       });
+      // console.log('sent update request');
     } else {
       this.menu.splice(dish.dishId - 1, 1, dish);
       this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
-        let restaurant = response.json()['restaurant'];
+        let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      }).subscribe(data => {
+        console.log('received response');
       });
     }
 

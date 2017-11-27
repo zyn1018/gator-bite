@@ -145,7 +145,9 @@ export class OrderSidebarComponent implements OnInit {
     });
     this.order = new Order(this.userId, this.restaurantId, this.submitDetail, this.address, false);
     console.log(this.userId);
-    // this.http.post('/api/resUpdate', this.order, this.options);
+    this.http.post('/api/resUpdate', this.order, this.options).subscribe(data => {
+      console.log('Order submission successful');
+    });
     this.orderDetail.clear();
     this.checkShowParam();
     this.cdr.markForCheck();

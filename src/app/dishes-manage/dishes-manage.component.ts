@@ -26,7 +26,7 @@ export class DishesManageComponent implements OnInit {
     this.dishes = this.dishService.getDishesDB();
     this.nameFilter.valueChanges.debounceTime(500).subscribe(value => this.keyword = value);
     this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-    console.log(JSON.parse(localStorage.getItem('currentUser')).menu);
+    // console.log(JSON.parse(localStorage.getItem('currentUser')).menu);
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
@@ -62,6 +62,8 @@ export class DishesManageComponent implements OnInit {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json()['restaurant'];
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
+      }).subscribe(data => {
+        console.log('delete successful');
       });
       this.router.navigateByUrl('/dishes/' + this.userId);
     }
