@@ -20,8 +20,7 @@ router.post("/restUpdate", function (req, res) {
       restaurant.type = req.body.type || restaurant.type;
       restaurant.delivery_fee = req.body.delivery_fee || restaurant.delivery_fee;
       restaurant.menu = req.body.menu || restaurant.menu;
-      console.log(req.body.menu);
-
+      console.log(req.body);
       restaurant.save(function (err, data) {
         if(err) {
           res.status(400).send(err);
