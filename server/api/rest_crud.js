@@ -10,9 +10,8 @@ var getJwt = require("./getJwt");
  * req.json{picture, }
  */
 router.post("/restUpdate", function (req, res) {
-  console.log("update menue");
+  console.log("update menu");
   var id = getJwt(req);
-  console.log(id);
   Restaurant.findById(id, function (err, restaurant) {
     if (err) {
       res.status(400).send(err);
