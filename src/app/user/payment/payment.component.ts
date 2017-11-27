@@ -29,29 +29,34 @@ export class PaymentComponent implements OnInit {
 
 
   ngOnInit() {
+    this.paymentForm = this.fb.group({
+      holder:[''],
+      n1:[''],
+      n2:[''],
+      n3:[''],
+      n4:[''],
+      em:[''],
+      ey:[''],
+      cvv:[''],
+    });
     if(JSON.parse(localStorage.getItem('currentUser')).payment != null){
       this.payment = JSON.parse(localStorage.getItem('currentUser')).payment.split(',');
-      this.paymentForm = this.fb.group({
-        holder:[this.payment[0]],
-        n1:[this.payment[1]],
-        n2:[this.payment[2]],
-        n3:[this.payment[3]],
-        n4:[this.payment[4]],
-        em:[this.payment[5]],
-        ey:[this.payment[6]],
-        cvv:[this.payment[7]],
-      });
-    }else{
-      this.paymentForm = this.fb.group({
-        holder:[''],
-        n1:[''],
-        n2:[''],
-        n3:[''],
-        n4:[''],
-        em:[''],
-        ey:[''],
-        cvv:[''],
-      });
+      this.paymentForm.controls['holder'].setValue(this.payment[0]);
+      this.py.holder = this.payment[0];
+      this.paymentForm.controls['n1'].setValue(this.payment[1]);
+      this.py.n1 = this.payment[1];
+      this.paymentForm.controls['n2'].setValue(this.payment[2]);
+      this.py.n2 = this.payment[2];
+      this.paymentForm.controls['n3'].setValue(this.payment[3]);
+      this.py.n3 = this.payment[3];
+      this.paymentForm.controls['n4'].setValue(this.payment[4]);
+      this.py.n4 = this.payment[4];
+      this.paymentForm.controls['em'].setValue(this.payment[5]);
+      this.py.em = this.payment[5];
+      this.paymentForm.controls['ey'].setValue(this.payment[6]);
+      this.py.ey = this.payment[6];
+      this.paymentForm.controls['cvv'].setValue(this.payment[7]);
+      this.py.cvv = this.payment[7];
     }
     this.months = [
       'January',
@@ -100,10 +105,13 @@ export class PaymentComponent implements OnInit {
     this.model.address = JSON.parse(localStorage.getItem('currentUser')).address;
     this.model.payment = this.py.holder + ',' + this.py.n1 + ',' + this.py.n2 + ',' + this.py.n3 +','+ this.py.n4 + ',' + this.py.em + ',' + this.py.ey + ',' + this.py.cvv;
     this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {
-      let user = response.json()['user'];
+      let user = response.json();
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }
+    }).subscribe(data => {
+      this.payment = JSON.parse(localStorage.getItem('currentUser')).address;
+      console.log('update Address!');
     });
   }
 }

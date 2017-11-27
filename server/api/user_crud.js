@@ -10,6 +10,7 @@ var getJwt = require("./getJwt");
  * return user object
  */
 router.post("/userUpdate", function (req, res) {
+  console.log('user update request ');
   var id = getJwt(req);
   User.findById(id, function (err, user) {
     if (err) {
