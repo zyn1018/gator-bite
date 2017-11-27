@@ -14,6 +14,7 @@ export class DishFormComponent implements OnInit {
   formModel: FormGroup;
   dish: Dish;
   userEmail: string;
+  userId: string;
 
   constructor(private routeInfo: ActivatedRoute,
               private dishService: DishService,
@@ -24,7 +25,7 @@ export class DishFormComponent implements OnInit {
   ngOnInit() {
     const dishId = this.routeInfo.snapshot.params['dishId'];
     this.dish = this.dishService.getDish(dishId);
-    this.userEmail = this.userService.getUser().email;
+    this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     let fb = new FormBuilder();
     this.formModel = fb.group(
       {
@@ -37,7 +38,7 @@ export class DishFormComponent implements OnInit {
 
   //Discard change and go back to dishes manage page
   cancel() {
-    this.router.navigateByUrl('/dishes/' + this.userEmail);
+    this.router.navigateByUrl('/dishes/' + this.userId);
   }
 
   //Save the dish details after update
@@ -45,7 +46,7 @@ export class DishFormComponent implements OnInit {
     this.dish.name = this.formModel.get('name').value;
     this.dish.price = this.formModel.get('price').value;
     this.dish.desc = this.formModel.get('desc').value;
-    this.dishService.updateDishes(this.dish);
-    this.router.navigateByUrl('/dishes/' + this.userEmail);
+    this.dishService.updateDishesDB(this.dish);
+    this.router.navigateByUrl('/dishes/' + this.userId);
   }
 }

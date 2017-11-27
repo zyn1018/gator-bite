@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {User, UserService} from '../../domain/user.service';
+import {UserService} from '../../domain/user.service';
 
 @Component({
   selector: 'app-account',
@@ -9,6 +9,8 @@ import {User, UserService} from '../../domain/user.service';
 })
 export class AccountComponent implements OnInit {
   menus: Array<Menu>;
+  public userId: any;
+
   constructor(public router: Router, private userService: UserService) {
   }
 

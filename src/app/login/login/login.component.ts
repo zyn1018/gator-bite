@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
           this.isLogin = true;
           this.userService.setIsLoginSubject(this.isLogin);
           this.router.navigate([this.returnUrl]);
-          console.log(localStorage.getItem('currentUser'));
         },
         error => {
           console.log(error);
@@ -68,9 +67,8 @@ export class LoginComponent implements OnInit {
           this.userService.setIsLoginSubject(this.isLogin);
           this.isRestaurant = true;
           this.userService.setIsRestaurantSubject(this.isRestaurant);
-          const email = JSON.parse(localStorage.getItem('currentUser')).email;
-          this.router.navigateByUrl('/dishes/' + email);
-          console.log(localStorage.getItem('currentUser'));
+          const id = JSON.parse(localStorage.getItem('currentUser'))._id;
+          this.router.navigateByUrl('/dishes/' + id);
         },
         error => {
           console.log(error);

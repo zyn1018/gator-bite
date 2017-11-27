@@ -83,6 +83,7 @@ router.post("/login", function (req, res) {
           res.status(400).send();
         } else {
           var token = data.generateJwt();
+
           res.status(200);
           res.json({
             "user": data,
@@ -107,6 +108,7 @@ router.post("/loginRes", function (req, res) {
           res.status(400).send();
         } else {
           var token = data.generateJwt();
+          console.log(token);
           res.status(200);
           res.json({
             "restaurant": data,

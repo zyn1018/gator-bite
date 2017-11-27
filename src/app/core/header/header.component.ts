@@ -29,8 +29,7 @@ export class HeaderComponent implements OnInit {
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
-      console.log(this.isRestaurant);
-    })
+    });
     this.cdr.markForCheck();
     this.cdr.detectChanges();
   }

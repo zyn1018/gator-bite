@@ -1,7 +1,8 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {Dish, DishService} from '../../dishes-manage/dish.service';
 import {OrderService} from '../order.service';
 import {Router} from '@angular/router';
+import {DOCUMENT} from '@angular/common';
 
 
 @Component({
@@ -11,14 +12,16 @@ import {Router} from '@angular/router';
 })
 export class OrderManageComponent implements OnInit {
   public dishes: Dish[];
-
+  public restaurantId: string;
   public orderDetail = new Map<string, number[]>();
 
-  constructor(private dishService: DishService, private orderService: OrderService, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(@Inject(DOCUMENT) private document: Document, private dishService: DishService, private orderService: OrderService, private cdr: ChangeDetectorRef, private router: Router) {
   }
 
   ngOnInit() {
     this.dishes = this.dishService.getDishes();
+    this.restaurantId = this.document.location.href.split('/')[4];
+    this.orderService.setRestaurantIdSubject(this.restaurantId);
   }
 
   /**
