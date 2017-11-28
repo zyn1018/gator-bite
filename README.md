@@ -3,9 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
 ### Developer:
-### Yinan Zhang
-### Wenbo Zhao 
-### Peidong Zhu
+### Yinan Zhang(github: zyn1018)
+### Wenbo Zhao(github: challengezwb) 
+### Peidong Zhu(github: ygbzl)
 
 ## Development server
 
