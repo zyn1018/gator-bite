@@ -8,16 +8,5 @@ export class RestaurantService {
 
   constructor(private http: Http) {
   }
-
-  //
-  // getRestaurants(): Promise<Restaurant[]> {
-  //   return Promise.resolve(Restaurants);
-  // }
-  //
-  // getRestaurantsDB() {
-  //   this.http.get('/api/restaurant').subscribe(data => {
-  //     // console.log(data.json());
-  //     localStorage.setItem('restaurantList', JSON.stringify(data.json()));
-  //   });
 }
 
