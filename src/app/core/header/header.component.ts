@@ -21,11 +21,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     const user: string = localStorage.getItem('currentUser');
     if (user != null) {
-      const userInfo: Array<string> = user.split(',');
-      console.log(userInfo);
-      this.userId = userInfo[0].substring(16, userInfo[0].length - 1);
+      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+      console.log(this.userId);
     }
-    this.isLogin = localStorage.getItem('currentUser') != null;
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
     });
@@ -57,6 +55,11 @@ export class HeaderComponent implements OnInit {
    * Show user profile page
    */
   openUserProfile() {
-    this.router.navigateByUrl('/user/' + this.userId);
+    if(this.isRestaurant == false){
+      this.router.navigateByUrl('/user/' + this.userId);
+    }else if(this.isRestaurant == true){
+      this.router.navigateByUrl('/restaurantInfo/' + this.userId);
+      // console.log(this.userId);
+    }
   }
 }

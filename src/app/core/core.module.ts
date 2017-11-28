@@ -29,6 +29,7 @@ import {AuthGuard} from '../utils/AuthGuard';
 import {AuthenticationService} from '../utils/authentication.service';
 import {AlertService} from '../utils/Alert.Service';
 import {AlertComponent} from '../alert/alert.component';
+import {RestaurantModule} from '../restaurant/restaurant.module';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {AlertComponent} from '../alert/alert.component';
     UserModule,
     HeaderRoutingModule,
     HttpClientModule,
+    RestaurantModule,
   ],
   declarations: [
     HeaderComponent,

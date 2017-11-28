@@ -75,10 +75,11 @@ export class DishService {
   updateDishesDB(dish: Dish) {
     if (dish.dishId == 0) {
       dish.dishId = this.dishes.length + 1;
-      this.menu.push(dish);
-      this.menu.sort((d1, d2) => d1.dishId - d2.dishId);
+      this.dishes.push(dish);
+      this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
       // console.log(this.menu);
-      this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
+      console.log(this.dishes);
+      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
@@ -87,8 +88,8 @@ export class DishService {
       });
       // console.log('sent update request');
     } else {
-      this.menu.splice(dish.dishId - 1, 1, dish);
-      this.http.post('/api/restUpdate', this.menu, this.options).map((response: Response) => {
+      this.dishes.splice(dish.dishId - 1, 1, dish);
+      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
