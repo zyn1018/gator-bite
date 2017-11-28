@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RprofileComponent } from './rprofile.component';
+import {RprofileComponent} from './rprofile.component';
 
 describe('RprofileComponent', () => {
   let component: RprofileComponent;
@@ -8,9 +8,9 @@ describe('RprofileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RprofileComponent ]
+      declarations: [RprofileComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

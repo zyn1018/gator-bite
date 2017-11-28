@@ -31,7 +31,7 @@ export class RestaurantsComponent implements OnInit {
       // console.log(data.json());
       for (let i = 0; i < data.json().length; i++) {
         let item = data.json()[i];
-        let restaurantItem = new Restaurant(item._id, item.picture, item.title, item.type);
+        let restaurantItem = new Restaurant(item._id, item.picture, item.username, item.type, item.delivery_fee);
         this.restaurants.push(restaurantItem);
       }
     });

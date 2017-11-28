@@ -14,21 +14,21 @@ export class UserService {
   }
 
   /**
-   * Fake data for test
+   * mock data for test
    * @type {[User , User]}
    */
-  users: User[] = [
-    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2, '123', '123'),
-    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1,'123', '123'),
-  ];
+  // users: User[] = [
+  //   new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2, '123', '123'),
+  //   new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1,'123', '123'),
+  // ];
 
   /**
-   * Get user
+   * Get mock user
    * @returns {User}
    */
-  getUser() {
-    return this.users[0];
-  }
+  // getUser() {
+  //   return this.users[0];
+  // }
 
   // getAll() {
   //   return this.http.get('/users').map((response: Response) => response.json());

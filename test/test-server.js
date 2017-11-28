@@ -12,19 +12,19 @@ describe("restaurant case", function () {
   /**
    * done!
    */
-/*  it("should register a restaurant on /registerRes post", function (done) {
-    chai.request(server)
-      .post('/registerRes')
-      .type('form')
-      .send({'email': 'test@zpd.com', 'username': 'tdsds', 'password': '123456'})
-      .end(function (err, res) {
-        res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.be.a('object');
-        res.body.should.have.property("token");
-        done();
-      })
-  });*/
+  /*  it("should register a restaurant on /registerRes post", function (done) {
+      chai.request(server)
+        .post('/registerRes')
+        .type('form')
+        .send({'email': 'test@zpd.com', 'username': 'tdsds', 'password': '123456'})
+        .end(function (err, res) {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property("token");
+          done();
+        })
+    });*/
 
 
   /**
@@ -76,15 +76,15 @@ describe("restaurant case", function () {
       .set({'authentication': restToken})
       .type('form')
       .send([{
-        "name":"jaja1",
-        "price":"13",
-        "dishId":"5",
-        "desc":"balabala"
-      },{
-        "name":"jaja2",
-        "price":"6",
-        "dishId":"6",
-        "desc":"balabala"
+        "name": "jaja1",
+        "price": "13",
+        "dishId": "5",
+        "desc": "balabala"
+      }, {
+        "name": "jaja2",
+        "price": "6",
+        "dishId": "6",
+        "desc": "balabala"
       }])
       .end(function (err, res) {
         res.should.have.status(200);
@@ -100,6 +100,7 @@ describe("restaurant case", function () {
 /**
  * done!
  */
+
 
 describe("order case", function () {
   it("should submit a order to server on /submitOrder post", function (done) {
@@ -169,19 +170,19 @@ describe('user case', function () {
    * register a user
    * done!
    */
-/*  it('should register on /register POST', function (done) {
-    chai.request(server)
-      .post('/register')
-      .type('form')
-      .send({'email': 'test1@zpd.com', 'username': 'tdsds', 'password': '123456'})
-      .end(function (err, res) {
-        res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.be.a('object');
-        res.body.should.have.property("token");
-        done();
-      });
-  })*/
+  /*  it('should register on /register POST', function (done) {
+      chai.request(server)
+        .post('/register')
+        .type('form')
+        .send({'email': 'test1@zpd.com', 'username': 'tdsds', 'password': '123456'})
+        .end(function (err, res) {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property("token");
+          done();
+        });
+    })*/
 
   /**
    * login a user
@@ -191,7 +192,7 @@ describe('user case', function () {
     chai.request(server)
       .post('/login')
       .type('form')
-      .send({'email': 'test@zpd.com','password': '123456'})
+      .send({'email': 'test@zpd.com', 'password': '123456'})
       .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;

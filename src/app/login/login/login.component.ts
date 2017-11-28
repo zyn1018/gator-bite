@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   private isLogin: boolean = false;
   private isRestaurant: boolean = false;
   form: FormGroup;
-  model: any = {};
   returnUrl: string;
+  model: any = {};
   fb: FormBuilder = new FormBuilder();
 
   emailValidator(email: FormControl): any {
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
       password: [''],
       loginRole: ['', Validators.required]
     });
-    this.userEmail = this.userService.getUser().email;
     this.authenticationService.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }

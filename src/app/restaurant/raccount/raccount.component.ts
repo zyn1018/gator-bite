@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {User, UserService} from '../../domain/user.service';
+
 @Component({
   selector: 'app-raccount',
   templateUrl: './raccount.component.html',
@@ -8,12 +9,14 @@ import {User, UserService} from '../../domain/user.service';
 })
 export class RaccountComponent implements OnInit {
   menus: Array<Menu>;
-  constructor(public router: Router, private userService: UserService) { }
+
+  constructor(public router: Router, private userService: UserService) {
+  }
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    if(user){
-      const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
+    if (user) {
+      const userid: string = JSON.parse(localStorage.getItem('currentUser'))._id;
       this.menus = [
         new Menu(userid, 'rProfile', '/restaurant/' + userid + '/rprofile'),
         new Menu(userid, 'rAddress', '/restaurant/' + userid + '/raddress'),
@@ -22,15 +25,15 @@ export class RaccountComponent implements OnInit {
       ];
     }
   }
+
   nav(menu: Menu) {
     this.router.navigateByUrl(menu.link);
   }
 }
-export  class Menu {
-  constructor(
-    public id: string,
-    public name: string,
-    public link: string
-  ) {
+
+export class Menu {
+  constructor(public id: string,
+              public name: string,
+              public link: string) {
   }
 }

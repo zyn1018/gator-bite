@@ -16,6 +16,7 @@ export class PaymentComponent implements OnInit {
   payment: Array<any>;
   model: any = {};
   py: any = {};
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -30,16 +31,16 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.paymentForm = this.fb.group({
-      holder:[''],
-      n1:[''],
-      n2:[''],
-      n3:[''],
-      n4:[''],
-      em:[''],
-      ey:[''],
-      cvv:[''],
+      holder: [''],
+      n1: [''],
+      n2: [''],
+      n3: [''],
+      n4: [''],
+      em: [''],
+      ey: [''],
+      cvv: [''],
     });
-    if(JSON.parse(localStorage.getItem('currentUser')).payment != null){
+    if (JSON.parse(localStorage.getItem('currentUser')).payment != null) {
       this.payment = JSON.parse(localStorage.getItem('currentUser')).payment.split(',');
       this.paymentForm.controls['holder'].setValue(this.payment[0]);
       this.py.holder = this.payment[0];
@@ -96,14 +97,15 @@ export class PaymentComponent implements OnInit {
       2030
     ];
   }
-  updatePayment(){
+
+  updatePayment() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser')).userId;
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
     this.model.password = JSON.parse(localStorage.getItem('currentUser')).password;
     this.model.loginRole = JSON.parse(localStorage.getItem('currentUser')).loginRole;
     this.model.address = JSON.parse(localStorage.getItem('currentUser')).address;
-    this.model.payment = this.py.holder + ',' + this.py.n1 + ',' + this.py.n2 + ',' + this.py.n3 +','+ this.py.n4 + ',' + this.py.em + ',' + this.py.ey + ',' + this.py.cvv;
+    this.model.payment = this.py.holder + ',' + this.py.n1 + ',' + this.py.n2 + ',' + this.py.n3 + ',' + this.py.n4 + ',' + this.py.em + ',' + this.py.ey + ',' + this.py.cvv;
     this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
       if (user) {
