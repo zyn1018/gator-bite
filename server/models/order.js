@@ -7,7 +7,7 @@ var foodSchema = new mongoose.Schema({
 
 var orderSchema = new mongoose.Schema({
   userId: String,
-  restaurantId: String,
+  username: String,
   restaurantName: String,
   restaurantId: String,
   order: [foodSchema],
