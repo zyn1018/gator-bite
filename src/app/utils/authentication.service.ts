@@ -50,7 +50,7 @@ export class AuthenticationService {
   }
 
   /**
-   * Logout
+   * Log Out
    */
   logout() {
     // remove user from local storage to log user out

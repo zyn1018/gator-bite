@@ -14,6 +14,11 @@ export class SignupComponent implements OnInit {
   fb: FormBuilder = new FormBuilder();
   model: any = {};
 
+  /**
+   * Validator for email
+   * @param {FormControl} email
+   * @returns {any}
+   */
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -21,6 +26,11 @@ export class SignupComponent implements OnInit {
     return valid ? null : {email: true};
   }
 
+  /**
+   * Validator for Password
+   * @param {FormGroup} info
+   * @returns {any}
+   */
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
     const confirmPassword: FormControl = info.get('confirmPassword') as FormControl;
@@ -53,7 +63,6 @@ export class SignupComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/login']);
-          console.log(this.model);
         },
         error => {
           alert("Register failed");

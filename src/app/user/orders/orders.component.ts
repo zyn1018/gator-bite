@@ -21,7 +21,7 @@ export class OrdersComponent implements OnInit {
     this.http.get('/api/getUserOrder', this.options).subscribe(data => {
       for (let i = 0; i < data.json().length; i++) {
         let item = data.json()[i];
-        console.log(item);
+        // console.log(item);
         let order = new Order(item._id, item.restaurantName, item.price, item.orderDate);
         this.orders.push(order);
       }

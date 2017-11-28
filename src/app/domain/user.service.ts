@@ -14,31 +14,6 @@ export class UserService {
   }
 
   /**
-   * mock data for test
-   * @type {[User , User]}
-   */
-  // users: User[] = [
-  //   new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2, '123', '123'),
-  //   new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1,'123', '123'),
-  // ];
-
-  /**
-   * Get mock user
-   * @returns {User}
-   */
-  // getUser() {
-  //   return this.users[0];
-  // }
-
-  // getAll() {
-  //   return this.http.get('/users').map((response: Response) => response.json());
-  // }
-  //
-  // getById(_id: string) {
-  //   return this.http.get('/users/' + _id).map((response: Response) => response.json());
-  // }
-
-  /**
    * Create new user
    * @param {User} user
    * @returns {Observable<Response>}
@@ -58,15 +33,6 @@ export class UserService {
    */
   update(user: User) {
     return this.http.put('/users/' + user.userId, user);
-  }
-
-  /**
-   * delete user
-   * @param {string} _id
-   * @returns {Observable<Response>}
-   */
-  delete(_id: string) {
-    return this.http.delete('/users/' + _id);
   }
 
   // For communication among different components
@@ -90,11 +56,6 @@ export class UserService {
   public getIsRestaurantSubject(): Observable<boolean> {
     return this.isRestaurantSubject.asObservable();
   }
-
-  // public stringToUser(str: string): User {
-  //   let strs: Array<string>;
-  //   strs = str.split(',');
-  // }
 }
 
 export class User {
