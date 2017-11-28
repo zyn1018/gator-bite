@@ -8,7 +8,6 @@ import {OrdersComponent} from '../../user/orders/orders.component';
 import {RtogetherComponent} from '../../restaurant/rtogether/rtogether.component';
 import {RprofileComponent} from '../../restaurant/rprofile/rprofile.component';
 import {RaddressComponent} from '../../restaurant/raddress/raddress.component';
-import {RpaymentComponent} from '../../restaurant/rpayment/rpayment.component';
 import {RordersComponent} from '../../restaurant/rorders/rorders.component';
 
 const routes: Routes = [
@@ -25,11 +24,10 @@ const routes: Routes = [
   {
     path: 'restaurantInfo/:userid', component: RtogetherComponent,
     children: [
-      {path: '', component: ProfileComponent},
-      {path: 'profile', component: RprofileComponent},
-      {path: 'address', component: RaddressComponent},
-      {path: 'payment', component: RpaymentComponent},
-      {path: 'orders', component: RordersComponent}
+      {path: '', component: RprofileComponent},
+      {path: 'restaurantProfile', component: RprofileComponent},
+      {path: 'restaurantAddress', component: RaddressComponent},
+      {path: 'restaurantOrders', component: RordersComponent}
     ],
   }
 ];

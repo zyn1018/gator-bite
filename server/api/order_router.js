@@ -68,9 +68,24 @@ router.post("/submitOrder", function (req, res) {
  * a restaurant get all the orders
  */
 router.get("/getOrder", function (req, res) {
+  console.log('getOrder!');
   var restId = getJwt(req);
   Order.find({"restaurantId": restId}).sort({orderDate: -1}).exec(function (err, order) {
+    console.log(order)
     if (err) {
+      res.status(400).send(err);
+    }
+    res.status(200).send(order)
+  })
+});
+
+/**
+ * a user get all orders
+ */
+router.get("/getUserOrder", function (req, res) {
+  var restId = getJwt(req);
+  Order.find({"userId": restId}).sort({orderDate: -1}).exec(function (err, order) {
+    if(err){
       res.status(400).send(err);
     }
     res.status(200).send(order)
