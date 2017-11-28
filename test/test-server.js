@@ -55,7 +55,8 @@ describe("restaurant case", function () {
       .send({
         'picture': 'https://gainesville.doorstepdelivery.com/media-thumbs/120/location-images/original-american-kitchen.png',
         'type': 'chinese',
-        'delivery_fee': '3'
+        'delivery_fee': '3',
+        "address":"asddsas"
       })
       .end(function (err, res) {
         res.should.have.status(200);
@@ -96,15 +97,55 @@ describe("restaurant case", function () {
   });
 });
 
-
+/**
+ * done!
+ */
 
 describe("order case", function () {
   it("should submit a order to server on /submitOrder post", function (done) {
-
+    chai.request(server)
+      .post('/submitOrder')
+      .set({'authentication': userToken})
+      .type('form')
+      .send({
+        "username" : "tdsds",
+        "restaurantId": "5a1caba97c4ce61ae07b0437",
+        "order":[{
+          "name":"asdsda",
+          "number":"13"
+        },{
+          "name":"asdad",
+          "number":"12"
+        }],
+        "address":"jajaa",
+        "price":"15",
+        "restaurantName":"asdfda"
+      })
+      .end(function (err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body[0].should.have.property("username");
+        res.body[0].should.have.property("order");
+        done();
+      });
   });
 
+  /**
+   * done!
+   */
   it("should get all orders for a certain restaurant on /getOrder get", function (done) {
-
+    chai.request(server)
+      .get('/getOrder')
+      .set({'authentication': restToken})
+      .end(function (err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body[0].should.have.property("username");
+        res.body[0].should.have.property("order");
+        done();
+      });
   })
 
 });
