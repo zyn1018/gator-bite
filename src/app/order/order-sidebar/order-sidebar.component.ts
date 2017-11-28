@@ -156,6 +156,7 @@ export class OrderSidebarComponent implements OnInit {
     // console.log(this.order);
     this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
       console.log('Order submission successful');
+      alert('Order has been submitted!');
     });
     this.orderDetail.clear();
     this.submitDetail = [];

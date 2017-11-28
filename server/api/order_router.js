@@ -85,7 +85,7 @@ router.get("/getOrder", function (req, res) {
 router.get("/getUserOrder", function (req, res) {
   var restId = getJwt(req);
   Order.find({"userId": restId}).sort({orderDate: -1}).exec(function (err, order) {
-    if(err){
+    if (err) {
       res.status(400).send(err);
     }
     res.status(200).send(order)
