@@ -17,6 +17,12 @@ export class PaymentComponent implements OnInit {
   model: any = {};
   py: any = {};
 
+
+  /**
+   * Constuct the headers for Http
+   */
+
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -25,7 +31,7 @@ export class PaymentComponent implements OnInit {
   }
 
   /**
-   * Store all months and years to choose
+   * Store all months and years to choose, get the current user's payment from database
    */
 
 
@@ -98,6 +104,11 @@ export class PaymentComponent implements OnInit {
     ];
   }
 
+  /**
+   * Update current user's payment and send it to the database, get the response from database and store
+   * it in localStorage
+   */
+
   updatePayment() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser')).userId;
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
@@ -112,8 +123,7 @@ export class PaymentComponent implements OnInit {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }
     }).subscribe(data => {
-      this.payment = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log('update Address!');
+      this.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     });
   }
 }

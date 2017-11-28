@@ -16,6 +16,10 @@ export class RaddressComponent implements OnInit {
   options: any;
   ad: any = {};
 
+  /**
+   * Construct the headers for Http
+   */
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -23,6 +27,10 @@ export class RaddressComponent implements OnInit {
     this.options = new RequestOptions({headers: this.headers});
   }
 
+  /**
+   * Create the addressForm, if the user already updated his address, it will show the user's address.
+   * If not, it will show a page for user to update his address and send it the server.
+   */
   ngOnInit() {
     this.addressForm = this.fb.group({
       aLine1: [''],
@@ -45,6 +53,12 @@ export class RaddressComponent implements OnInit {
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
     }
+
+    /**
+     * Initial all the states in USA for user to choose
+     */
+
+
     this.states = [
       'AL',
       'Ak',
@@ -99,6 +113,9 @@ export class RaddressComponent implements OnInit {
     ];
   }
 
+  /**
+   * Update the restaurant's address and send it to the server and then get the response and store it in the localStorage
+   */
 
   updateAddress() {
     this.model.delivery_fee = JSON.parse(localStorage.getItem('currentUser')).delivery_fee;

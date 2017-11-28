@@ -16,6 +16,12 @@ export class AddressComponent implements OnInit {
   options: any;
   ad: any = {};
 
+
+  /**
+   * Constuct the headers for Http
+   */
+
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -49,7 +55,6 @@ export class AddressComponent implements OnInit {
       this.ad.state = this.address[3];
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
-      console.log(this.addressForm.controls['aLine1'].value);
     }
     // if (JSON.parse(localStorage.getItem('currentUser')).address != null) {
     //   this.address = JSON.parse(localStorage.getItem('currentUser')).address.split(',');
@@ -119,6 +124,12 @@ export class AddressComponent implements OnInit {
     ];
   }
 
+  /**
+   * Update the user's address and send it to the server, get the response from the server and
+   * store it in the localStorage
+   */
+
+
   updateAddress() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
@@ -136,9 +147,7 @@ export class AddressComponent implements OnInit {
       }
     }).subscribe(data => {
       this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log(this.address);
     });
-
   }
 }
 

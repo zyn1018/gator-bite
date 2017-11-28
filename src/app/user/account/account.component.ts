@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
   }
 
   /**
-   * Navigate to different URL as chosen
+   * Navigate to different URL as chosen from the sidebar
    */
 
   ngOnInit() {
@@ -38,6 +38,12 @@ export class AccountComponent implements OnInit {
     this.router.navigateByUrl(menu.link);
   }
 }
+
+/**
+ * Get all the dishes in menu via database
+ */
+
+
 export  class Menu {
   constructor(public id: string,
               public name: string,

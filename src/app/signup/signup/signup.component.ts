@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
     return valid ? null : {email: true};
   }
 
+
+
   /**
    * Validator for Password
    * @param {FormGroup} info
@@ -40,6 +42,12 @@ export class SignupComponent implements OnInit {
 
   constructor(private http: HttpClient, private userService: UserService, private router: Router) {
   }
+
+
+  /**
+   * Initial the signUp form with all validators
+   */
+
 
   ngOnInit() {
     this.signupForm = this.fb.group({
