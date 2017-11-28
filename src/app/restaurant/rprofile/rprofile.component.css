@@ -1,0 +1,36 @@
+.size{
+  width: 965px;
+  height: 200px;
+}
+.size1{
+  width: 965px;
+  height: 100px;
+}
+.textSize{
+  text-align: start;
+  font-size: 200%;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.nameSize{
+  text-align: start;
+  font-size: 200%;
+  font-weight: 200;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+.imageSize{
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.textSize1{
+  text-align: start;
+  font-size: 200%;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-left: 20px;
+}

@@ -30,7 +30,11 @@ export class DishService {
    */
   getDishesDB(): Dish[] {
     this.email = JSON.parse(localStorage.getItem('currentUser')).email;
-    this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
+    if (JSON.parse(localStorage.getItem('currentUser')).menu == null) {
+      this.menu = [];
+    }else {
+      this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
+    }
     // return this.http.get('/api/dishes/' + this.email).map(res =>
     //   res.json()
     // );
