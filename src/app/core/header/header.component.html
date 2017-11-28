@@ -9,6 +9,9 @@
   <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()" id="orderSideNavToggle">
     <i class="material-icons">card_travel</i>
   </button>
+  <button mat-icon-button *ngIf="isLogin && isRestaurant" (click)="gotoDishManagement()">
+    <i class="material-icons">subject</i>
+  </button>
   <button mat-button *ngIf="isLogin" (click)="logout()">
     Log out
   </button>

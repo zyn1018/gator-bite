@@ -28,7 +28,7 @@ export class DishService {
   /**
    * Get all the dishes in menu via database
    */
-  getDishesDB(): Dish[] {
+  getDishesDB(restaurantId: string): Observable<Dish[]> {
     this.email = JSON.parse(localStorage.getItem('currentUser')).email;
     if (JSON.parse(localStorage.getItem('currentUser')).menu == null) {
       this.menu = [];
@@ -39,7 +39,7 @@ export class DishService {
     //   res.json()
     // );
     this.dishes = this.menu;
-    return this.dishes;
+    return this.http.get('/api/dishes/' + restaurantId, this.options).map(res => res.json());
   }
 
   getOneResDish(restaurantId: string): Observable<Dish[]> {

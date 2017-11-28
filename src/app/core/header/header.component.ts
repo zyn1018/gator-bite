@@ -46,6 +46,9 @@ export class HeaderComponent implements OnInit {
     this.toggle.emit();
   }
 
+  gotoDishManagement() {
+    this.router.navigateByUrl('/dishes/' + this.userId);
+  }
   /**
    * When user logs out, change header
    */

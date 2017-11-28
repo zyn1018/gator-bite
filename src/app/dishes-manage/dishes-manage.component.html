@@ -27,7 +27,7 @@
       <tr id="dishes" *ngFor="let dish of dishes | dishFilter:'name':keyword; let i = index;">
         <td id="tdDishId">{{i + 1}}</td>
         <td id="tdDishName">{{dish.name}}</td>
-        <td id="tdDishPrice">{{dish.price}}</td>
+        <td id="tdDishPrice">{{dish.price.toFixed(2)}}</td>
         <td id="tdDishDesc">{{dish.desc}}</td>
         <td>
           <a class="btn btn-warning btn-xs" id="updateButton" (click)="update(dish)"><span
