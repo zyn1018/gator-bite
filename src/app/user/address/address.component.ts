@@ -129,12 +129,13 @@ export class AddressComponent implements OnInit {
     this.model.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
+      //console.log(user);
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }
     }).subscribe(data => {
       this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log('update Address!');
+      console.log(this.address);
     });
 
   }

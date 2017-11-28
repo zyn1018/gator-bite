@@ -102,14 +102,6 @@ export class RaddressComponent implements OnInit {
 
 
   updateAddress(){
-    // this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-    // this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
-    // this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
-    // this.model.password = JSON.parse(localStorage.getItem('currentUser')).password;
-    // this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
-    //   +',' +  this.ad.state + ',' + this.ad.zip;
-    // //console.log(this.model.address);
-    // this.model.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     this.model.delivery_fee = JSON.parse(localStorage.getItem('currentUser')).delivery_fee;
     this.model.userid = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
@@ -117,8 +109,9 @@ export class RaddressComponent implements OnInit {
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this.model.picture = JSON.parse(localStorage.getItem('currentUser')).picture;
     this.model.type = JSON.parse(localStorage.getItem('currentUser')).type;
-    this.model.email = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
+    this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
                       +',' +  this.ad.state + ',' + this.ad.zip;
+    console.log(this.model);
     this.http.post('/api/restUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
       if (user) {
@@ -126,7 +119,6 @@ export class RaddressComponent implements OnInit {
       }
     }).subscribe(data => {
       this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log('update Address!');
     });
 
   }
