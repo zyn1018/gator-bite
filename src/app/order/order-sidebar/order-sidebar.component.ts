@@ -1,7 +1,9 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {Order, OrderDetail, OrderService} from '../order.service';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {DOCUMENT} from '@angular/common';
+import {DishService} from '../../dishes-manage/dish.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +29,7 @@ export class OrderSidebarComponent implements OnInit {
   public username: string;
   public restaurantName: string;
 
-  constructor(private orderService: OrderService, private cdr: ChangeDetectorRef, private http: Http) {
+  constructor(private orderService: OrderService, @Inject(DOCUMENT) private document: Document, private cdr: ChangeDetectorRef, private http: Http, private dishService: DishService) {
   }
 
   ngOnInit() {
@@ -54,8 +56,6 @@ export class OrderSidebarComponent implements OnInit {
 
     this.orderService.getRestaurantIdSubject().subscribe(data => {
       this.restaurantId = data;
-      this.cdr.markForCheck();
-      this.cdr.detectChanges();
     });
 
     if (localStorage.getItem('currentUser') != null) {
@@ -142,16 +142,24 @@ export class OrderSidebarComponent implements OnInit {
    * When press submit your order button, the order will be sent to server
    */
   submitOrder() {
-    console.log(this.orderDetail);
+    // console.log(this.orderDetail);
+    this.dishService.getOneResDish(this.restaurantId).subscribe(
+      data => {
+        console.log(data['username']);
+        this.restaurantName = data['username'];
+      }
+    );
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
     this.order = new Order(this.username, this.restaurantId, this.restaurantName, this.submitDetail, this.address, this.totalPrice);
-    console.log(this.userId);
+    // console.log(this.order);
     this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
       console.log('Order submission successful');
     });
     this.orderDetail.clear();
+    this.submitDetail = [];
+    this.orderService.setOrderDetailSubject(new Map<string, number[]>());
     this.checkShowParam();
     this.cdr.markForCheck();
     this.cdr.detectChanges();

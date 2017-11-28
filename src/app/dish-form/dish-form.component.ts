@@ -15,6 +15,7 @@ export class DishFormComponent implements OnInit {
   dish: Dish;
   userEmail: string;
   userId: string;
+  dishes: Dish[];
 
   constructor(private routeInfo: ActivatedRoute,
               private dishService: DishService,
