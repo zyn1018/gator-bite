@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RtogetherComponent } from './rtogether.component';
+import {RtogetherComponent} from './rtogether.component';
 
 describe('RtogetherComponent', () => {
   let component: RtogetherComponent;
@@ -8,9 +8,9 @@ describe('RtogetherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RtogetherComponent ]
+      declarations: [RtogetherComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
