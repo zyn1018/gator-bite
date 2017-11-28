@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Dish, DishService} from '../dishes-manage/dish.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../domain/user.service';
 
 @Component({
   selector: 'app-dish-form',
@@ -13,14 +12,12 @@ export class DishFormComponent implements OnInit {
 
   formModel: FormGroup;
   dish: Dish;
-  userEmail: string;
   userId: string;
   dishes: Dish[];
 
   constructor(private routeInfo: ActivatedRoute,
               private dishService: DishService,
-              private router: Router,
-              private userService: UserService) {
+              private router: Router) {
   }
 
   ngOnInit() {

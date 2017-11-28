@@ -29,11 +29,9 @@ export class HeaderComponent implements OnInit {
 
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
-      console.log(this.isLogin);
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
-      console.log(this.isRestaurant);
     });
     this.cdr.markForCheck();
     this.cdr.detectChanges();
