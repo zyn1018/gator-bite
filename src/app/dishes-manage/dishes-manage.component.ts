@@ -32,7 +32,6 @@ export class DishesManageComponent implements OnInit {
     this.options = new RequestOptions({headers: this.headers});
     this.dishService.getDishesDB(this.userId).subscribe(
       data => {
-        console.log(data);
         this.dishes = data['menu'];
       }
     );

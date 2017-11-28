@@ -55,7 +55,6 @@ export class AddressComponent implements OnInit {
       this.ad.state = this.address[3];
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
-      console.log(this.addressForm.controls['aLine1'].value);
     }
     // if (JSON.parse(localStorage.getItem('currentUser')).address != null) {
     //   this.address = JSON.parse(localStorage.getItem('currentUser')).address.split(',');
@@ -148,9 +147,7 @@ export class AddressComponent implements OnInit {
       }
     }).subscribe(data => {
       this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log(this.address);
     });
-
   }
 }
 

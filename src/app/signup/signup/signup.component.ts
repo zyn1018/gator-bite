@@ -68,7 +68,6 @@ export class SignupComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/login']);
-          console.log(this.model);
         },
         error => {
           alert("Register failed");

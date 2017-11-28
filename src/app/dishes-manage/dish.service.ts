@@ -80,11 +80,8 @@ export class DishService {
   updateDishesDB(dish: Dish) {
     if (dish.dishId == 0) {
       dish.dishId = this.dishes.length + 1;
-      console.log(dish.dishId);
       this.dishes.push(dish);
       this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
-      // console.log(this.menu);
-      console.log(this.dishes);
       this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
@@ -96,7 +93,6 @@ export class DishService {
       // console.log('sent update request');
     } else {
       this.dishes.splice(dish.dishId - 1, 1, dish);
-      console.log(this.dishes);
       this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();

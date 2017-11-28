@@ -123,8 +123,7 @@ export class PaymentComponent implements OnInit {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }
     }).subscribe(data => {
-      this.payment = JSON.parse(localStorage.getItem('currentUser')).address;
-      console.log('update Address!');
+      this.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     });
   }
 }
