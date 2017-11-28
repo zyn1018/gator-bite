@@ -13,7 +13,7 @@ var foodSchema = new mongoose.Schema({
 });
 
 var restSchema = new mongoose.Schema({
-  name: String,
+  username: String,
   email: {
     type: String,
     unique: true
@@ -21,8 +21,9 @@ var restSchema = new mongoose.Schema({
   password: String,
   picture: String,
   type: String,
+  address: String,
   delivery_fee:Number,
-  mednu: [foodSchema],
+  menu: Object,
   hash: String,
   salt: String
 });
