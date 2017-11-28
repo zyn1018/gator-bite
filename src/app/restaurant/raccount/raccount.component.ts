@@ -15,10 +15,9 @@ export class RaccountComponent implements OnInit {
     if(user){
       const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
       this.menus = [
-        new Menu(userid, 'rProfile', '/restaurant/' + userid + '/rprofile'),
-        new Menu(userid, 'rAddress', '/restaurant/' + userid + '/raddress'),
-        new Menu(userid, 'rPayment', '/restaurant/' + userid + '/rpayment'),
-        new Menu(userid, 'rOrders', '/restaurant/' + userid + '/rorders')
+        new Menu(userid, 'Profile', '/restaurantInfo/' + userid + '/restaurantProfile'),
+        new Menu(userid, 'Address', '/restaurantInfo/' + userid + '/restaurantAddress'),
+        new Menu(userid, 'Orders', '/restaurantInfo/' + userid + '/restaurantOrders')
       ];
     }
   }
