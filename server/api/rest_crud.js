@@ -18,6 +18,7 @@ router.post("/restUpdate", function (req, res) {
       restaurant.picture = req.body.picture || restaurant.picture || null;
       restaurant.type = req.body.type || restaurant.type;
       restaurant.delivery_fee = req.body.delivery_fee || restaurant.delivery_fee;
+      restaurant.address = req.body.address || restaurant.address;
       restaurant.save(function (err, data) {
         if (err) {
           res.status(400).send(err);
@@ -40,7 +41,6 @@ router.post("/restMenuUpdate", function (req, res) {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log(req.body);
       restaurant.menu = req.body || restaurant.menu;
       restaurant.save(function (err, data) {
         if (err) {
