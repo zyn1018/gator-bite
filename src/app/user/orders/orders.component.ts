@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders: Array<Order>;
-  constructor() { }
+  headers: Headers;
+  options: any;
+  orders = [];
+  constructor(private http: Http) {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
+  }
 
   ngOnInit() {
-    this.orders = [
-      new Order(123, 'NB', '$50', '11/6/17')
-    ];
+    this.http.get('/api/getOrder',this.options).subscribe(data => {
+      console.log(data.json());
+    });
   }
 
 }
