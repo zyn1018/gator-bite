@@ -15,6 +15,7 @@ export class OrderManageComponent implements OnInit {
   public restaurantId: string;
   public orderDetail = new Map<string, number[]>();
 
+
   constructor(@Inject(DOCUMENT) private document: Document, private dishService: DishService, private orderService: OrderService, private cdr: ChangeDetectorRef, private router: Router) {
   }
 

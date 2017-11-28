@@ -15,9 +15,10 @@ export class SignupComponent implements OnInit {
   model: any = {};
 
   /**
-   * The validator to prevent invalid email address
+   * Validator for email
+   * @param {FormControl} email
+   * @returns {any}
    */
-
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -26,10 +27,12 @@ export class SignupComponent implements OnInit {
   }
 
 
-  /**
-   * The validator to stipulate password length
-   */
 
+  /**
+   * Validator for Password
+   * @param {FormGroup} info
+   * @returns {any}
+   */
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
     const confirmPassword: FormControl = info.get('confirmPassword') as FormControl;

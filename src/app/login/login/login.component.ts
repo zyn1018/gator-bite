@@ -11,7 +11,6 @@ import {AuthenticationService} from '../../utils/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private userEmail: string;
   private isLogin: boolean = false;
   private isRestaurant: boolean = false;
   form: FormGroup;
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private http: HttpClient,
               private route: ActivatedRoute,
               private authenticationService: AuthenticationService,) {
   }
@@ -56,6 +54,9 @@ export class LoginComponent implements OnInit {
    * User login
    */
   login() {
+    /**
+     * Customer Login
+     */
     if (this.form.value.loginRole == 1) {
       this.authenticationService.loginCustomer(this.model.email, this.model.password).subscribe(
         data => {
@@ -68,6 +69,9 @@ export class LoginComponent implements OnInit {
           alert("Invalid customer account");
         }
       )
+      /**
+       * Restaurant Login
+       */
     } else if (this.form.value.loginRole == 2) {
       this.authenticationService.loginRestaurant(this.model.email, this.model.password).subscribe(
         data => {

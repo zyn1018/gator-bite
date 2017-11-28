@@ -35,9 +35,6 @@ export class DishService {
     } else {
       this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
     }
-    // return this.http.get('/api/dishes/' + this.email).map(res =>
-    //   res.json()
-    // );
     this.dishes = this.menu;
     return this.http.get('/api/dishes/' + restaurantId, this.options).map(res => res.json());
   }
@@ -83,14 +80,12 @@ export class DishService {
       this.dishes.push(dish);
       this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
       this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
-        // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
         this.menu = restaurant['menu'];
       }).subscribe(data => {
         console.log('received response');
       });
-      // console.log('sent update request');
     } else {
       this.dishes.splice(dish.dishId - 1, 1, dish);
       this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {

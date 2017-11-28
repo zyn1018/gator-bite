@@ -19,13 +19,12 @@ export class DishesManageComponent implements OnInit {
   public headers: Headers;
   public options: RequestOptions;
 
-  constructor(private router: Router, private dishService: DishService, private userService: UserService, private http: Http, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private dishService: DishService, private http: Http, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.nameFilter.valueChanges.debounceTime(500).subscribe(value => this.keyword = value);
     this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-    // console.log(JSON.parse(localStorage.getItem('currentUser')).menu);
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
