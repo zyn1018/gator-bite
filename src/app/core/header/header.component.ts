@@ -23,9 +23,9 @@ export class HeaderComponent implements OnInit {
     if (user != null) {
       this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
       console.log(this.userId);
+      this.isLogin = localStorage.getItem('currentUser') != null;
+      this.isRestaurant = JSON.parse(localStorage.getItem('currentUser')).menu != null;
     }
-    this.isLogin = localStorage.getItem('currentUser') != null;
-    this.isRestaurant = JSON.parse(localStorage.getItem('currentUser')).menu != null;
 
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
