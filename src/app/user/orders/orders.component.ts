@@ -10,12 +10,21 @@ export class OrdersComponent implements OnInit {
   options: any;
   orders = [];
 
+  /**
+   * Constuct the headers for Http
+   */
+
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
     this.options = new RequestOptions({headers: this.headers});
   }
+
+  /**
+   * Send the Http get to get order data from database and show it on website
+   */
 
   ngOnInit() {
     this.http.get('/api/getUserOrder', this.options).subscribe(data => {
@@ -30,6 +39,12 @@ export class OrdersComponent implements OnInit {
   }
 
 }
+
+/**
+ * Construct the order class
+ */
+
+
 export class Order {
   constructor(
     public orderID: number,

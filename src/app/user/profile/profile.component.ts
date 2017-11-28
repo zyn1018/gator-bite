@@ -13,6 +13,10 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {
   }
 
+  /**
+   * Get the current user's username, email and passwordLength from localStorage
+   */
+
   ngOnInit() {
     this.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this.email = JSON.parse(localStorage.getItem('currentUser')).email;

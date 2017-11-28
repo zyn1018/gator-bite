@@ -16,6 +16,12 @@ export class AddressComponent implements OnInit {
   options: any;
   ad: any = {};
 
+
+  /**
+   * Constuct the headers for Http
+   */
+
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -118,6 +124,12 @@ export class AddressComponent implements OnInit {
       'WY'
     ];
   }
+
+  /**
+   * Update the user's address and send it to the server, get the response from the server and
+   * store it in the localStorage
+   */
+
 
   updateAddress() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;

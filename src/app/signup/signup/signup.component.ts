@@ -14,12 +14,21 @@ export class SignupComponent implements OnInit {
   fb: FormBuilder = new FormBuilder();
   model: any = {};
 
+  /**
+   * The validator to prevent invalid email address
+   */
+
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
     const valid = myEmail.test(value);
     return valid ? null : {email: true};
   }
+
+
+  /**
+   * The validator to stipulate password length
+   */
 
   passwordValidator(info: FormGroup): any {
     const password: FormControl = info.get('password') as FormControl;
@@ -30,6 +39,12 @@ export class SignupComponent implements OnInit {
 
   constructor(private http: HttpClient, private userService: UserService, private router: Router) {
   }
+
+
+  /**
+   * Initial the signUp form with all validators
+   */
+
 
   ngOnInit() {
     this.signupForm = this.fb.group({

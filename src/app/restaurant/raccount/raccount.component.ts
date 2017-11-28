@@ -13,6 +13,10 @@ export class RaccountComponent implements OnInit {
   constructor(public router: Router, private userService: UserService) {
   }
 
+  /**
+   * The router to navigate to other pages
+   */
+
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (user) {
@@ -25,10 +29,20 @@ export class RaccountComponent implements OnInit {
     }
   }
 
+
+  /**
+   * Navigate to the page by its URL
+   */
+
   nav(menu: Menu) {
     this.router.navigateByUrl(menu.link);
   }
 }
+
+
+/**
+ * The class for Menu which contains menu id, menu name and menu link
+ */
 
 export class Menu {
   constructor(public id: string,

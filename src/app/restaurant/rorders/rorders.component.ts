@@ -11,6 +11,10 @@ export class RordersComponent implements OnInit {
   options: any;
   orders = [];
 
+  /**
+   * Construct the headers for Http
+   */
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -19,16 +23,21 @@ export class RordersComponent implements OnInit {
 
   }
 
+
+  /**
+   * Get the orders of current restaurant from the database and show it on the website.
+   * If the restaurant did not get any order, it shows the table only
+   */
+
+
   ngOnInit() {
     this.http.get('/api/getOrder', this.options).subscribe(data => {
-      console.log(data.json());
       for (let i = 0; i < data.json().length; i++) {
         let item = data.json()[i];
         let orderD = item.order;
         let orderDt = '';
         for (let j = 0; j < orderD.length; j++) {
           let str = orderD[i]['name'] + '(' + orderD[i]['number'] + ')';
-          //console.log(str);
           if (j == orderD.length - 1) {
             orderDt = str;
           } else {
@@ -42,6 +51,10 @@ export class RordersComponent implements OnInit {
   }
 
 }
+
+/**
+ * The order class helps show all information in the order
+ */
 
 export class Order {
   constructor(public orderID: number,

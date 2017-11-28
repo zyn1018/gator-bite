@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
   model: any = {};
   fb: FormBuilder = new FormBuilder();
 
+
+  /**
+   * The validator to check invalid email address
+   */
+
+
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
     const myEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -33,6 +39,9 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,) {
   }
 
+  /**
+   * Create a form which contains email, password and loginRole for users to login to the website
+   */
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', this.emailValidator],

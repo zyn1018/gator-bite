@@ -14,9 +14,14 @@ export class RprofileComponent implements OnInit {
   constructor() {
   }
 
+
+  /**
+   * Get the restaurant's photo, name, type and delivery fee from database and show it on the website
+   */
+
+
   ngOnInit() {
     this.imageUrl = JSON.parse(localStorage.getItem('currentUser')).picture;
-    console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.restaurantName = JSON.parse(localStorage.getItem('currentUser')).username;
     this.restaurantType = JSON.parse(localStorage.getItem('currentUser')).type;
     this.delivery = '$' + JSON.parse(localStorage.getItem('currentUser')).delivery_fee;
