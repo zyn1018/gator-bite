@@ -44,7 +44,6 @@ export class RaddressComponent implements OnInit {
       this.ad.state = this.address[3];
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
-      console.log(this.addressForm.controls['aLine1'].value);
     }
     this.states = [
       'AL',
@@ -111,7 +110,6 @@ export class RaddressComponent implements OnInit {
     this.model.type = JSON.parse(localStorage.getItem('currentUser')).type;
     this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
                       +',' +  this.ad.state + ',' + this.ad.zip;
-    console.log(this.model);
     this.http.post('/api/restUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
       if (user) {
