@@ -2,13 +2,16 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../server/server');
 var should = chai.should();
-// test user: test@zpd.com  123456
+// test userRest: test@zpd.com  123456
 var restToken = "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTFjYWJhOTdjNGNlNjFhZTA3YjA0MzciLCJlbWFpbCI6InRlc3RAenBkLmNvbSIsImV4cCI6MTUxMjQzMzMyOSwiaWF0IjoxNTExODI4NTI5fQ.wXX0mdRCYpDDqvNuVNtSPLdU4oOFcpLtdt6WorGOIEA\"";
-
+var userToken = "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTFjYTA1ZTllMGJiMDUwNjgyMmFjOWYiLCJlbWFpbCI6InRlc3RAenBkLmNvbSIsImV4cCI6MTUxMjQzODAxNiwiaWF0IjoxNTExODMzMjE2fQ.zxT3j3wy8tRTBBQ2aiYaHrJNYYcCNdiqUoeIxMFHEVY\"";
 
 chai.use(chaiHttp);
 
 describe("restaurant case", function () {
+  /**
+   * done!
+   */
 /*  it("should register a restaurant on /registerRes post", function (done) {
     chai.request(server)
       .post('/registerRes')
@@ -31,7 +34,7 @@ describe("restaurant case", function () {
     chai.request(server)
       .post('/loginRes')
       .type('form')
-      .send({'email': 'test@zpd.com', 'password': '123456'})
+      .send({'email': 'test1@zpd.com', 'password': '123456'})
       .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;
@@ -63,7 +66,9 @@ describe("restaurant case", function () {
       });
   });
 
-
+  /**
+   * done!
+   */
   it("should update a menu for a restaurant on /restMenuUpdate post", function (done) {
     chai.request(server)
       .post('/restMenuUpdate')
@@ -75,17 +80,23 @@ describe("restaurant case", function () {
         "dishId":"5",
         "desc":"balabala"
       },{
-
+        "name":"jaja2",
+        "price":"6",
+        "dishId":"6",
+        "desc":"balabala"
       }])
       .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property("type");
+        res.body.should.have.property("menu");
         done();
       });
   });
 });
+
+
 
 describe("order case", function () {
   it("should submit a order to server on /submitOrder post", function (done) {
@@ -98,6 +109,9 @@ describe("order case", function () {
 
 });
 
+/**
+ * done
+ */
 describe('user case', function () {
   it('should list all restaurants on /restaurant Get', function (done) {
     chai.request(server)
@@ -112,12 +126,13 @@ describe('user case', function () {
 
   /**
    * register a user
+   * done!
    */
 /*  it('should register on /register POST', function (done) {
     chai.request(server)
       .post('/register')
       .type('form')
-      .send({'email': 'test@zpd.com', 'username': 'tdsds', 'password': '123456'})
+      .send({'email': 'test1@zpd.com', 'username': 'tdsds', 'password': '123456'})
       .end(function (err, res) {
         res.should.have.status(200);
         res.should.be.json;
@@ -129,6 +144,7 @@ describe('user case', function () {
 
   /**
    * login a user
+   * done!
    */
   it('should login on /login POST', function (done) {
     chai.request(server)
@@ -144,14 +160,17 @@ describe('user case', function () {
       });
   });
 
+
+  /**
+   * done!
+   */
   it('should list a menu for a certain restaurant on /dishes/:id GET', function (done) {
     chai.request(server)
-      .get('/dishes/5a1b47d31e1dd6b45b6b129d')
+      .get('/dishes/5a1caba97c4ce61ae07b0437')
       .end(function (err, res) {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property("menu");
-        console.log(res.body.menu[0]);
         res.body.menu[0].should.have.property("price");
         res.body.menu[0].should.have.property("desc");
         res.body.menu[0].should.have.property("name");
