@@ -19,15 +19,16 @@ export class AccountComponent implements OnInit {
    */
 
   ngOnInit() {
-    const user: string = localStorage.getItem('currentUser');
-    const userInfo: Array<string> = user.split(',');
-    this.userId = userInfo[0].substring(15, userInfo[0].length - 1);
-    this.menus = [
-      new Menu(this.userId, 'Profile', '/user/' + this.userId + '/profile'),
-      new Menu(this.userId, 'Address', '/user/' + this.userId + '/address'),
-      new Menu(this.userId, 'Payment', '/user/' + this.userId + '/payment'),
-      new Menu(this.userId, 'Orders', '/user/' + this.userId + '/orders')
-    ];
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user){
+      const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
+      this.menus = [
+        new Menu(userid, 'Profile', '/user/' + userid + '/profile'),
+        new Menu(userid, 'Address', '/user/' + userid + '/address'),
+        new Menu(userid, 'Payment', '/user/' + userid + '/payment'),
+        new Menu(userid, 'Orders', '/user/' + userid + '/orders')
+      ];
+    }
   }
 
   /**
@@ -38,9 +39,10 @@ export class AccountComponent implements OnInit {
   }
 }
 export  class Menu {
-  constructor(public id: string,
-              public name: string,
-              public link: string
+  constructor(
+    public id: string,
+    public name: string,
+    public link: string
   ) {
   }
 }

@@ -47,10 +47,13 @@ export class SignupComponent implements OnInit {
    *  User register
    */
   register() {
+    this.model.address ='';
+    this.model.payment = '';
     this.userService.create(this.model)
       .subscribe(
         data => {
           this.router.navigate(['/login']);
+          console.log(this.model);
         },
         error => {
           alert("Register failed");

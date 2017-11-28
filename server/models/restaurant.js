@@ -6,9 +6,10 @@ var jwt = require('jsonwebtoken');
 
 
 var foodSchema = new mongoose.Schema({
+  dishId:Number,
   name: String,
   price: Number,
-  discript: String
+  desc: String
 });
 
 var restSchema = new mongoose.Schema({
@@ -21,7 +22,7 @@ var restSchema = new mongoose.Schema({
   picture: String,
   type: String,
   delivery_fee:Number,
-  menu: [foodSchema],
+  mednu: [foodSchema],
   hash: String,
   salt: String
 });

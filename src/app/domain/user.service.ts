@@ -18,8 +18,8 @@ export class UserService {
    * @type {[User , User]}
    */
   users: User[] = [
-    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2),
-    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1),
+    new User(1, 'wingzone@gmail.com', 'wingzone', 'admin', 2, '123', '123'),
+    new User(2, 'asd123456@yahoo.com', 'asd1111', '123456', 1,'123', '123'),
   ];
 
   /**
@@ -102,6 +102,8 @@ export class User {
               public email: string,
               public username: string,
               public password: string,
-              public loginRole: number,) {
+              public loginRole: number,
+              public address: string,
+              public payment: string) {
   }
 }
