@@ -24,6 +24,8 @@ export class OrderSidebarComponent implements OnInit {
   public order: Order;
   public headers: Headers;
   public options: RequestOptions;
+  public username: string;
+  public restaurantName: string;
 
   constructor(private orderService: OrderService, private cdr: ChangeDetectorRef, private http: Http) {
   }
@@ -59,6 +61,7 @@ export class OrderSidebarComponent implements OnInit {
     if (localStorage.getItem('currentUser') != null) {
       this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
       this.address = JSON.parse(localStorage.getItem('currentUser')).address;
+      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
       this.cdr.markForCheck();
       this.cdr.detectChanges();
     }
@@ -143,9 +146,9 @@ export class OrderSidebarComponent implements OnInit {
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
-    this.order = new Order(this.userId, this.restaurantId, this.submitDetail, this.address, false);
+    this.order = new Order(this.username, this.restaurantId, this.restaurantName, this.submitDetail, this.address, this.totalPrice);
     console.log(this.userId);
-    this.http.post('/api/resUpdate', this.order, this.options).subscribe(data => {
+    this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
       console.log('Order submission successful');
     });
     this.orderDetail.clear();

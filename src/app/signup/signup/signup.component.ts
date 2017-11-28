@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
    *  User register
    */
   register() {
-    this.model.address ='';
+    this.model.address = '';
     this.model.payment = '';
     this.userService.create(this.model)
       .subscribe(

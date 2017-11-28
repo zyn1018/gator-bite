@@ -20,8 +20,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    if(user){
-      const userid : string = JSON.parse(localStorage.getItem('currentUser'))._id;
+    if (user) {
+      const userid: string = JSON.parse(localStorage.getItem('currentUser'))._id;
       this.menus = [
         new Menu(userid, 'Profile', '/user/' + userid + '/profile'),
         new Menu(userid, 'Address', '/user/' + userid + '/address'),
@@ -39,10 +39,9 @@ export class AccountComponent implements OnInit {
   }
 }
 export  class Menu {
-  constructor(
-    public id: string,
-    public name: string,
-    public link: string
+  constructor(public id: string,
+              public name: string,
+              public link: string
   ) {
   }
 }

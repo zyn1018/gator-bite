@@ -15,6 +15,7 @@ export class AddressComponent implements OnInit {
   headers: Headers;
   options: any;
   ad: any = {};
+
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -35,7 +36,7 @@ export class AddressComponent implements OnInit {
       state: [''],
       zip: [''],
     });
-    if(JSON.parse(localStorage.getItem('currentUser')).address != null){
+    if (JSON.parse(localStorage.getItem('currentUser')).address != null) {
       this.address = JSON.parse(localStorage.getItem('currentUser')).address.split(',');
       //console.log(this.address);
       this.addressForm.controls['aLine1'].setValue(this.address[0]);
@@ -118,13 +119,13 @@ export class AddressComponent implements OnInit {
     ];
   }
 
-  updateAddress(){
+  updateAddress() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
     this.model.password = JSON.parse(localStorage.getItem('currentUser')).password;
     this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
-                        +',' +  this.ad.state + ',' + this.ad.zip;
+      + ',' + this.ad.state + ',' + this.ad.zip;
     //console.log(this.model.address);
     this.model.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {

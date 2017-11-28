@@ -21,12 +21,12 @@ router.post("/restUpdate", function (req, res) {
       restaurant.delivery_fee = req.body.delivery_fee || restaurant.delivery_fee;
       restaurant.address = req.body.address || restaurant.address;
       restaurant.save(function (err, data) {
-        if(err) {
+        if (err) {
           res.status(400).send(err);
         }
         res.status(200).send(data);
       })
-   }
+    }
 
   })
 });
@@ -42,11 +42,9 @@ router.post("/restMenuUpdate", function (req, res) {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log(JSON.parse(JSON.stringify(req.body[1])));
       restaurant.menu = req.body || restaurant.menu;
-
       restaurant.save(function (err, data) {
-        if(err) {
+        if (err) {
           res.status(400).send(err);
         }
         res.status(200).send(data);

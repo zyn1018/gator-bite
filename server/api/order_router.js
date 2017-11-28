@@ -45,18 +45,19 @@ router.post("/submitOrder", function (req, res) {
   order.userId = userId;
   order.username = req.body.username;
   order.restaurantId = req.body.restaurantId;
+  order.restaurantName = req.body.restaurantName;
   order.order = req.body.order;
   order.address = req.body.address;
   order.price = req.body.price;
   order.save(function (err, data) {
-    if(err) {
+    if (err) {
       res.status(400).send(err);
     }
     Order.find({"userId": userId}).sort({orderDate: -1}).exec(function (err, orders) {
-      if(err){
+      if (err) {
         res.status(400).send(err);
       }
-      res.status(500).send(orders);
+      res.status(200).send(orders);
     })
   })
 
@@ -66,13 +67,13 @@ router.post("/submitOrder", function (req, res) {
 /**
  * a restaurant get all the orders
  */
-router.post("/getOrder", function (req, res) {
+router.get("/getOrder", function (req, res) {
   var restId = getJwt(req);
   Order.find({"restaurantId": restId}).sort({orderDate: -1}).exec(function (err, order) {
-    if(err){
+    if (err) {
       res.status(400).send(err);
     }
-    res.status(200).send()
+    res.status(200).send(order)
   })
 });
 

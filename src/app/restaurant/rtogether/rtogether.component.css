@@ -1,15 +1,16 @@
-.left{
+.left {
   width: 30%;
   height: 38em;
-  float:left;
+  float: left;
   felx: 1;
   background-color: #eeeeee;
   border-right: 2px solid;
 }
-.right{
+
+.right {
   width: 70%;
   height: 38em;
-  float:left;
+  float: left;
   felx: 1;
   background-color: #eeeeee;
 }
