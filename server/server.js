@@ -11,6 +11,7 @@ LocalStrategy = require("passport-local"),
 var authRouter = require("./api/auth");
 var restRouter = require("./api/rest_crud");
 var userRouter = require("./api/user_crud");
+var orderRouter = require("./api/order_router");
 var db = require("./config.json").db;
 module.exports = app;
 mongoose.connect(db, {useMongoClient: true});
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(authRouter);
 app.use(restRouter);
 app.use(userRouter);
+app.use(orderRouter);
 
 
 //define a restaurant class
@@ -50,27 +52,9 @@ var userSchema = mongoose.Schema({
 //for default search
 
 
-app.get("/restaurant", function (req, res) {
-  Restaurant.find({}, {"password": 0, "menu": 0}, function (err, rests) {
-    if (err) {
-      console.log("err");
-    } else {
-      res.send(rests);
-    }
-  });
-});
 
-//get a certain restaurant's dish
-app.get("/dishes/:email", function (req, res) {
-  var email = req.params.email;
-  Restaurant.find({email: email}, {"menu": 1, "_id": 0}, function (err, menues) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(menues[0]);
-    }
-  });
-});
+
+
 
 //login api
 /*app.post("/login", function (req, res) {
