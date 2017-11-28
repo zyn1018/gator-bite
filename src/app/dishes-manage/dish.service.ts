@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class DishService {
   public menu: Dish[];
   public headers: Headers;
   public options: RequestOptions;
+  public dishes: Dish[] = [];
+  public email: string;
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -14,7 +17,7 @@ export class DishService {
     this.options = new RequestOptions({headers: this.headers});
   }
 
-  public dishes: Dish[] = [];
+
   // public dishes: Dish[] = [
   //   new Dish(1, '10 Boneless Wings', 8.99, '10 boneless wings with multiple flavors'),
   //   new Dish(2, '16 Boneless Wings', 13.99, '16 boneless wings with multiple flavors'),
@@ -37,7 +40,12 @@ export class DishService {
    * Get all the dishes in menu via database
    */
   getDishesDB(): Dish[] {
+    this.email = JSON.parse(localStorage.getItem('currentUser')).email;
     this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
+    // return this.http.get('/api/dishes/' + this.email).map(res =>
+    //   res.json()
+    // );
+    this.dishes = this.menu;
     return this.menu;
   }
 
@@ -83,21 +91,23 @@ export class DishService {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
+        this.menu = restaurant['menu'];
       }).subscribe(data => {
         console.log('received response');
       });
       // console.log('sent update request');
     } else {
       this.dishes.splice(dish.dishId - 1, 1, dish);
+      console.log(this.dishes);
       this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
+        this.menu = restaurant['menu'];
       }).subscribe(data => {
         console.log('received response');
       });
     }
-
   }
 }
 

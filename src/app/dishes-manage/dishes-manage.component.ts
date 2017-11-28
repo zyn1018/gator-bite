@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Dish, DishService} from './dish.service';
 import {FormControl} from '@angular/forms';
@@ -12,18 +12,17 @@ import {Headers, Http, RequestOptions, Response} from '@angular/http';
   styleUrls: ['./dishes-manage.component.css']
 })
 export class DishesManageComponent implements OnInit {
-  public dishes: Dish[];
+  dishes: Dish[] = [];
   public nameFilter: FormControl = new FormControl();
   public keyword: string;
   public userId: string;
   public headers: Headers;
   public options: RequestOptions;
 
-  constructor(private router: Router, private dishService: DishService, private userService: UserService, private http: Http) {
+  constructor(private router: Router, private dishService: DishService, private userService: UserService, private http: Http, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishesDB();
     this.nameFilter.valueChanges.debounceTime(500).subscribe(value => this.keyword = value);
     this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     // console.log(JSON.parse(localStorage.getItem('currentUser')).menu);
@@ -31,7 +30,9 @@ export class DishesManageComponent implements OnInit {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
     this.options = new RequestOptions({headers: this.headers});
+    this.dishes = this.dishService.getDishesDB();
   }
+
 
   /**
    * Create new dish
@@ -40,7 +41,7 @@ export class DishesManageComponent implements OnInit {
     this.router.navigateByUrl('/dishes/' + this.userId + '/0');
   }
 
-  /**
+  /**z
    * Update existing dish
    * @param {Dish} dish
    */
@@ -58,9 +59,9 @@ export class DishesManageComponent implements OnInit {
       for (let i = dish.dishId - 1; i < this.dishes.length; i++) {
         this.dishes[i].dishId -= 1;
       }
-      this.http.post('/api/resUpdate', this.dishes, this.options).map((response: Response) => {
+      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
-        let restaurant = response.json()['restaurant'];
+        let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
       }).subscribe(data => {
         console.log('delete successful');

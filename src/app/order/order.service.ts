@@ -41,10 +41,11 @@ export class OrderDetail {
 }
 
 export class Order {
-  constructor(public userId: string,
+  constructor(public username: string,
               public restaurantId: string,
+              public restaurantName: string,
               public order: OrderDetail[],
               public address: string,
-              public done: boolean) {
+              public price: number) {
   }
 }
