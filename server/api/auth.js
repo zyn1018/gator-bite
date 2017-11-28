@@ -7,8 +7,6 @@ var express = require("express"),
 router.post("/register", function (req, res) {
   console.log("has reg");
   var user = new User({email: req.body.email, username: req.body.username});
-  console.log(req.body.email);
-  console.log(req.body.username);
   user.setPassword(req.body.password);
   User.findOne({"email": user.email}, function (err, indata) {
     if (err) {
@@ -38,8 +36,6 @@ router.post("/register", function (req, res) {
 router.post("/registerRes", function (req, res) {
   console.log("has reg");
   var restaurant = new Restaurant({email: req.body.email, username: req.body.username});
-  console.log(req.body.email);
-  console.log(req.body.username);
   restaurant.setPassword(req.body.password);
   Restaurant.findOne({"email": restaurant.email}, function (err, indata) {
     if (err) {
@@ -71,8 +67,6 @@ router.post("/registerRes", function (req, res) {
 router.post("/login", function (req, res) {
     var email = req.body.email;
     var pwd = req.body.password;
-  console.log(pwd);
-  console.log(email);
     User.findOne({"email": email}, function (err, data) {
       if (err) {
         console.log(err);
@@ -108,7 +102,6 @@ router.post("/loginRes", function (req, res) {
           res.status(400).send();
         } else {
           var token = data.generateJwt();
-          console.log(token);
           res.status(200);
           res.json({
             "restaurant": data,

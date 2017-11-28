@@ -34,6 +34,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "hammerjs": "^2.0.8",
+    "istanbul": "^0.4.5",
     "j": "^0.4.5",
     "jsonwebtoken": "^8.1.0",
     "material-design-icons": "^3.0.1",
