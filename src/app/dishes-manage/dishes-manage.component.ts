@@ -59,8 +59,7 @@ export class DishesManageComponent implements OnInit {
       for (let i = dish.dishId - 1; i < this.dishes.length; i++) {
         this.dishes[i].dishId -= 1;
       }
-      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
-        // update successful if there's a restaurant token in the response
+      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
       }).subscribe(data => {

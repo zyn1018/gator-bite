@@ -24,11 +24,16 @@ export class HeaderComponent implements OnInit {
       this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
       console.log(this.userId);
     }
+    this.isLogin = localStorage.getItem('currentUser') != null;
+    this.isRestaurant = JSON.parse(localStorage.getItem('currentUser')).menu != null;
+
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
+      console.log(this.isLogin);
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
+      console.log(this.isRestaurant);
     });
     this.cdr.markForCheck();
     this.cdr.detectChanges();
@@ -55,9 +60,9 @@ export class HeaderComponent implements OnInit {
    * Show user profile page
    */
   openUserProfile() {
-    if(this.isRestaurant == false){
+    if (this.isRestaurant == false) {
       this.router.navigateByUrl('/user/' + this.userId);
-    }else if(this.isRestaurant == true){
+    } else if (this.isRestaurant == true) {
       this.router.navigateByUrl('/restaurantInfo/' + this.userId);
       // console.log(this.userId);
     }

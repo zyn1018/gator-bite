@@ -17,17 +17,6 @@ export class DishService {
     this.options = new RequestOptions({headers: this.headers});
   }
 
-
-  // public dishes: Dish[] = [
-  //   new Dish(1, '10 Boneless Wings', 8.99, '10 boneless wings with multiple flavors'),
-  //   new Dish(2, '16 Boneless Wings', 13.99, '16 boneless wings with multiple flavors'),
-  //   new Dish(3, '20 Boneless Wings', 16.99, '20 boneless wings with multiple flavors'),
-  //   new Dish(4, 'Wedge Fries', 2.29, 'Crispy fires'),
-  //   new Dish(5, '4 tenders', 5.79, '4 Juicy chicken tenders'),
-  //   new Dish(6, '6 tenders', 7.79, '6 Juicy chicken tenders'),
-  //   new Dish(7, '10 tenders', 12.79, '10 Juicy chicken tenders'),
-  // ];
-
   /**
    * Get all the dishes
    * @returns {Dish[]}
@@ -46,7 +35,7 @@ export class DishService {
     //   res.json()
     // );
     this.dishes = this.menu;
-    return this.menu;
+    return this.dishes;
   }
 
   /**
@@ -77,17 +66,18 @@ export class DishService {
   }
 
   /**
-   * Update menu in both front-end and back-end
+   * Update restaurant menu
    * @param {Dish} dish
    */
   updateDishesDB(dish: Dish) {
     if (dish.dishId == 0) {
       dish.dishId = this.dishes.length + 1;
+      console.log(dish.dishId);
       this.dishes.push(dish);
       this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
       // console.log(this.menu);
       console.log(this.dishes);
-      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
+      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));
@@ -99,7 +89,7 @@ export class DishService {
     } else {
       this.dishes.splice(dish.dishId - 1, 1, dish);
       console.log(this.dishes);
-      this.http.post('/api/restUpdate', this.dishes, this.options).map((response: Response) => {
+      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
         // update successful if there's a restaurant token in the response
         let restaurant = response.json();
         localStorage.setItem('currentUser', JSON.stringify(restaurant));

@@ -52,10 +52,6 @@ var userSchema = mongoose.Schema({
 //for default search
 
 
-
-
-
-
 //login api
 /*app.post("/login", function (req, res) {
   var lemail = req.body.email;

@@ -10,7 +10,6 @@ var getJwt = require("./getJwt");
  * req.json{picture, }
  */
 router.post("/restUpdate", function (req, res) {
-  console.log("update menu");
   var id = getJwt(req);
   Restaurant.findById(id, function (err, restaurant) {
     if (err) {
@@ -19,15 +18,13 @@ router.post("/restUpdate", function (req, res) {
       restaurant.picture = req.body.picture || restaurant.picture || null;
       restaurant.type = req.body.type || restaurant.type;
       restaurant.delivery_fee = req.body.delivery_fee || restaurant.delivery_fee;
-      console.log(req.body.menu);
-
       restaurant.save(function (err, data) {
-        if(err) {
+        if (err) {
           res.status(400).send(err);
         }
         res.status(200).send(data);
       })
-   }
+    }
 
   })
 });
@@ -43,11 +40,10 @@ router.post("/restMenuUpdate", function (req, res) {
     if (err) {
       res.status(400).send(err);
     } else {
+      console.log(req.body);
       restaurant.menu = req.body || restaurant.menu;
-      console.log(req.body.menu);
-
       restaurant.save(function (err, data) {
-        if(err) {
+        if (err) {
           res.status(400).send(err);
         }
         res.status(200).send(data);

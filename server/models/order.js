@@ -1,8 +1,8 @@
 var mongoose = require("mongoose")
 
 var foodSchema = new mongoose.Schema({
-    name: String,
-    number: Number,
+  name: String,
+  number: Number,
 });
 
 var orderSchema = new mongoose.Schema({

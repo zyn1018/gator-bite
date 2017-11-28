@@ -49,11 +49,11 @@ router.post("/submitOrder", function (req, res) {
   order.address = req.body.address;
   order.price = req.body.price;
   order.save(function (err, data) {
-    if(err) {
+    if (err) {
       res.status(400).send(err);
     }
     Order.find({"userId": userId}).sort({orderDate: -1}).exec(function (err, orders) {
-      if(err){
+      if (err) {
         res.status(400).send(err);
       }
       res.status(500).send(orders);
@@ -69,7 +69,7 @@ router.post("/submitOrder", function (req, res) {
 router.post("/getOrder", function (req, res) {
   var restId = getJwt(req);
   Order.find({"restaurantId": restId}).sort({orderDate: -1}).exec(function (err, order) {
-    if(err){
+    if (err) {
       res.status(400).send(err);
     }
     res.status(200).send()
