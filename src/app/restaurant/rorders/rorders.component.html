@@ -6,6 +6,7 @@
       <th>Username</th>
       <th>User Address</th>
       <th>Order Detail</th>
+      <th>Order Price</th>
       <th>Order Date</th>
     </tr>
     <tr id="orders" *ngFor="let order of orders ,let i = index;">
@@ -14,7 +15,8 @@
       <td id="uName">{{order.username}}</td>
       <td id="uAddress">{{order.userAddress}}</td>
       <td id="detail">{{order.orderDetail}}</td>
-      <td id="date">{{order.orderDate}}</td>
+      <td id="price">{{order.price.toFixed(2)}}</td>
+      <td id="date">{{order.orderDate.split('T')[0]}} -- {{order.orderDate.split('T')[1].split('.')[0]}}</td>
     </tr>
   </table>
 </div>

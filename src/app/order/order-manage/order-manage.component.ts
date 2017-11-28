@@ -19,8 +19,13 @@ export class OrderManageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes();
     this.restaurantId = this.document.location.href.split('/')[4];
+    this.dishService.getOneResDish(this.restaurantId).subscribe(
+      data => {
+        // console.log(data);
+        this.dishes = data['menu'];
+      }
+    );
     this.orderService.setRestaurantIdSubject(this.restaurantId);
   }
 

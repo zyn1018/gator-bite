@@ -35,8 +35,8 @@ export class OrderService {
 
 
 export class OrderDetail {
-  constructor(public dishName: string,
-              public dishCount: number) {
+  constructor(public name: string,
+              public number: number) {
   }
 }
 

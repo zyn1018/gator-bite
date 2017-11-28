@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
 @Component({
@@ -100,7 +100,7 @@ export class RaddressComponent implements OnInit {
   }
 
 
-  updateAddress(){
+  updateAddress() {
     this.model.delivery_fee = JSON.parse(localStorage.getItem('currentUser')).delivery_fee;
     this.model.userid = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.model.email = JSON.parse(localStorage.getItem('currentUser')).email;
@@ -109,7 +109,7 @@ export class RaddressComponent implements OnInit {
     this.model.picture = JSON.parse(localStorage.getItem('currentUser')).picture;
     this.model.type = JSON.parse(localStorage.getItem('currentUser')).type;
     this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
-                      +',' +  this.ad.state + ',' + this.ad.zip;
+      + ',' + this.ad.state + ',' + this.ad.zip;
     this.http.post('/api/restUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
       if (user) {
