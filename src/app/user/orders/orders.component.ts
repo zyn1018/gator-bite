@@ -14,8 +14,6 @@ export class OrdersComponent implements OnInit {
   /**
    * Constuct the headers for Http
    */
-
-
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -26,17 +24,21 @@ export class OrdersComponent implements OnInit {
   /**
    * Send the Http get to get order data from database and show it on website
    */
-
   ngOnInit() {
     this.http.get('/api/getUserOrder', this.options).subscribe(data => {
       for (let i = 0; i < data.json().length; i++) {
         let item = data.json()[i];
-        let order = new Order(item._id, item.restaurantName, item.price, item.orderDate);
+        let orderD = item.order;
+        let orderDt = '';
+        for (let j = 0; j < orderD.length; j++) {
+          let str = orderD[j]['name'] + '(' + orderD[j]['number'] + ')';
+          orderDt += str + ',';
+        }
+        let order = new Order(item._id, item.restaurantName, item.price, orderDt.substring(0, orderDt.length - 1), item.orderDate);
         this.orders.push(order);
       }
     });
   }
-
 }
 
 /**
@@ -46,6 +48,7 @@ export class Order {
   constructor(public orderID: number,
               public rName: string,
               public price: String,
+              public orderDetail: string,
               public date: string,) {
   }
 }

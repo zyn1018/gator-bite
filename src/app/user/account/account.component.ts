@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../domain/user.service';
 
@@ -42,12 +42,9 @@ export class AccountComponent implements OnInit {
 /**
  * Get all the dishes in menu via database
  */
-
-
-export  class Menu {
+export class Menu {
   constructor(public id: string,
               public name: string,
-              public link: string
-  ) {
+              public link: string) {
   }
 }
