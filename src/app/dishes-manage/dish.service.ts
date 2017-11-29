@@ -4,11 +4,11 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class DishService {
-  public menu: Dish[];
   public headers: Headers;
   public options: RequestOptions;
   public dishes: Dish[] = [];
   public email: string;
+  public restaurantId: string;
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -18,28 +18,20 @@ export class DishService {
   }
 
   /**
-   * Get all the dishes
+   * Get restaurant menu for management
    * @returns {Dish[]}
    */
-  getDishes() {
+  getDishes(): Dish[] {
+    this.dishes = JSON.parse(localStorage.getItem('currentUser')).menu;
     return this.dishes;
   }
 
   /**
-   * Get all the dishes in menu via database
+   * Get menu for order
+   * @param {string} restaurantId
+   * @returns {Observable<Dish[]>}
    */
-  getDishesDB(restaurantId: string): Observable<Dish[]> {
-    this.email = JSON.parse(localStorage.getItem('currentUser')).email;
-    if (JSON.parse(localStorage.getItem('currentUser')).menu == null) {
-      this.menu = [];
-    } else {
-      this.menu = JSON.parse(localStorage.getItem('currentUser')).menu;
-    }
-    this.dishes = this.menu;
-    return this.http.get('/api/dishes/' + restaurantId, this.options).map(res => res.json());
-  }
-
-  getOneResDish(restaurantId: string): Observable<Dish[]> {
+  getOneResDish(restaurantId: string): Observable<any> {
     return this.http.get('/api/dishes/' + restaurantId, this.options).map(res => res.json());
   }
 
@@ -49,25 +41,11 @@ export class DishService {
    * @returns {Dish}
    */
   getDish(id: number): Dish {
-    let dish = this.menu.find(dish => dish.dishId == id);
+    let dish = this.dishes.find(dish => dish.dishId == id);
     if (dish == null) {
       dish = new Dish(0, '', null, '');
     }
     return dish;
-  }
-
-  /**
-   * Update dishes manage page
-   * @param {Dish} dish
-   */
-  updateDishes(dish: Dish) {
-    if (dish.dishId == 0) {
-      dish.dishId = this.dishes.length + 1;
-      this.dishes.push(dish);
-      this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
-    } else {
-      this.dishes.splice(dish.dishId - 1, 1, dish);
-    }
   }
 
   /**
@@ -79,23 +57,22 @@ export class DishService {
       dish.dishId = this.dishes.length + 1;
       this.dishes.push(dish);
       this.dishes.sort((d1, d2) => d1.dishId - d2.dishId);
-      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
-        let restaurant = response.json();
-        localStorage.setItem('currentUser', JSON.stringify(restaurant));
-        this.menu = restaurant['menu'];
-      }).subscribe(data => {
-        console.log('received response');
+      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => response.json()
+      ).subscribe(data => {
       });
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      user.menu = this.dishes;
+      localStorage.setItem('currentUser', JSON.stringify(user));
+
     } else {
       this.dishes.splice(dish.dishId - 1, 1, dish);
-      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) => {
-        // update successful if there's a restaurant token in the response
-        let restaurant = response.json();
-        localStorage.setItem('currentUser', JSON.stringify(restaurant));
-        this.menu = restaurant['menu'];
-      }).subscribe(data => {
-        console.log('received response');
+      this.http.post('/api/restMenuUpdate', this.dishes, this.options).map((response: Response) =>
+        response.json()
+      ).subscribe(data => {
       });
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      user.menu = this.dishes;
+      localStorage.setItem('currentUser', JSON.stringify(user));
     }
   }
 }

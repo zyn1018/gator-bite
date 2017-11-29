@@ -142,19 +142,21 @@ export class OrderSidebarComponent implements OnInit {
    * When press submit your order button, the order will be sent to server
    */
   submitOrder() {
-    this.dishService.getOneResDish(this.restaurantId).subscribe(
-      data => {
-        this.restaurantName = data['username'];
-      }
-    );
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
-    this.order = new Order(this.username, this.restaurantId, this.restaurantName, this.submitDetail, this.address, this.totalPrice);
-    this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
-      console.log('Order submission successful');
-      alert('Order has been submitted!');
-    });
+    const price = this.totalPrice;
+    const od = this.submitDetail;
+    this.dishService.getOneResDish(this.restaurantId).subscribe(
+      data => {
+        this.restaurantName = data['username'];
+        this.order = new Order(this.username, this.restaurantId, this.restaurantName, od, this.address, price);
+        this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
+          alert('Order has been submitted!');
+        });
+      }
+    );
+
     this.orderDetail.clear();
     this.submitDetail = [];
     this.orderService.setOrderDetailSubject(new Map<string, number[]>());

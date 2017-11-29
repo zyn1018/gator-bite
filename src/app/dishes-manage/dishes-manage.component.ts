@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Dish, DishService} from './dish.service';
 import {FormControl} from '@angular/forms';
@@ -29,13 +29,9 @@ export class DishesManageComponent implements OnInit {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
     this.options = new RequestOptions({headers: this.headers});
-    this.dishService.getDishesDB(this.userId).subscribe(
-      data => {
-        this.dishes = data['menu'];
-      }
-    );
+    this.dishes = this.dishService.getDishes();
+    console.log(this.dishes);
   }
-
 
   /**
    * Create new dish
