@@ -30,7 +30,6 @@ export class DishesManageComponent implements OnInit {
     this.headers.append('authentication', localStorage.getItem('token'));
     this.options = new RequestOptions({headers: this.headers});
     this.dishes = this.dishService.getDishes();
-    console.log(this.dishes);
   }
 
   /**

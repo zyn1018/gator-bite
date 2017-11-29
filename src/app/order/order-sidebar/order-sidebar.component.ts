@@ -39,11 +39,7 @@ export class OrderSidebarComponent implements OnInit {
       loginRole: ['']
     });
     this.submitDetail = [];
-    //Set token into header
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('authentication', localStorage.getItem('token'));
-    this.options = new RequestOptions({headers: this.headers});
+
 
     this.orderService.getOrderDetailSubject().subscribe(data => {
       this.orderDetail = data;
@@ -142,6 +138,11 @@ export class OrderSidebarComponent implements OnInit {
    * When press submit your order button, the order will be sent to server
    */
   submitOrder() {
+    //Set token into header
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
