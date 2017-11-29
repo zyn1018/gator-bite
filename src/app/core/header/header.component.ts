@@ -65,7 +65,6 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/user/' + this.userId);
     } else if (this.isRestaurant == true) {
       this.router.navigateByUrl('/restaurantInfo/' + this.userId);
-      // console.log(this.userId);
     }
   }
 }

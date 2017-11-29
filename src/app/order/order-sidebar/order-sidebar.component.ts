@@ -53,14 +53,6 @@ export class OrderSidebarComponent implements OnInit {
     this.orderService.getRestaurantIdSubject().subscribe(data => {
       this.restaurantId = data;
     });
-
-    if (localStorage.getItem('currentUser') != null) {
-      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-      this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
-      this.cdr.markForCheck();
-      this.cdr.detectChanges();
-    }
   }
 
   /**
@@ -143,6 +135,13 @@ export class OrderSidebarComponent implements OnInit {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('authentication', localStorage.getItem('token'));
     this.options = new RequestOptions({headers: this.headers});
+    if (localStorage.getItem('currentUser') != null) {
+      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+      this.address = JSON.parse(localStorage.getItem('currentUser')).address;
+      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    }
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
@@ -152,6 +151,7 @@ export class OrderSidebarComponent implements OnInit {
       data => {
         this.restaurantName = data['username'];
         this.order = new Order(this.username, this.restaurantId, this.restaurantName, od, this.address, price);
+        console.log(this.order);
         this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
           alert('Order has been submitted!');
         });
