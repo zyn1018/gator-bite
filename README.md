@@ -1,11 +1,9 @@
 # GatorBite
-
+## GatorBite is an online food delivery platform. Go eat! Go gator!
 ### Developer:
 ### Yinan Zhang(github: zyn1018)
 ### Wenbo Zhao(github: challengezwb) 
 ### Peidong Zhu(github: ygbzl)
-
-GatorBite is an online food delivery platform. Go eat! Go gator!
 
 ![](https://github.com/zyn1018/gator-bite/blob/beta/Screenshot/homepage.png?raw=true)
 
