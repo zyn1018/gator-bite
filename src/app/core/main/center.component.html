@@ -7,7 +7,7 @@
           <i class="material-icons material-icons-color locationButton">room</i>
         </mat-icon>
       </button>
-      <mat-input-container class="inputWidth">
+      <mat-input-container class="inputWidth" id="locationText">
         <input matInput type="text" placeholder="Location" [value]="obj">
       </mat-input-container>
       <mat-progress-spinner color="accent" *ngIf="showSpinner" mode="indeterminate" diameter="30"
