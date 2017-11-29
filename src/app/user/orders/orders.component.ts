@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
+import {Component, OnInit} from '@angular/core';
+import {Headers, Http, RequestOptions} from '@angular/http';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -41,14 +42,10 @@ export class OrdersComponent implements OnInit {
 /**
  * Construct the order class
  */
-
-
 export class Order {
-  constructor(
-    public orderID: number,
-    public rName: string,
-    public price: String,
-    public date: string,
-  ) {
+  constructor(public orderID: number,
+              public rName: string,
+              public price: String,
+              public date: string,) {
   }
 }

@@ -11,10 +11,6 @@ export class DishService {
   public restaurantId: string;
 
   constructor(private http: Http) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('authentication', localStorage.getItem('token'));
-    this.options = new RequestOptions({headers: this.headers});
   }
 
   /**
@@ -32,6 +28,10 @@ export class DishService {
    * @returns {Observable<Dish[]>}
    */
   getOneResDish(restaurantId: string): Observable<any> {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
     return this.http.get('/api/dishes/' + restaurantId, this.options).map(res => res.json());
   }
 
@@ -53,6 +53,10 @@ export class DishService {
    * @param {Dish} dish
    */
   updateDishesDB(dish: Dish) {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
     if (dish.dishId == 0) {
       dish.dishId = this.dishes.length + 1;
       this.dishes.push(dish);
