@@ -20,8 +20,6 @@ export class AddressComponent implements OnInit {
   /**
    * Constuct the headers for Http
    */
-
-
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -56,20 +54,7 @@ export class AddressComponent implements OnInit {
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
     }
-    // if (JSON.parse(localStorage.getItem('currentUser')).address != null) {
-    //   this.address = JSON.parse(localStorage.getItem('currentUser')).address.split(',');
-    // } else {
-    //   this.address = [];
-    // }
-    // console.log(this.address[0]);
-    // this.addressForm = this.fb.group({
-    //   aLine1: [this.address[0]],
-    //   aLine2: [this.address[1]],
-    //   city: [this.address[2]],
-    //   state: [this.address[3]],
-    //   zip: [this.address[4]],
-    // });
-    // console.log(this.addressForm);
+
     this.states = [
       'AL',
       'Ak',
@@ -128,8 +113,6 @@ export class AddressComponent implements OnInit {
    * Update the user's address and send it to the server, get the response from the server and
    * store it in the localStorage
    */
-
-
   updateAddress() {
     this.model.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     this.model.username = JSON.parse(localStorage.getItem('currentUser')).username;
@@ -137,11 +120,9 @@ export class AddressComponent implements OnInit {
     this.model.password = JSON.parse(localStorage.getItem('currentUser')).password;
     this.model.address = this.ad.aLine1 + ',' + this.ad.aLine2 + ',' + this.ad.city
       + ',' + this.ad.state + ',' + this.ad.zip;
-    //console.log(this.model.address);
     this.model.payment = JSON.parse(localStorage.getItem('currentUser')).payment;
     this.http.post('/api/userUpdate', this.model, this.options).map((response: Response) => {
       let user = response.json();
-      //console.log(user);
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
       }

@@ -71,7 +71,6 @@ router.get("/getOrder", function (req, res) {
   console.log('getOrder!');
   var restId = getJwt(req);
   Order.find({"restaurantId": restId}).sort({orderDate: -1}).exec(function (err, order) {
-    console.log(order)
     if (err) {
       res.status(400).send(err);
     }

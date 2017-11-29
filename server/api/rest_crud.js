@@ -36,7 +36,7 @@ router.post("/restUpdate", function (req, res) {
  * update menu for a restaurant
  */
 router.post("/restMenuUpdate", function (req, res) {
-  //console.log("update menu");
+  console.log("update menu");
   var id = getJwt(req);
   Restaurant.findById(id, function (err, restaurant) {
     if (err) {

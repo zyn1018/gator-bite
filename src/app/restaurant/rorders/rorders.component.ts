@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Headers, Http, RequestOptions, Response} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import {Headers, Http, RequestOptions} from '@angular/http';
+
 @Component({
   selector: 'app-rorders',
   templateUrl: './rorders.component.html',
@@ -37,14 +37,10 @@ export class RordersComponent implements OnInit {
         let orderD = item.order;
         let orderDt = '';
         for (let j = 0; j < orderD.length; j++) {
-          let str = orderD[i]['name'] + '(' + orderD[i]['number'] + ')';
-          if (j == orderD.length - 1) {
-            orderDt = str;
-          } else {
-            orderDt = str + ',';
-          }
+          let str = orderD[j]['name'] + '(' + orderD[j]['number'] + ')';
+          orderDt += str + ',';
         }
-        let order = new Order(item._id, item.username, item.address, orderDt, item.price, item.orderDate);
+        let order = new Order(item._id, item.username, item.address, orderDt.substring(0, orderDt.length - 1), item.price, item.orderDate);
         this.orders.push(order);
       }
     });

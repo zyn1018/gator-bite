@@ -13,7 +13,6 @@ export class DishFormComponent implements OnInit {
   formModel: FormGroup;
   dish: Dish;
   userId: string;
-  dishes: Dish[];
 
   constructor(private routeInfo: ActivatedRoute,
               private dishService: DishService,
@@ -23,6 +22,7 @@ export class DishFormComponent implements OnInit {
   ngOnInit() {
     const dishId = this.routeInfo.snapshot.params['dishId'];
     this.dish = this.dishService.getDish(dishId);
+    console.log(this.dish);
     this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     let fb = new FormBuilder();
     this.formModel = fb.group(
