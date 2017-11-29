@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SignupComponent} from './signup.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MdCardModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
 import {APP_BASE_HREF} from '@angular/common';
 import {UserService} from '../../domain/user.service';
 
@@ -18,7 +18,7 @@ describe('SignupComponent', () => {
         RouterModule.forRoot([]),
         FormsModule,
         ReactiveFormsModule,
-        MdCardModule,
+        MatCardModule,
       ],
       providers: [
         {
