@@ -1,11 +1,16 @@
 import {TestBed, inject} from '@angular/core/testing';
 
 import {DishService} from './dish.service';
+import {HttpModule} from '@angular/http';
 
 describe('DishService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DishService]
+      imports: [
+        HttpModule
+      ],
+      providers:
+        [DishService],
     });
   });
 

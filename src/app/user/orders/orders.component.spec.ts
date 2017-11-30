@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrdersComponent } from './orders.component';
+import {HttpModule} from '@angular/http';
 
 describe('OrdersComponent', () => {
   let component: OrdersComponent;
@@ -8,6 +9,9 @@ describe('OrdersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpModule
+      ],
       declarations: [ OrdersComponent ]
     })
     .compileComponents();
@@ -17,9 +21,5 @@ describe('OrdersComponent', () => {
     fixture = TestBed.createComponent(OrdersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

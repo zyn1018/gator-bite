@@ -16,7 +16,7 @@ import {SharedModule} from '../shared/shared.module';
     RtogetherComponent],
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     RaccountComponent,
