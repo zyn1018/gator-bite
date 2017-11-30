@@ -44,3 +44,5 @@ bower_components/
 /documentation/
 /server/config.json
 /.nyc_output/
+/coverage/
+test/coverage/
