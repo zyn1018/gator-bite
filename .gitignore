@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 bower_components/
 /documentation/
+/server/config.json
