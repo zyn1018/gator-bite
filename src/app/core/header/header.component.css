@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.word {
+  display: flex;
+  color: white;
+  font-size: 25px;
+  font-family: Impact;
+}

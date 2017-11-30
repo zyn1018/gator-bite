@@ -1,0 +1,37 @@
+<div class="wholePage">
+  <form [formGroup]="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <span color="primary" class="titlePosition">Gator Bite</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-input-container class="full-width">
+          <input matInput type="text" id="loginEmail" name="email" [(ngModel)]="model.email" placeholder="Email"
+                 formControlName="email">
+          <mat-error>Invalid email!</mat-error>
+        </mat-input-container>
+        <mat-input-container class="full-width">
+          <input matInput type="password" id="loginPassword" name="password" [(ngModel)]="model.password"
+                 placeholder="Password"
+                 formControlName="password">
+          <mat-error>Password should be longer than 8!</mat-error>
+        </mat-input-container>
+        <div>
+          <mat-radio-group formControlName="loginRole" [(ngModel)]="model.loginRole" name="login[loginRole]">
+            <mat-radio-button [value]="1" id="customerOption">Customer</mat-radio-button>
+            <mat-radio-button [value]="2" id="restaurantOption">Restaurant</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <button mat-raised-button type="submit" class="bottonPosition loginButton" color="primary"
+                [disabled]="!form.valid" id="loginButton">Login
+        </button>
+      </mat-card-content>
+      <mat-card-actions class="text-right">
+        <p>Don't have an account? <a [routerLink]="['/signup']" style="text-decoration: none">Create Your Account</a>
+        </p>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

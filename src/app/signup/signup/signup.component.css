@@ -1,0 +1,52 @@
+mat-card {
+  width: 25em;
+  margin: 5px 5px;
+  flex: 0 0 20em;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.text-right {
+  margin: 3px;
+  text-align: start;
+}
+
+.titlePosition {
+  margin-left: 5em;
+  font-weight: bold;
+  font-size: large;
+  color: #f44336;
+}
+
+.bottonPosition {
+  width: 100%;
+  color: white;
+  margin-top: 3em;
+
+}
+
+.backGround {
+  flex: 1;
+  background: url("../../../assets/backimg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  padding-right: 16px;
+}
+.errorColor{
+  color: red;
+}

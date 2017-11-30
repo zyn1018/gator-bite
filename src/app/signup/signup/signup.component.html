@@ -1,0 +1,42 @@
+<div class="backGround">
+  <form [formGroup]="signupForm" (ngSubmit)="f.form.valid && register()" #f="ngForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <span color="primary" class="titlePosition">Gator Bite</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-input-container class="full-width">
+          <input matInput type="text" placeholder="Email" name="email" [(ngModel)]="model.email"
+                 formControlName="email">
+          <mat-error>Invalid email address !</mat-error>
+        </mat-input-container>
+        <mat-input-container class="full-width">
+          <input matInput type="text" placeholder="Username" name="username" [(ngModel)]="model.username"
+                 formControlName="username">
+          <mat-error>UserName length must be more than 6!</mat-error>
+        </mat-input-container>
+        <div formGroupName="passwordInfo">
+          <mat-input-container class="full-width">
+            <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="model.password"
+                   formControlName="password">
+          </mat-input-container>
+          <mat-input-container class="full-width">
+            <input matInput type="password" placeholder="Confirm your Password" formControlName="confirmPassword">
+          </mat-input-container>
+        </div>
+        <div [hidden]="!signupForm.hasError('password', 'confirmPassword')" class="errorColor">
+          Password and confirm password do not match!
+        </div>
+        <mat-radio-group formControlName="loginRole" name="login[loginRole]" [(ngModel)]="model.loginRole">
+          <mat-radio-button [value]="1">Customer</mat-radio-button>
+          <mat-radio-button [value]="2">Restaurant</mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button type="submit" class="bottonPosition" color="primary" [disabled]="!signupForm.valid">
+          Create Your Account
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

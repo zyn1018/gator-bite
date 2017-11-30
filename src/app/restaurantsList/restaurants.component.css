@@ -1,0 +1,19 @@
+div {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: -1em;
+  background-image: none;
+}
+
+.pic{
+  height: 11em;
+  width: 13em;
+  margin: auto;
+
+}
+
+.card {
+  width: 16em;
+  height: 25em;
+}
+

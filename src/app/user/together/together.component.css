@@ -1,0 +1,15 @@
+.left{
+  width: 30%;
+  height: 38em;
+  float: left;
+  felx: 1;
+  background-color: #eeeeee;
+  border-right: 2px solid;
+}
+.right{
+  width: 70%;
+  height: 38em;
+  float:left;
+  felx: 1;
+  background-color: #eeeeee;
+}

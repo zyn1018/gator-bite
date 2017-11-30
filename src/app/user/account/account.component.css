@@ -1,0 +1,21 @@
+.title {
+  font-size: 200%;
+  font-weight: bolder;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: start;
+}
+
+.item{
+  text-align: start;
+}
+.space{
+  padding-left: 20px;
+  font-weight: bold;
+  color: black;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 150%;
+}
+

@@ -1,0 +1,41 @@
+<div class="box">
+  <div class="box-header with-border">
+    <button class="btn btn-success btn-sm" id="createButton" (click)="create()"><span
+      class="glyphicon glyphicon-plus"></span>Create
+    </button>
+    <div class="box-tools">
+      <div class="input-group input-group-sm" style="width: 150px;">
+        <input [formControl]="nameFilter" type="text" name="table_search" class="form-control pull-right"
+               placeholder="Search">
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /.box-header -->
+  <div class="box-body dishManagePage">
+    <table class="table table-bordered">
+      <tr>
+        <th style="width: 10px">#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Desc</th>
+        <th>Operation</th>
+      </tr>
+      <tr id="dishes" *ngFor="let dish of dishes | dishFilter:'name':keyword; let i = index;">
+        <td id="tdDishId">{{i + 1}}</td>
+        <td id="tdDishName">{{dish.name}}</td>
+        <td id="tdDishPrice">{{dish.price.toFixed(2)}}</td>
+        <td id="tdDishDesc">{{dish.desc}}</td>
+        <td>
+          <a class="btn btn-warning btn-xs" id="updateButton" (click)="update(dish)"><span
+            class="glyphicon glyphicon-pencil"></span>Update</a>
+          <a class="btn btn-danger btn-xs" id="deleteButton" (click)="delete(dish)"><span
+            class="glyphicon glyphicon-remove"></span>Delete</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

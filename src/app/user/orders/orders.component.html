@@ -1,0 +1,20 @@
+<div class="box-body">
+  <table class="table table-bordered">
+    <tr>
+      <th style="width: 10px">#</th>
+      <th>OrderID</th>
+      <th>Restaurant Name</th>
+      <th>Order Detail</th>
+      <th>Price</th>
+      <th>Order Date</th>
+    </tr>
+    <tr id="orders" *ngFor="let order of orders ,let i = index;">
+      <td id="Number">{{i + 1}}</td>
+      <td id="orderId">{{order.orderID}}</td>
+      <td id="rName">{{order.rName}}</td>
+      <td id="orderDetail">{{order.orderDetail}}</td>
+      <td id="price">{{order.price.toFixed(2)}}</td>
+      <td id="date">{{order.date.split('T')[0]}}</td>
+    </tr>
+  </table>
+</div>

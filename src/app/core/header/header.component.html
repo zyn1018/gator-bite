@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <button mat-button id="gatorbiteButton" class="word" [routerLink]="['/home']">Gator Bite</button>
+  <span class="fill-remaining-space"></span>
+  <button *ngIf="!isLogin" mat-button class="button" id="loginPageButton" [routerLink]="['/login']">Sign in</button>
+  <button *ngIf="!isLogin" mat-button class="button" id="signupPageButton" [routerLink]="['/signup']">Sign up</button>
+  <button mat-icon-button *ngIf="isLogin" (click)="openUserProfile()" id="userButton">
+    <i class="material-icons">account_box</i>
+  </button>
+  <button mat-icon-button *ngIf="isLogin && !isRestaurant" (click)="openSideBar()" id="orderSideNavToggle">
+    <i class="material-icons">card_travel</i>
+  </button>
+  <button mat-icon-button *ngIf="isLogin && isRestaurant" (click)="gotoDishManagement()">
+    <i class="material-icons">subject</i>
+  </button>
+  <button mat-button *ngIf="isLogin" (click)="logout()">
+    Log out
+  </button>
+
+</mat-toolbar>

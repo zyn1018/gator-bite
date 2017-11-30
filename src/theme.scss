@@ -1,0 +1,12 @@
+/*
+Design the theme for the whole web;
+ */
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-red);
+$my-app-accent: mat-palette($mat-green);
+$my-app-warn: mat-palette($mat-red);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);

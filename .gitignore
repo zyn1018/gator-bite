@@ -40,3 +40,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+bower_components/
+/documentation/
+/server/config.json
+/.nyc_output/
+/coverage/
+test/coverage/

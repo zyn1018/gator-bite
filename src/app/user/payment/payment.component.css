@@ -1,0 +1,30 @@
+.div{
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.title{
+  font-size: 150%;
+  font-weight: bold;
+}
+.holder{
+  width:200px;
+  height: 30px;
+}
+.number{
+  width:70px;
+  height: 30px;
+  margin-left: 10px;
+}
+.number1{
+  width:70px;
+  height: 30px;
+}
+.date{
+  width: 100px;
+  height: 30px;
+}
+.cvv{
+  width: 80px;
+  height: 30px;
+}
