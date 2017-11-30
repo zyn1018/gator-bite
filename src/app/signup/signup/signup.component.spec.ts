@@ -6,8 +6,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule, MatRadioModule} from '@angular/material';
 import {APP_BASE_HREF} from '@angular/common';
 import {UserService} from '../../domain/user.service';
-import {HttpModule} from '@angular/http';
+import {BaseRequestOptions, Http, HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import {MockBackend} from '@angular/http/testing';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -31,7 +32,16 @@ describe('SignupComponent', () => {
           provide: APP_BASE_HREF,
           useValue: '/'
         },
-        UserService
+        UserService,
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Http,
+          useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+            return new Http(backendInstance, defaultOptions);
+          },
+          deps: [MockBackend, BaseRequestOptions]
+        },
       ]
     })
       .compileComponents();
@@ -81,5 +91,9 @@ describe('SignupComponent', () => {
         expect(component.register()).toBeUndefined();
       });
     }));
+
+    it('should send the signUp request to the server', (done) => {
+      done();
+    });
   });
 });

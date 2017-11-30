@@ -63,10 +63,16 @@ describe('HeaderComponent', () => {
   it('Check home button is correct', () => {
     expect(home_html.textContent).toEqual('Gator Bite');
   });
-  it('Check home button is correct', () => {
+
+
+
+  it('Check Login button is correct', () => {
     expect(login_html.textContent).toEqual('Sign in');
   });
-  it('Check home button is correct', () => {
+
+
+
+  it('Check SignUp button is correct', () => {
     expect(signUp_html.textContent).toEqual('Sign up');
   });
   // it('checks  search button', async(() => {
