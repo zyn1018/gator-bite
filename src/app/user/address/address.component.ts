@@ -54,7 +54,6 @@ export class AddressComponent implements OnInit {
       this.addressForm.controls['zip'].setValue(this.address[4]);
       this.ad.zip = this.address[4];
     }
-
     this.states = [
       'AL',
       'Ak',

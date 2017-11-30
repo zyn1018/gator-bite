@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {APP_BASE_HREF} from '@angular/common';
 import { CenterComponent } from './center.component';
-import {MdCardModule} from '@angular/material';
+import {MatCardModule, MatProgressSpinnerModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 describe('CenterComponent', () => {
@@ -14,8 +14,9 @@ describe('CenterComponent', () => {
       declarations: [CenterComponent],
       imports: [
         RouterModule.forRoot([]),
-        MdCardModule,
-        HttpModule
+        MatCardModule,
+        HttpModule,
+        MatProgressSpinnerModule,
       ],
       providers: [
         {

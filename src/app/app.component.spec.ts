@@ -3,7 +3,8 @@ import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {CoreModule} from './core/core.module';
 import {APP_BASE_HREF} from '@angular/common';
-import {MdToolbarModule} from '@angular/material';
+import {MatToolbarModule} from '@angular/material';
+import {HttpModule} from '@angular/http';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
       imports: [
         RouterModule.forRoot([]),
         CoreModule,
-        MdToolbarModule,
+        MatToolbarModule,
+        HttpModule
       ],
       providers: [
         {
