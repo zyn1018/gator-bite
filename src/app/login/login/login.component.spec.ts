@@ -6,11 +6,13 @@ import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 import {UserService} from '../../domain/user.service';
 import {AuthenticationService} from '../../utils/authentication.service';
-import {Http, HttpModule} from '@angular/http';
+import {BaseRequestOptions, Http, HttpModule} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let regSpy: jasmine.Spy;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
@@ -29,6 +31,15 @@ describe('LoginComponent', () => {
         },
         UserService,
         AuthenticationService,
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Http,
+          useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+            return new Http(backendInstance, defaultOptions);
+          },
+          deps: [MockBackend, BaseRequestOptions]
+        },
       ]
     })
       .compileComponents();
@@ -43,6 +54,8 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
   it(`Login page should have email to be filled in`, async(() => {
     const test = fixture.debugElement.componentInstance;
     expect(test.email).toBeUndefined();
@@ -54,6 +67,9 @@ describe('LoginComponent', () => {
   }));
 
 
+  it('should send the login request to the server', (done) => {
+    done();
+  });
   // describe('when the user submits the login form', () => {
   //
   //   beforeEach(() => {
