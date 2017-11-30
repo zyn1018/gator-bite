@@ -12,6 +12,11 @@ export class AlertComponent {
   constructor(private alertService: AlertService) {
   }
 
+
+  /**
+   * The alert page initials connecting to the server
+   */
+
   ngOnInit() {
     this.alertService.getMessage().subscribe(message => {
       this.message = message;

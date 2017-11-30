@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Dish, DishService} from '../dishes-manage/dish.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../domain/user.service';
 
 @Component({
   selector: 'app-dish-form',
@@ -13,18 +12,17 @@ export class DishFormComponent implements OnInit {
 
   formModel: FormGroup;
   dish: Dish;
-  userEmail: string;
   userId: string;
 
   constructor(private routeInfo: ActivatedRoute,
               private dishService: DishService,
-              private router: Router,
-              private userService: UserService) {
+              private router: Router) {
   }
 
   ngOnInit() {
     const dishId = this.routeInfo.snapshot.params['dishId'];
     this.dish = this.dishService.getDish(dishId);
+    console.log(this.dish);
     this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
     let fb = new FormBuilder();
     this.formModel = fb.group(

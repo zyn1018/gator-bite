@@ -22,18 +22,16 @@ export class HeaderComponent implements OnInit {
     const user: string = localStorage.getItem('currentUser');
     if (user != null) {
       this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-      console.log(this.userId);
+      // console.log(this.userId);
       this.isLogin = localStorage.getItem('currentUser') != null;
       this.isRestaurant = JSON.parse(localStorage.getItem('currentUser')).menu != null;
     }
 
     this.userService.getIsLoginSubject().subscribe(data => {
       this.isLogin = data;
-      console.log(this.isLogin);
     });
     this.userService.getIsRestaurantSubject().subscribe(data => {
       this.isRestaurant = data;
-      console.log(this.isRestaurant);
     });
     this.cdr.markForCheck();
     this.cdr.detectChanges();
@@ -46,6 +44,9 @@ export class HeaderComponent implements OnInit {
     this.toggle.emit();
   }
 
+  gotoDishManagement() {
+    this.router.navigateByUrl('/dishes/' + this.userId);
+  }
   /**
    * When user logs out, change header
    */
@@ -64,7 +65,6 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/user/' + this.userId);
     } else if (this.isRestaurant == true) {
       this.router.navigateByUrl('/restaurantInfo/' + this.userId);
-      // console.log(this.userId);
     }
   }
 }

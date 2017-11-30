@@ -11,13 +11,18 @@ import {AuthenticationService} from '../../utils/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private userEmail: string;
   private isLogin: boolean = false;
   private isRestaurant: boolean = false;
   form: FormGroup;
   returnUrl: string;
   model: any = {};
   fb: FormBuilder = new FormBuilder();
+
+
+  /**
+   * The validator to check invalid email address
+   */
+
 
   emailValidator(email: FormControl): any {
     const value = (email.value || '') + '';
@@ -28,11 +33,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private http: HttpClient,
               private route: ActivatedRoute,
               private authenticationService: AuthenticationService,) {
   }
 
+  /**
+   * Create a form which contains email, password and loginRole for users to login to the website
+   */
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', this.emailValidator],
@@ -47,6 +54,9 @@ export class LoginComponent implements OnInit {
    * User login
    */
   login() {
+    /**
+     * Customer Login
+     */
     if (this.form.value.loginRole == 1) {
       this.authenticationService.loginCustomer(this.model.email, this.model.password).subscribe(
         data => {
@@ -59,6 +69,9 @@ export class LoginComponent implements OnInit {
           alert("Invalid customer account");
         }
       )
+      /**
+       * Restaurant Login
+       */
     } else if (this.form.value.loginRole == 2) {
       this.authenticationService.loginRestaurant(this.model.email, this.model.password).subscribe(
         data => {

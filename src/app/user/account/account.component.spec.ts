@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountComponent } from './account.component';
+import {MatListModule} from '@angular/material';
+import {APP_BASE_HREF} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {UserService} from '../../domain/user.service';
+import {HttpModule} from '@angular/http';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
@@ -8,7 +13,20 @@ describe('AccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountComponent ]
+      imports: [
+        MatListModule,
+        RouterModule.forRoot([]),
+        HttpModule
+      ],
+      declarations: [
+        AccountComponent, ],
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/'
+        },
+        UserService
+      ]
     })
     .compileComponents();
   }));
@@ -22,4 +40,10 @@ describe('AccountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('Cant get all links', async() =>{
+    const fixture = TestBed.createComponent(AccountComponent);
+    fixture.detectChanges();
+  })
 });

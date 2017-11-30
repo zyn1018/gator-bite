@@ -7,7 +7,7 @@
       <mat-card>
         <mat-card-content style="font-size: large; font-family: Impact">
           <span>{{dish.name}}</span>
-          <span class="dishPrice">${{dish.price}}</span>
+          <span class="dishPrice">${{dish.price.toFixed(2)}}</span>
           <button id="addButton" class="addButton" color="primary" mat-mini-fab (click)="addToOrder(dish)">+</button>
         </mat-card-content>
       </mat-card>

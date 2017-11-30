@@ -1,7 +1,9 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {Order, OrderDetail, OrderService} from '../order.service';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {DOCUMENT} from '@angular/common';
+import {DishService} from '../../dishes-manage/dish.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +29,7 @@ export class OrderSidebarComponent implements OnInit {
   public username: string;
   public restaurantName: string;
 
-  constructor(private orderService: OrderService, private cdr: ChangeDetectorRef, private http: Http) {
+  constructor(private orderService: OrderService, @Inject(DOCUMENT) private document: Document, private cdr: ChangeDetectorRef, private http: Http, private dishService: DishService) {
   }
 
   ngOnInit() {
@@ -37,11 +39,7 @@ export class OrderSidebarComponent implements OnInit {
       loginRole: ['']
     });
     this.submitDetail = [];
-    //Set token into header
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('authentication', localStorage.getItem('token'));
-    this.options = new RequestOptions({headers: this.headers});
+
 
     this.orderService.getOrderDetailSubject().subscribe(data => {
       this.orderDetail = data;
@@ -54,17 +52,7 @@ export class OrderSidebarComponent implements OnInit {
 
     this.orderService.getRestaurantIdSubject().subscribe(data => {
       this.restaurantId = data;
-      this.cdr.markForCheck();
-      this.cdr.detectChanges();
     });
-
-    if (localStorage.getItem('currentUser') != null) {
-      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
-      this.address = JSON.parse(localStorage.getItem('currentUser')).address;
-      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
-      this.cdr.markForCheck();
-      this.cdr.detectChanges();
-    }
   }
 
   /**
@@ -142,16 +130,37 @@ export class OrderSidebarComponent implements OnInit {
    * When press submit your order button, the order will be sent to server
    */
   submitOrder() {
-    console.log(this.orderDetail);
+    //Set token into header
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('authentication', localStorage.getItem('token'));
+    this.options = new RequestOptions({headers: this.headers});
+    if (localStorage.getItem('currentUser') != null) {
+      this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+      this.address = JSON.parse(localStorage.getItem('currentUser')).address;
+      this.username = JSON.parse(localStorage.getItem('currentUser')).username;
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+    }
     this.orderDetail.forEach((value: number[], key: string) => {
       this.submitDetail.push(new OrderDetail(key, value[0]));
     });
-    this.order = new Order(this.username, this.restaurantId, this.restaurantName, this.submitDetail, this.address, this.totalPrice);
-    console.log(this.userId);
-    this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
-      console.log('Order submission successful');
-    });
+    const price = this.totalPrice;
+    const od = this.submitDetail;
+    this.dishService.getOneResDish(this.restaurantId).subscribe(
+      data => {
+        this.restaurantName = data['username'];
+        this.order = new Order(this.username, this.restaurantId, this.restaurantName, od, this.address, price);
+        console.log(this.order);
+        this.http.post('/api/submitOrder', this.order, this.options).subscribe(data => {
+          alert('Order has been submitted!');
+        });
+      }
+    );
+
     this.orderDetail.clear();
+    this.submitDetail = [];
+    this.orderService.setOrderDetailSubject(new Map<string, number[]>());
     this.checkShowParam();
     this.cdr.markForCheck();
     this.cdr.detectChanges();

@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DishesManageComponent} from './dishes-manage.component';
 import {Pipe} from '@angular/core';
+import {DishService} from './dish.service';
 
 describe('DishesManageComponent', () => {
   let component: DishesManageComponent;
@@ -14,7 +15,8 @@ describe('DishesManageComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         Pipe,
-      ]
+      ],
+      providers: [DishService]
     })
       .compileComponents();
   }));

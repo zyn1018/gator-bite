@@ -13,23 +13,36 @@ export class RaccountComponent implements OnInit {
   constructor(public router: Router, private userService: UserService) {
   }
 
+  /**
+   * The router to navigate to other pages
+   */
+
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (user) {
       const userid: string = JSON.parse(localStorage.getItem('currentUser'))._id;
       this.menus = [
-        new Menu(userid, 'rProfile', '/restaurant/' + userid + '/rprofile'),
-        new Menu(userid, 'rAddress', '/restaurant/' + userid + '/raddress'),
-        new Menu(userid, 'rPayment', '/restaurant/' + userid + '/rpayment'),
-        new Menu(userid, 'rOrders', '/restaurant/' + userid + '/rorders')
+        new Menu(userid, 'Profile', '/restaurantInfo/' + userid + '/restaurantProfile'),
+        new Menu(userid, 'Address', '/restaurantInfo/' + userid + '/restaurantAddress'),
+        new Menu(userid, 'Orders', '/restaurantInfo/' + userid + '/restaurantOrders')
       ];
     }
   }
+
+
+  /**
+   * Navigate to the page by its URL
+   */
 
   nav(menu: Menu) {
     this.router.navigateByUrl(menu.link);
   }
 }
+
+
+/**
+ * The class for Menu which contains menu id, menu name and menu link
+ */
 
 export class Menu {
   constructor(public id: string,

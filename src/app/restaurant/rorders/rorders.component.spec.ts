@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RordersComponent} from './rorders.component';
+import {HttpModule} from '@angular/http';
 
 describe('RordersComponent', () => {
   let component: RordersComponent;
@@ -8,6 +9,9 @@ describe('RordersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpModule
+      ],
       declarations: [RordersComponent]
     })
       .compileComponents();

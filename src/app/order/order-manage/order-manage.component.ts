@@ -15,12 +15,18 @@ export class OrderManageComponent implements OnInit {
   public restaurantId: string;
   public orderDetail = new Map<string, number[]>();
 
+
   constructor(@Inject(DOCUMENT) private document: Document, private dishService: DishService, private orderService: OrderService, private cdr: ChangeDetectorRef, private router: Router) {
   }
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes();
     this.restaurantId = this.document.location.href.split('/')[4];
+    this.dishService.getOneResDish(this.restaurantId).subscribe(
+      data => {
+        // console.log(data);
+        this.dishes = data['menu'];
+      }
+    );
     this.orderService.setRestaurantIdSubject(this.restaurantId);
   }
 
