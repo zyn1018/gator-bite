@@ -15,7 +15,7 @@ describe("restaurant case", function () {
     chai.request(server)
       .post('/registerRes')
       .type('form')
-      .send({'email': 'test@zpd.com', 'username': 'tdsds', 'password': '123456'})
+      .send({'email': 'andazindian@gatorbite.com', 'username': 'Andaz Indian', 'password': '123456'})
       .end(function (err, res) {
         res.should.have.status(400);
         done();

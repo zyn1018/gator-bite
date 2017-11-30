@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
           this.isLogin = true;
           this.userService.setIsLoginSubject(this.isLogin);
           this.router.navigate([this.returnUrl]);
+          console.log(localStorage.getItem('token'));
         },
         error => {
           console.log(error);
@@ -80,6 +81,7 @@ export class LoginComponent implements OnInit {
           this.isRestaurant = true;
           this.userService.setIsRestaurantSubject(this.isRestaurant);
           const id = JSON.parse(localStorage.getItem('currentUser'))._id;
+          console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('/dishes/' + id);
         },
         error => {

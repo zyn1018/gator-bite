@@ -43,3 +43,4 @@ Thumbs.db
 bower_components/
 /documentation/
 /server/config.json
+/.nyc_output/
